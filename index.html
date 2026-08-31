@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ADJP Creative — A bold, modern creative agency with 33+ years of experience in brand commercials, films, jingles, and integrated campaigns. Ideas. Impact.">
+  <title>ADJP Creative — Ideas. Impact.</title>
+  <link rel="icon" type="image/png" href="assets/logo/Favicon ADJP new .png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/home.css">
+</head>
+<body class="page--dark">
+
+  <!-- NAV -->
+  <header class="nav" role="banner">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="ADJP Creative home">
+        <img src="assets/logo/ADJP Logo for Dark Background Transparent.png" alt="ADJP Creative" class="nav__logo-img">
+      </a>
+      <nav class="nav__links" aria-label="Primary navigation">
+        <a href="index.html" class="active">Home</a>
+        <!-- <a href="portfolio.html">Portfolio</a> -->
+        <a href="about.html">About</a>
+        <!-- <a href="blog.html">Blog</a> -->
+      </nav>
+      <a href="contact.html" class="btn btn--primary btn--sm nav__cta">Get in Touch</a>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="nav__mobile" aria-hidden="true">
+    <nav class="nav__mobile-links" aria-label="Mobile navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+    </nav>
+    <div class="nav__mobile-cta">
+      <a href="contact.html" class="btn btn--primary" style="width:100%;justify-content:center;">Get in Touch</a>
+    </div>
+  </div>
+
+  <!-- MOBILE FLOATING HEADER (≤768px only) -->
+  <header class="mob-header" id="mob-header" role="banner" aria-label="Mobile navigation">
+    <div class="mob-header__bar">
+      <a href="index.html" class="mob-header__logo" aria-label="ADJP Creative home">
+        <img src="assets/logo/ADJP Logo for Dark Background Transparent.png" alt="ADJP Creative">
+      </a>
+      <a href="contact.html" class="mob-header__cta">Get in Touch</a>
+      <button class="mob-header__toggle" id="mobNavToggle"
+        aria-expanded="false"
+        aria-controls="mob-nav-panel"
+        aria-label="Open navigation">
+        <span class="mob-toggle__line"></span>
+        <span class="mob-toggle__line"></span>
+        <span class="mob-toggle__line"></span>
+      </button>
+    </div>
+    <nav class="mob-nav-panel" id="mob-nav-panel" aria-hidden="true">
+      <div class="mob-nav-panel-inner">
+        <a href="index.html" class="mob-nav-link" data-page="index.html">
+          <span>Home</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+        <a href="about.html" class="mob-nav-link" data-page="about.html">
+          <span>About</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+        <a href="contact.html" class="mob-nav-cta">Get in Touch</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO — Cinematic Studio -->
+    <section class="studio-hero" aria-labelledby="hero-headline">
+
+      <!-- Real photo background -->
+      <div class="studio-bg" aria-hidden="true">
+        <img src="assets/images/Background IMage for Home.png" alt="" class="studio-bg__img">
+        <!-- Looping video — shown during CAMERA and ACTION states -->
+        <video class="studio-bg__video" src="assets/video/ADJP Background Loop.mp4" muted playsinline preload="none"></video>
+        <!-- Loop-fade overlay — briefly fades to black at loop point for seamless join -->
+        <div class="studio-bg__loop-fade"></div>
+        <!-- Dark overlay so text stays readable -->
+        <div class="studio-bg__overlay"></div>
+      </div>
+
+      <!-- Dark scrim behind text for readability -->
+      <div class="studio-scrim"></div>
+
+      <!-- LIGHTS / CAMERA / ACTION control bar -->
+      <div class="lca-control" role="group" aria-label="Production mode">
+        <button class="lca-btn" data-mode="lights" aria-pressed="false">
+          <svg class="lca-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+          LIGHTS
+        </button>
+        <button class="lca-btn" data-mode="camera" aria-pressed="false">
+          <svg class="lca-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M15 10l4.553-2.276A1 1 0 0121 8.723v6.554a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/>
+          </svg>
+          CAMERA
+        </button>
+        <button class="lca-btn" data-mode="action" aria-pressed="false">
+          <svg class="lca-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <polygon points="10,8 16,12 10,16" fill="currentColor" stroke="none"/>
+          </svg>
+          ACTION
+        </button>
+      </div>
+
+      <!-- Hero text — initially hidden via JS/CSS -->
+      <div class="studio-content">
+        <h1 id="hero-headline">
+          <span class="hero-line-1">Ideas.</span>
+          <span class="hero-line-2">Impact.</span>
+        </h1>
+        <p class="studio-sub">33+ years of crafting stories that move people — from national award-winning films to campaigns for Sri Lanka's most trusted brands.</p>
+        <div class="studio-actions">
+          <a href="#showreel" class="btn btn--primary btn--lg">View Our Work</a>
+          <a href="about.html" class="btn btn--outline-studio btn--lg">Our Story</a>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="studio-scroll" aria-hidden="true">
+        <span>SCROLL</span>
+        <div class="studio-scroll__line"></div>
+      </div>
+
+    </section>
+
+    <!-- STATS BAR -->
+    <section class="stats-bar" aria-label="Agency statistics">
+      <div class="stats-bar__panel">
+        <div class="stats-bar__items">
+
+          <!-- 01 Years Active -->
+          <div class="stat-item anim-fade-in">
+            <div class="stat-item__icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"/>
+                <polyline points="12 7 12 12 15 14.5"/>
+              </svg>
+            </div>
+            <div class="stat-item__number" data-count="33" data-suffix="+">33+</div>
+            <div class="stat-item__label">Years Active</div>
+            <div class="stat-item__accent"></div>
+          </div>
+
+          <div class="stats-bar__sep" aria-hidden="true"></div>
+
+          <!-- 02 Feature Films -->
+          <div class="stat-item anim-fade-in">
+            <div class="stat-item__icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+                <rect x="2" y="3" width="20" height="16" rx="2"/>
+                <line x1="7" y1="3" x2="7" y2="19"/>
+                <line x1="17" y1="3" x2="17" y2="19"/>
+                <line x1="2" y1="8" x2="7" y2="8"/>
+                <line x1="17" y1="8" x2="22" y2="8"/>
+                <line x1="2" y1="14" x2="7" y2="14"/>
+                <line x1="17" y1="14" x2="22" y2="14"/>
+              </svg>
+            </div>
+            <div class="stat-item__number" data-count="3">3</div>
+            <div class="stat-item__label">Feature Films</div>
+            <div class="stat-item__accent"></div>
+          </div>
+
+          <div class="stats-bar__sep" aria-hidden="true"></div>
+
+          <!-- 03 National Awards -->
+          <div class="stat-item anim-fade-in">
+            <div class="stat-item__icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+                <path d="M8 21h8M12 17v4"/>
+                <path d="M7 4h10l-1 8a5 5 0 0 1-8 0L7 4Z"/>
+                <path d="M5 4H4a2 2 0 0 0 0 4h3"/>
+                <path d="M19 4h1a2 2 0 0 1 0 4h-3"/>
+              </svg>
+            </div>
+            <div class="stat-item__number" data-count="2">2</div>
+            <div class="stat-item__label">National Awards</div>
+            <div class="stat-item__accent"></div>
+          </div>
+
+          <div class="stats-bar__sep" aria-hidden="true"></div>
+
+          <!-- 04 Brand Clients -->
+          <div class="stat-item anim-fade-in">
+            <div class="stat-item__icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+                <circle cx="9" cy="7" r="3.5"/>
+                <path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/>
+                <circle cx="17" cy="8" r="2.5"/>
+                <path d="M22 20c0-2.5-2-4.5-5-4.5"/>
+              </svg>
+            </div>
+            <div class="stat-item__number" data-count="18">18</div>
+            <div class="stat-item__label">Brand Clients</div>
+            <div class="stat-item__accent"></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES / WHAT WE DO -->
+    <section class="wwd-section" aria-labelledby="services-heading">
+      <div class="container">
+
+        <!-- TOP ROW: copy left + visual right -->
+        <div class="wwd-top">
+
+          <!-- Left: heading + intro -->
+          <div class="wwd-copy anim-slide-up">
+            <span class="wwd-eyebrow">— What We Do</span>
+            <h2 id="services-heading" class="wwd-heading">Full-spectrum<br>creative production</h2>
+            <div class="wwd-accent-line"></div>
+            <p class="wwd-intro">From a 30-second jingle to a feature film — we handle every stage of the production process.</p>
+          </div>
+
+          <!-- Right: cinematic showcase collage -->
+          <div class="wwd-showcase anim-fade-in">
+
+            <!-- Background decorative layer -->
+            <div class="wwd-deco" aria-hidden="true">
+              <div class="wwd-deco__circle"></div>
+              <div class="wwd-deco__dots"></div>
+              <div class="wwd-deco__plus">+</div>
+              <div class="wwd-deco__glow"></div>
+            </div>
+
+            <!-- Main studio panel -->
+            <div class="wwd-studio-panel" aria-hidden="true">
+              <img src="assets/images/Studio.png" alt="ADJP Creative studio" class="wwd-studio-panel__img">
+            </div>
+
+            <!-- Floating card 1: Film board -->
+            <div class="wwd-float wwd-float--clap" aria-hidden="true">
+              <img src="assets/images/Film board.png" alt="Film board">
+            </div>
+
+            <!-- Floating card 2: Audio Wave -->
+            <div class="wwd-float wwd-float--wave" aria-hidden="true">
+              <img src="assets/images/Audio Wave.png" alt="Audio wave">
+            </div>
+
+            <!-- Floating card 3: Idea / Brand values -->
+            <div class="wwd-float wwd-float--values" aria-hidden="true">
+              <img src="assets/images/Idea.png" alt="Ideas, Story, Impact">
+            </div>
+
+          </div><!-- /wwd-showcase -->
+        </div><!-- /wwd-top -->
+
+        <!-- BOTTOM ROW: four service cards -->
+        <div class="wwd-cards anim-stagger-children">
+
+          <div class="wwd-card">
+            <div class="wwd-card__icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2CB32E" stroke-width="1.5">
+                <rect x="2" y="6" width="14" height="12" rx="2"/>
+                <path d="M16 10l5-3v10l-5-3"/>
+              </svg>
+            </div>
+            <div class="wwd-card__body">
+              <h3 class="wwd-card__title">Brand Commercials</h3>
+              <div class="wwd-card__underline"></div>
+              <p class="wwd-card__desc">TV and digital ads that capture attention and drive recall — crafted for F&amp;B, finance, textiles, jewellery, and more.</p>
+            </div>
+            <div class="wwd-card__arrow" aria-hidden="true">
+              <svg viewBox="0 0 16 16" fill="none" stroke="#2CB32E" stroke-width="1.8">
+                <path d="M3 8h10M9 4l4 4-4 4"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="wwd-card">
+            <div class="wwd-card__icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2CB32E" stroke-width="1.5">
+                <path d="M9 18V5l12-2v13"/>
+                <circle cx="6" cy="18" r="3"/>
+                <circle cx="18" cy="16" r="3"/>
+              </svg>
+            </div>
+            <div class="wwd-card__body">
+              <h3 class="wwd-card__title">Jingles &amp; Audio</h3>
+              <div class="wwd-card__underline"></div>
+              <p class="wwd-card__desc">Memorable brand jingles and sonic identities that stay with your audience long after they've heard them.</p>
+            </div>
+            <div class="wwd-card__arrow" aria-hidden="true">
+              <svg viewBox="0 0 16 16" fill="none" stroke="#2CB32E" stroke-width="1.8">
+                <path d="M3 8h10M9 4l4 4-4 4"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="wwd-card">
+            <div class="wwd-card__icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2CB32E" stroke-width="1.5">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <circle cx="12" cy="12" r="3"/>
+                <line x1="2" y1="8" x2="22" y2="8"/>
+                <line x1="5" y1="4" x2="5" y2="8"/>
+                <line x1="9" y1="4" x2="9" y2="8"/>
+                <line x1="15" y1="4" x2="15" y2="8"/>
+                <line x1="19" y1="4" x2="19" y2="8"/>
+              </svg>
+            </div>
+            <div class="wwd-card__body">
+              <h3 class="wwd-card__title">Feature Films</h3>
+              <div class="wwd-card__underline"></div>
+              <p class="wwd-card__desc">Directed and Composed Music for Feature Films in Sri Lanka and India — including <em>Abhitha</em>, <em>Padhany</em>, and <em>Ondikku Ondi</em>.</p>
+            </div>
+            <div class="wwd-card__arrow" aria-hidden="true">
+              <svg viewBox="0 0 16 16" fill="none" stroke="#2CB32E" stroke-width="1.8">
+                <path d="M3 8h10M9 4l4 4-4 4"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="wwd-card">
+            <div class="wwd-card__icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2CB32E" stroke-width="1.5">
+                <path d="M12 2l2 5h5l-4 3 1.5 5L12 12l-4.5 3 1.5-5L5 7h5z"/>
+              </svg>
+            </div>
+            <div class="wwd-card__body">
+              <h3 class="wwd-card__title">Brand Strategy</h3>
+              <div class="wwd-card__underline"></div>
+              <p class="wwd-card__desc">Integrated creative strategy, concept development, and campaign execution from brief to final delivery.</p>
+            </div>
+            <div class="wwd-card__arrow" aria-hidden="true">
+              <svg viewBox="0 0 16 16" fill="none" stroke="#2CB32E" stroke-width="1.8">
+                <path d="M3 8h10M9 4l4 4-4 4"/>
+              </svg>
+            </div>
+          </div>
+
+        </div><!-- /wwd-cards -->
+      </div>
+    </section>
+
+    <!-- SHOWREEL -->
+    <section class="showreel" id="showreel" aria-labelledby="showreel-heading">
+
+      <!-- Background atmosphere -->
+      <div class="showreel__bg" aria-hidden="true">
+        <div class="showreel__bg-glow showreel__bg-glow--tr"></div>
+        <div class="showreel__bg-glow showreel__bg-glow--bl"></div>
+        <div class="showreel__bg-curve showreel__bg-curve--left"></div>
+        <div class="showreel__bg-curve showreel__bg-curve--right"></div>
+      </div>
+
+      <div class="container showreel__inner">
+
+        <!-- Top text -->
+        <div class="showreel__header anim-slide-up">
+          <span class="showreel__eyebrow">— Showreel</span>
+          <h2 id="showreel-heading" class="showreel__heading">See the work in motion</h2>
+          <p class="showreel__sub">A selection of our latest projects, brought to life through story, craft, and cinematic detail.</p>
+        </div>
+
+        <!-- Main player -->
+        <div class="showreel__player anim-fade-in">
+          <div class="showreel__card" id="showreel-card">
+
+            <!-- Active iframe lives here, injected by JS -->
+            <div class="showreel__frame-wrap" id="showreel-frame-wrap"></div>
+
+            <!-- Placeholder shown before any tab is played -->
+            <div class="showreel__placeholder" id="showreel-placeholder">
+              <div class="showreel__scene" aria-hidden="true">
+                <div class="showreel__scene-floor"></div>
+                <div class="showreel__scene-light showreel__scene-light--left"></div>
+                <div class="showreel__scene-light showreel__scene-light--right"></div>
+                <div class="showreel__scene-haze"></div>
+              </div>
+              <div class="showreel__play-wrap">
+                <div class="showreel__play-ring" aria-hidden="true"></div>
+                <button class="showreel__play-btn" id="showreel-main-play" aria-label="Play showreel">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M6 4.5l13 7.5-13 7.5V4.5z" fill="#F4F4F2"/>
+                  </svg>
+                </button>
+                <span class="showreel__play-label">Select a reel below</span>
+              </div>
+              <div class="showreel__meta" aria-hidden="true">
+                <span class="showreel__meta-runtime" id="showreel-active-runtime">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" width="12" height="12"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1.5"/></svg>
+                  —
+                </span>
+                <span class="showreel__meta-title" id="showreel-active-title">
+                  <span class="showreel__meta-dot"></span>
+                  ADJP CREATIVE SHOWREEL
+                </span>
+              </div>
+            </div>
+
+          </div><!-- /showreel__card -->
+        </div>
+
+        <!-- Tab strip -->
+        <div class="showreel__tabs" role="tablist" aria-label="Showreel videos">
+
+          <!-- TAB 1 -->
+          <button class="showreel__tab active"
+                  role="tab"
+                  aria-selected="true"
+                  data-embed-src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F957372693989755%2F&show_text=false&width=560&t=0"
+                  data-title="LB FINANCE COMMERCIAL TVC"
+                  data-runtime="— MIN"
+                  data-num="01">
+            <span class="showreel__tab-num">01</span>
+            <span class="showreel__tab-info">
+              <span class="showreel__tab-title">LB Finance TVC</span>
+              <span class="showreel__tab-sub">Brand Commercial</span>
+            </span>
+            <svg class="showreel__tab-play" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <circle cx="8" cy="8" r="7" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <path d="M6.5 5.5l5 2.5-5 2.5V5.5z" fill="currentColor"/>
+            </svg>
+            <div class="showreel__tab-bar"></div>
+          </button>
+
+          <!-- TAB 2 -->
+          <button class="showreel__tab"
+                  role="tab"
+                  aria-selected="false"
+                  data-video-id="CMZ4Y8eoT18"
+                  data-title="ABHITHA — SINHALA FEATURE FILM"
+                  data-runtime="— MIN"
+                  data-num="02">
+            <span class="showreel__tab-num">02</span>
+            <span class="showreel__tab-info">
+              <span class="showreel__tab-title">Abhitha Sinhala Movie</span>
+              <span class="showreel__tab-sub">Directed &amp; Scored Music</span>
+            </span>
+            <svg class="showreel__tab-play" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <circle cx="8" cy="8" r="7" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <path d="M6.5 5.5l5 2.5-5 2.5V5.5z" fill="currentColor"/>
+            </svg>
+            <div class="showreel__tab-bar"></div>
+          </button>
+
+          <!-- TAB 3 -->
+          <button class="showreel__tab"
+                  role="tab"
+                  aria-selected="false"
+                  data-embed-src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FPLMTTMC%2Fvideos%2F385874327366780%2F&show_text=false&width=560&t=0"
+                  data-title="PL. MTT. MUTHUKARUPPAN CHETTIAR JEWELLERS TVC"
+                  data-runtime="— MIN"
+                  data-num="03">
+            <span class="showreel__tab-num">03</span>
+            <span class="showreel__tab-info">
+              <span class="showreel__tab-title">Muthukaruppan Chettiar</span>
+              <span class="showreel__tab-sub">Jewellers TVC</span>
+            </span>
+            <svg class="showreel__tab-play" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <circle cx="8" cy="8" r="7" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <path d="M6.5 5.5l5 2.5-5 2.5V5.5z" fill="currentColor"/>
+            </svg>
+            <div class="showreel__tab-bar"></div>
+          </button>
+
+          <!-- TAB 4 -->
+          <button class="showreel__tab"
+                  role="tab"
+                  aria-selected="false"
+                  data-embed-src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FPLMTTMC%2Fvideos%2F2198825040459927%2F&show_text=false&width=560&t=0"
+                  data-title="PL. MTT. MUTHUKARUPPAN CHETTIAR JEWELLERS — DOCUMENTARY TVC"
+                  data-runtime="— MIN"
+                  data-num="04">
+            <span class="showreel__tab-num">04</span>
+            <span class="showreel__tab-info">
+              <span class="showreel__tab-title">Muthukaruppan Chettiar</span>
+              <span class="showreel__tab-sub">Documentary TVC</span>
+            </span>
+            <svg class="showreel__tab-play" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <circle cx="8" cy="8" r="7" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <path d="M6.5 5.5l5 2.5-5 2.5V5.5z" fill="currentColor"/>
+            </svg>
+            <div class="showreel__tab-bar"></div>
+          </button>
+
+          <!-- TAB 5 -->
+          <button class="showreel__tab"
+                  role="tab"
+                  aria-selected="false"
+                  data-embed-src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1512277643813045%2F&show_text=false&width=560&t=0"
+                  data-fb-scale="true"
+                  data-title="SHREE MADHAVI JEWELLERS TVC"
+                  data-runtime="— MIN"
+                  data-num="05">
+            <span class="showreel__tab-num">05</span>
+            <span class="showreel__tab-info">
+              <span class="showreel__tab-title">Shree Madhavi Jewellers</span>
+              <span class="showreel__tab-sub">Brand TVC</span>
+            </span>
+            <svg class="showreel__tab-play" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <circle cx="8" cy="8" r="7" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <path d="M6.5 5.5l5 2.5-5 2.5V5.5z" fill="currentColor"/>
+            </svg>
+            <div class="showreel__tab-bar"></div>
+          </button>
+
+        </div><!-- /showreel__tabs -->
+      </div>
+    </section>
+
+    <!-- MUSIC VIDEOS -->
+    <section class="mv-section" aria-labelledby="mv-heading">
+      <div class="container">
+        <div class="section-heading anim-slide-up">
+          <span class="section-heading__label">Music Videos</span>
+          <h2 id="mv-heading">Music &amp; Sonic Productions</h2>
+          <p>Original compositions, brand jingles, and music video productions crafted by ADJP Creative.</p>
+        </div>
+
+        <div class="mv-grid anim-stagger-children">
+
+          <!-- MV 1 -->
+          <div class="mv-card" data-video-id="XQLSyENci84" data-title="Music Video" data-source="youtube">
+            <div class="mv-card__thumb">
+              <img src="https://img.youtube.com/vi/XQLSyENci84/hqdefault.jpg" alt="Music Video thumbnail" loading="lazy">
+              <div class="mv-card__play-btn" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M6 4.5l13 7.5-13 7.5V4.5z" fill="#F4F4F2"/></svg>
+              </div>
+              <div class="mv-card__overlay"></div>
+            </div>
+            <div class="mv-card__info">
+              <span class="mv-card__num">01</span>
+              <div>
+                <h4 class="mv-card__title">Music Video</h4>
+                <p class="mv-card__sub">Directed &amp; Music</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- MV 2 -->
+          <div class="mv-card" data-video-id="oMqQ51LUosc" data-title="Music Video" data-source="youtube">
+            <div class="mv-card__thumb">
+              <img src="https://img.youtube.com/vi/oMqQ51LUosc/hqdefault.jpg" alt="Music Video thumbnail" loading="lazy">
+              <div class="mv-card__play-btn" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M6 4.5l13 7.5-13 7.5V4.5z" fill="#F4F4F2"/></svg>
+              </div>
+              <div class="mv-card__overlay"></div>
+            </div>
+            <div class="mv-card__info">
+              <span class="mv-card__num">02</span>
+              <div>
+                <h4 class="mv-card__title">Music Video</h4>
+                <p class="mv-card__sub">Directed &amp; Music</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- MV 3 -->
+          <div class="mv-card" data-video-id="CUc7h5BetUU" data-title="Music Video" data-source="youtube">
+            <div class="mv-card__thumb">
+              <img src="https://img.youtube.com/vi/CUc7h5BetUU/hqdefault.jpg" alt="Music Video thumbnail" loading="lazy">
+              <div class="mv-card__play-btn" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M6 4.5l13 7.5-13 7.5V4.5z" fill="#F4F4F2"/></svg>
+              </div>
+              <div class="mv-card__overlay"></div>
+            </div>
+            <div class="mv-card__info">
+              <span class="mv-card__num">03</span>
+              <div>
+                <h4 class="mv-card__title">Music Video</h4>
+                <p class="mv-card__sub">Directed &amp; Music</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- MV 4 -->
+          <div class="mv-card" data-video-id="hFYWp1mwcNw" data-title="Music Video" data-source="youtube">
+            <div class="mv-card__thumb">
+              <img src="https://img.youtube.com/vi/hFYWp1mwcNw/hqdefault.jpg" alt="Music Video thumbnail" loading="lazy">
+              <div class="mv-card__play-btn" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M6 4.5l13 7.5-13 7.5V4.5z" fill="#F4F4F2"/></svg>
+              </div>
+              <div class="mv-card__overlay"></div>
+            </div>
+            <div class="mv-card__info">
+              <span class="mv-card__num">04</span>
+              <div>
+                <h4 class="mv-card__title">Music Video</h4>
+                <p class="mv-card__sub">Directed &amp; Music</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- MV 5 -->
+          <div class="mv-card" data-video-id="FqNKqS16eQI" data-title="Music Video" data-source="youtube">
+            <div class="mv-card__thumb">
+              <img src="https://img.youtube.com/vi/FqNKqS16eQI/hqdefault.jpg" alt="Music Video thumbnail" loading="lazy">
+              <div class="mv-card__play-btn" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M6 4.5l13 7.5-13 7.5V4.5z" fill="#F4F4F2"/></svg>
+              </div>
+              <div class="mv-card__overlay"></div>
+            </div>
+            <div class="mv-card__info">
+              <span class="mv-card__num">05</span>
+              <div>
+                <h4 class="mv-card__title">Music Video</h4>
+                <p class="mv-card__sub">Directed &amp; Music</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- MV 6 -->
+          <div class="mv-card" data-video-id="R5-fliRGqYY" data-title="First All Sri Lankan Tamil Artist Collaboration" data-source="youtube">
+            <div class="mv-card__thumb">
+              <img src="https://img.youtube.com/vi/R5-fliRGqYY/hqdefault.jpg" alt="First All Sri Lankan Tamil Artist Collaboration thumbnail" loading="lazy">
+              <div class="mv-card__play-btn" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M6 4.5l13 7.5-13 7.5V4.5z" fill="#F4F4F2"/></svg>
+              </div>
+              <div class="mv-card__overlay"></div>
+            </div>
+            <div class="mv-card__info">
+              <span class="mv-card__num">06</span>
+              <div>
+                <h4 class="mv-card__title">First in Sri Lanka</h4>
+                <p class="mv-card__sub">All Sri Lankan Tamil Artists &middot; Composed &amp; Directed</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- MV 7 -->
+          <div class="mv-card" data-video-id="KSoGctpl9Qk" data-title="Bagged by Divo Music" data-source="youtube">
+            <div class="mv-card__thumb">
+              <img src="https://img.youtube.com/vi/KSoGctpl9Qk/hqdefault.jpg" alt="Bagged by Divo Music thumbnail" loading="lazy">
+              <div class="mv-card__play-btn" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M6 4.5l13 7.5-13 7.5V4.5z" fill="#F4F4F2"/></svg>
+              </div>
+              <div class="mv-card__overlay"></div>
+            </div>
+            <div class="mv-card__info">
+              <span class="mv-card__num">07</span>
+              <div>
+                <h4 class="mv-card__title">Devotional Music</h4>
+                <p class="mv-card__sub">Music &amp; Rights bagged by Divo Music India</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- MV 8 -->
+          <div class="mv-card" data-video-id="81RP12ola9o" data-title="Music Video" data-source="youtube">
+            <div class="mv-card__thumb">
+              <img src="https://img.youtube.com/vi/81RP12ola9o/hqdefault.jpg" alt="Music Video thumbnail" loading="lazy">
+              <div class="mv-card__play-btn" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M6 4.5l13 7.5-13 7.5V4.5z" fill="#F4F4F2"/></svg>
+              </div>
+              <div class="mv-card__overlay"></div>
+            </div>
+            <div class="mv-card__info">
+              <span class="mv-card__num">08</span>
+              <div>
+                <h4 class="mv-card__title">Music Video</h4>
+                <p class="mv-card__sub">Directed &amp; Music</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- MV 9 -->
+          <div class="mv-card" data-video-id="otAqE2IaU34" data-title="Music Video" data-source="youtube">
+            <div class="mv-card__thumb">
+              <img src="https://img.youtube.com/vi/otAqE2IaU34/hqdefault.jpg" alt="Music Video thumbnail" loading="lazy">
+              <div class="mv-card__play-btn" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M6 4.5l13 7.5-13 7.5V4.5z" fill="#F4F4F2"/></svg>
+              </div>
+              <div class="mv-card__overlay"></div>
+            </div>
+            <div class="mv-card__info">
+              <span class="mv-card__num">09</span>
+              <div>
+                <h4 class="mv-card__title">Music Video</h4>
+                <p class="mv-card__sub">Directed &amp; Music</p>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /mv-grid -->
+      </div>
+    </section>
+
+    <!-- VIDEO LIGHTBOX -->
+    <div class="mv-lightbox" id="mv-lightbox" aria-modal="true" role="dialog" aria-label="Video player" hidden>
+      <div class="mv-lightbox__backdrop" id="mv-lightbox-backdrop"></div>
+      <div class="mv-lightbox__wrap">
+        <button class="mv-lightbox__close" id="mv-lightbox-close" aria-label="Close video">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <div class="mv-lightbox__title" id="mv-lightbox-title"></div>
+        <div class="mv-lightbox__player" id="mv-lightbox-player"></div>
+      </div>
+    </div>
+
+    <!-- TRUSTED BY / CLIENTS -->
+    <section class="clients-section" aria-labelledby="clients-heading">
+      <!-- Ambient glows -->
+      <div class="clients-section__glow clients-section__glow--right" aria-hidden="true"></div>
+      <div class="clients-section__glow clients-section__glow--left"  aria-hidden="true"></div>
+
+      <div class="container">
+        <div class="clients-section__intro anim-slide-up">
+          <span class="clients-section__eyebrow">— Trusted By</span>
+          <h2 id="clients-heading" class="clients-section__heading">Brands that trust our work</h2>
+          <p class="clients-section__sub">A selection of brands and organisations we've collaborated with across film, advertising, audio, and creative strategy.</p>
+        </div>
+
+        <!-- Food, Beverage & Corporate -->
+        <div class="clients-category anim-stagger-children">
+          <div class="clients-category__title">
+            <span>Food, Beverage &amp; Corporate</span>
+            <div class="clients-category__line"></div>
+          </div>
+          <div class="clients-grid">
+            <div class="clients-card">
+              <img src="assets/images/Food%2C%20Beverage%20%26%20Corporate/Ceylon%20Cold%20Stores.png" alt="Ceylon Cold Stores">
+              <span class="clients-card__name">Ceylon Cold Stores</span>
+            </div>
+            <div class="clients-card">
+              <img src="assets/images/Food%2C%20Beverage%20%26%20Corporate/Munchee%20LOGO.png" alt="Munchee Biscuits">
+              <span class="clients-card__name">Munchee Biscuits</span>
+            </div>
+            <div class="clients-card">
+              <img src="assets/images/Food%2C%20Beverage%20%26%20Corporate/LB%20finance%20Logo.png" alt="LB Finance">
+              <span class="clients-card__name">LB Finance</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Textile Commercials & Jingles -->
+        <div class="clients-category anim-stagger-children">
+          <div class="clients-category__title">
+            <span>Textile Commercials &amp; Jingles</span>
+            <div class="clients-category__line"></div>
+          </div>
+          <div class="clients-grid">
+            <div class="clients-card">
+              <img src="assets/images/Textile%20Logos/Little%20Asia%20Logo.png" alt="Little Asia Emporium">
+              <span class="clients-card__name">Little Asia Emporium</span>
+            </div>
+            <div class="clients-card">
+              <img src="assets/images/Textile%20Logos/Kamsins%20Logo.png" alt="Kamsin">
+              <span class="clients-card__name">Kamsin</span>
+            </div>
+            <div class="clients-card">
+              <img src="assets/images/Textile%20Logos/Jeyachandran%20Logo.png" alt="Jeyechandrans Textiles">
+              <span class="clients-card__name">Jeyechandrans Textiles</span>
+            </div>
+            <div class="clients-card">
+              <img src="assets/images/Textile%20Logos/Sarita%20logo.png" alt="Sarita Textorium">
+              <span class="clients-card__name">Sarita Textorium</span>
+            </div>
+            <div class="clients-card">
+              <img src="assets/images/Textile%20Logos/7%20stories%20ranjans%20logo.png" alt="7 Stories Ranjanas">
+              <span class="clients-card__name">7 Stories Ranjanas</span>
+            </div>
+            <div class="clients-card">
+              <img src="assets/images/Textile%20Logos/Ganesha%20Textile.png" alt="Ganesh Textiles">
+              <span class="clients-card__name">Ganesh Textiles</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Jewellery Commercials & Jingles -->
+        <div class="clients-category anim-stagger-children">
+          <div class="clients-category__title">
+            <span>Jewellery Commercials &amp; Jingles</span>
+            <div class="clients-category__line"></div>
+          </div>
+          <div class="clients-grid">
+            <div class="clients-card">
+              <img src="assets/images/Jewellers/sathies.jpg" alt="Sathies Jewellery">
+              <span class="clients-card__name">Sathies Jewellery</span>
+            </div>
+            <div class="clients-card">
+              <img src="assets/images/Jewellers/PLTMM.png" alt="PL MTT Muthukaruppan Chettiar Jewellers">
+              <span class="clients-card__name">PL MTT Muthukaruppan Chettiar Jewellers</span>
+            </div>
+            <div class="clients-card">
+              <img src="assets/images/Jewellers/shree%20madhavi%20jewellers.png" alt="Shree Madhavi Jewellers">
+              <span class="clients-card__name">Shree Madhavi Jewellers</span>
+            </div>
+            <div class="clients-card">
+              <img src="assets/images/Jewellers/Rathna%20Jewellers.png" alt="Rathna Mahal Jewellers">
+              <span class="clients-card__name">Rathna Mahal Jewellers</span>
+            </div>
+            <div class="clients-card">
+              <img src="assets/images/Jewellers/Sornam%20Jewellers.png" alt="Sornam Jewellers">
+              <span class="clients-card__name">Sornam Jewellers</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Industrial Companies -->
+        <div class="clients-category anim-stagger-children">
+          <div class="clients-category__title">
+            <span>Industrial Companies</span>
+            <div class="clients-category__line"></div>
+          </div>
+          <div class="clients-grid">
+            <div class="clients-card">
+              <img src="assets/images/Industrial%20Companies/Span%20Tower%202.png" alt="Span Tower">
+              <span class="clients-card__name">Span Tower</span>
+            </div>
+            <div class="clients-card">
+              <img src="assets/images/Industrial%20Companies/Taian%20.png" alt="Taian Lanka Steel">
+              <span class="clients-card__name">Taian Lanka Steel</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Indian Commercials & Jingles -->
+        <div class="clients-category anim-stagger-children">
+          <div class="clients-category__title">
+            <span>Indian Commercials &amp; Jingles</span>
+            <div class="clients-category__line"></div>
+          </div>
+          <div class="clients-grid">
+            <div class="clients-card">
+              <img src="assets/images/Indian%20Commercials%20%26%20Jingles/Mangai%20Nighties.png" alt="Mangai Nighties">
+              <span class="clients-card__name">Mangai Nighties</span>
+            </div>
+            <div class="clients-card">
+              <img src="assets/images/Indian%20Commercials%20%26%20Jingles/Padhany.png" alt="Palani Grand Hotel">
+              <span class="clients-card__name">Palani Grand Hotel</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="cta-banner" aria-labelledby="cta-heading">
+      <h2 id="cta-heading" class="anim-slide-up">Have a project in mind?</h2>
+      <p class="anim-fade-in">Let's talk about how ADJP Creative can bring your brand story to life.</p>
+      <div class="flex-center gap-sm" style="flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn--outline-white btn--lg">Start a Conversation</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img src="assets/logo/ADJP Logo for Dark Background Transparent.png" alt="ADJP Creative" class="footer__logo-img">
+          <p>A creative production agency with 33+ years of experience crafting brand stories, award-winning films, and campaigns that make an impact.</p>
+          <div class="footer__social" aria-label="Social media links">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">in</a>
+            <a href="#" aria-label="YouTube">▶</a>
+            <a href="#" aria-label="LinkedIn">li</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer__col-title">Quick Links</p>
+          <ul class="footer__col-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">Work</p>
+          <ul class="footer__col-links">
+            <li><a href="portfolio.html?filter=fnb">Food &amp; Beverage</a></li>
+            <li><a href="portfolio.html?filter=finance">Finance</a></li>
+            <li><a href="portfolio.html?filter=jewellery">Jewellery</a></li>
+            <li><a href="portfolio.html?filter=films">Feature Films</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">Contact</p>
+          <ul class="footer__col-links" style="gap:0.75rem;">
+            <li style="color:rgba(255,255,255,0.6);font-size:0.9rem;">adjpcreative@gmail.com</li>
+            <li style="color:rgba(255,255,255,0.6);font-size:0.9rem;">+94 77 XXX XXXX</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2024 ADJP Creative. All rights reserved.</p>
+        <p>Built with passion &amp; purpose.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/network.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/lazy-load.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/studio.js"></script>
+  <script src="js/mv-lightbox.js"></script>
+  <script src="js/mobile-nav.js"></script>
+<script src="js/btn-ripple.js"></script>
+</body>
+</html>

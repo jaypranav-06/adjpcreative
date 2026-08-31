@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ADJP Creative portfolio — Brand commercials, feature films, jingles, and campaigns across Food & Beverage, Finance, Textile, Jewellery, and more.">
+  <title>Portfolio — ADJP Creative</title>
+  <link rel="icon" type="image/png" href="assets/logo/Favicon ADJP new .png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/portfolio.css">
+</head>
+<body class="page--dark">
+
+  <!-- NAV -->
+  <header class="nav" role="banner">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="ADJP Creative home">
+        <img src="assets/logo/ADJP Logo for Dark Background Transparent.png" alt="ADJP Creative" class="nav__logo-img">
+      </a>
+      <nav class="nav__links" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <!-- <a href="portfolio.html">Portfolio</a> -->
+        <a href="about.html">About</a>
+        <!-- <a href="blog.html">Blog</a> -->
+      </nav>
+      <a href="contact.html" class="btn btn--primary btn--sm nav__cta">Get in Touch</a>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+  <div class="nav__mobile" aria-hidden="true">
+    <nav class="nav__mobile-links">
+      <a href="index.html">Home</a>
+      <!-- <a href="portfolio.html">Portfolio</a> -->
+      <a href="about.html">About</a>
+      <!-- <a href="blog.html">Blog</a> -->
+    </nav>
+    <div class="nav__mobile-cta">
+      <a href="contact.html" class="btn btn--primary" style="width:100%;justify-content:center;">Get in Touch</a>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero" aria-labelledby="portfolio-heading">
+      <div class="container page-hero__inner">
+        <p class="page-hero__label">Our Work</p>
+        <h1 id="portfolio-heading">Portfolio</h1>
+        <p>Three decades of campaigns, commercials, and cinema — across every major industry in Sri Lanka.</p>
+      </div>
+    </section>
+
+    <!-- FILTER BAR -->
+    <div class="filter-bar" role="navigation" aria-label="Portfolio filter">
+      <div class="container filter-bar__inner">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="fnb">Food &amp; Beverage</button>
+        <button class="filter-btn" data-filter="finance">Finance</button>
+        <button class="filter-btn" data-filter="textile">Textile</button>
+        <button class="filter-btn" data-filter="jewellery">Jewellery</button>
+        <button class="filter-btn" data-filter="industrial">Industrial</button>
+        <button class="filter-btn" data-filter="indian-market">Indian Market</button>
+        <button class="filter-btn" data-filter="films">Films</button>
+        <span class="filter-count" aria-live="polite"></span>
+      </div>
+    </div>
+
+    <!-- PORTFOLIO GRID -->
+    <section class="section" aria-label="Portfolio projects">
+      <div class="container">
+
+        <div class="portfolio-grid" id="portfolioGrid">
+
+          <!-- F&B -->
+          <article class="portfolio-card" data-category="fnb">
+            <div class="portfolio-card__image">
+              <div class="portfolio-card__placeholder" style="background:linear-gradient(135deg,#0d2a1a,#1a4a2a);" aria-hidden="true">🥤</div>
+              <div class="portfolio-card__overlay">
+                <span class="portfolio-card__overlay-tag">Food &amp; Beverage</span>
+                <h3 class="portfolio-card__overlay-title">Elephant House — Heritage Campaign</h3>
+              </div>
+            </div>
+            <div class="portfolio-card__body">
+              <span class="portfolio-card__tag">F&amp;B</span>
+              <h3 class="portfolio-card__title">Elephant House Heritage Campaign</h3>
+              <p class="portfolio-card__client">Ceylon Cold Stores</p>
+            </div>
+          </article>
+
+          <article class="portfolio-card" data-category="fnb">
+            <div class="portfolio-card__image">
+              <div class="portfolio-card__placeholder" style="background:linear-gradient(135deg,#1a2a0a,#2a4a1a);" aria-hidden="true">🍪</div>
+              <div class="portfolio-card__overlay">
+                <span class="portfolio-card__overlay-tag">Food &amp; Beverage</span>
+                <h3 class="portfolio-card__overlay-title">Munchee — National TVC Series</h3>
+              </div>
+            </div>
+            <div class="portfolio-card__body">
+              <span class="portfolio-card__tag">F&amp;B</span>
+              <h3 class="portfolio-card__title">Munchee — National TVC Series</h3>
+              <p class="portfolio-card__client">Ceylon Biscuits Ltd</p>
+            </div>
+          </article>
+
+          <article class="portfolio-card" data-category="fnb">
+            <div class="portfolio-card__image">
+              <div class="portfolio-card__placeholder" style="background:linear-gradient(135deg,#2a1a0a,#4a2a1a);" aria-hidden="true">🍽️</div>
+              <div class="portfolio-card__overlay">
+                <span class="portfolio-card__overlay-tag">Food &amp; Beverage</span>
+                <h3 class="portfolio-card__overlay-title">Palani Grand Hotel — Brand Film</h3>
+              </div>
+            </div>
+            <div class="portfolio-card__body">
+              <span class="portfolio-card__tag">F&amp;B</span>
+              <h3 class="portfolio-card__title">Palani Grand Hotel — Brand Film</h3>
+              <p class="portfolio-card__client">Palani Grand Hotel</p>
+            </div>
+          </article>
+
+          <!-- Finance -->
+          <article class="portfolio-card" data-category="finance">
+            <div class="portfolio-card__image">
+              <div class="portfolio-card__placeholder" style="background:linear-gradient(135deg,#0a1a2a,#1a2a4a);" aria-hidden="true">🏦</div>
+              <div class="portfolio-card__overlay">
+                <span class="portfolio-card__overlay-tag">Finance</span>
+                <h3 class="portfolio-card__overlay-title">LB Finance — Trust Campaign</h3>
+              </div>
+            </div>
+            <div class="portfolio-card__body">
+              <span class="portfolio-card__tag">Finance</span>
+              <h3 class="portfolio-card__title">LB Finance — Trust Campaign</h3>
+              <p class="portfolio-card__client">LB Finance PLC</p>
+            </div>
+          </article>
+
+          <article class="portfolio-card" data-category="finance">
+            <div class="portfolio-card__image">
+              <div class="portfolio-card__placeholder" style="background:linear-gradient(135deg,#1a0a2a,#2a1a4a);" aria-hidden="true">📊</div>
+              <div class="portfolio-card__overlay">
+                <span class="portfolio-card__overlay-tag">Finance</span>
+                <h3 class="portfolio-card__overlay-title">LB Finance — Corporate Series</h3>
+              </div>
+            </div>
+            <div class="portfolio-card__body">
+              <span class="portfolio-card__tag">Finance</span>
+              <h3 class="portfolio-card__title">LB Finance — Corporate Series</h3>
+              <p class="portfolio-card__client">LB Finance PLC</p>
+            </div>
+          </article>
+
+          <!-- Textile -->
+          <article class="portfolio-card" data-category="textile">
+            <div class="portfolio-card__image">
+              <div class="portfolio-card__placeholder" style="background:linear-gradient(135deg,#2a0a1a,#4a1a2a);" aria-hidden="true">🧵</div>
+              <div class="portfolio-card__overlay">
+                <span class="portfolio-card__overlay-tag">Textile</span>
+                <h3 class="portfolio-card__overlay-title">Jeyechandrans — Lifestyle TVC</h3>
+              </div>
+            </div>
+            <div class="portfolio-card__body">
+              <span class="portfolio-card__tag">Textile</span>
+              <h3 class="portfolio-card__title">Jeyechandrans — Lifestyle TVC</h3>
+              <p class="portfolio-card__client">Jeyechandrans Textiles</p>
+            </div>
+          </article>
+
+          <article class="portfolio-card" data-category="textile">
+            <div class="portfolio-card__image">
+              <div class="portfolio-card__placeholder" style="background:linear-gradient(135deg,#1a1a2a,#2a2a4a);" aria-hidden="true">👗</div>
+              <div class="portfolio-card__overlay">
+                <span class="portfolio-card__overlay-tag">Textile</span>
+                <h3 class="portfolio-card__overlay-title">Sarita Textorium — Collection Film</h3>
+              </div>
+            </div>
+            <div class="portfolio-card__body">
+              <span class="portfolio-card__tag">Textile</span>
+              <h3 class="portfolio-card__title">Sarita Textorium — Collection Film</h3>
+              <p class="portfolio-card__client">Sarita Textorium</p>
+            </div>
+          </article>
+
+          <article class="portfolio-card" data-category="textile">
+            <div class="portfolio-card__image">
+              <div class="portfolio-card__placeholder" style="background:linear-gradient(135deg,#0a2a2a,#1a4a4a);" aria-hidden="true">🌸</div>
+              <div class="portfolio-card__overlay">
+                <span class="portfolio-card__overlay-tag">Textile</span>
+                <h3 class="portfolio-card__overlay-title">7 Stories Ranjanas — Fashion TVC</h3>
+              </div>
+            </div>
+            <div class="portfolio-card__body">
+              <span class="portfolio-card__tag">Textile</span>
+              <h3 class="portfolio-card__title">7 Stories Ranjanas — Fashion TVC</h3>
+              <p class="portfolio-card__client">7 Stories Ranjanas</p>
+            </div>
+          </article>
+
+          <article class="portfolio-card" data-category="textile">
+            <div class="portfolio-card__image">
+              <div class="portfolio-card__placeholder" style="background:linear-gradient(135deg,#2a2a0a,#4a4a1a);" aria-hidden="true">🪡</div>
+              <div class="portfolio-card__overlay">
+                <span class="portfolio-card__overlay-tag">Textile</span>
+                <h3 class="portfolio-card__overlay-title">Ganesh Textiles — Brand Campaign</h3>
+              </div>
+            </div>
+            <div class="portfolio-card__body">
+              <span class="portfolio-card__tag">Textile</span>
+              <h3 class="portfolio-card__title">Ganesh Textiles — Brand Campaign</h3>
+              <p class="portfolio-card__client">Ganesh Textiles</p>
+            </div>
+          </article>
+
+          <article class="portfolio-card" data-category="textile">
+            <div class="portfolio-card__image">
+              <div class="portfolio-card__placeholder" style="background:linear-gradient(135deg,#1a2a1a,#2a4a2a);" aria-hidden="true">👘</div>
+              <div class="portfolio-card__overlay">
+                <span class="portfolio-card__overlay-tag">Textile</span>
+                <h3 class="portfolio-card__overlay-title">Mangai Nighties — Product TVC</h3>
+              </div>
+            </div>
+            <div class="portfolio-card__body">
+              <span class="portfolio-card__tag">Textile</span>
+              <h3 class="portfolio-card__title">Mangai Nighties — Product TVC</h3>
+              <p class="portfolio-card__client">Mangai Nighties</p>
+            </div>
+          </article>
+
+          <!-- Jewellery -->
+          <article class="portfolio-card" data-category="jewellery">
+            <div class="portfolio-card__image">
+              <div class="portfolio-card__placeholder" style="background:linear-gradient(135deg,#1a1a0a,#3a3a1a);" aria-hidden="true">💍</div>
+              <div class="portfolio-card__overlay">
+                <span class="portfolio-card__overlay-tag">Jewellery</span>
+                <h3 class="portfolio-card__overlay-title">Shree Madhavi Jewellers — Prestige TVC</h3>
+              </div>
+            </div>
+            <div class="portfolio-card__body">
+              <span class="portfolio-card__tag">Jewellery</span>
+              <h3 class="portfolio-card__title">Shree Madhavi Jewellers — Prestige TVC</h3>
+              <p class="portfolio-card__client">Shree Madhavi Jewellers</p>
+            </div>
+          </article>
+
+          <article class="portfolio-card" data-category="jewellery">
+            <div class="portfolio-card__image">
+              <div class="portfolio-card__placeholder" style="background:linear-gradient(135deg,#2a1a0a,#4a2a0a);" aria-hidden="true">💎</div>
+              <div class="portfolio-card__overlay">
+                <span class="portfolio-card__overlay-tag">Jewellery</span>
+                <h3 class="portfolio-card__overlay-title">Sathies Jewellery — Brand Film</h3>
+              </div>
+            </div>
+            <div class="portfolio-card__body">
+              <span class="portfolio-card__tag">Jewellery</span>
+              <h3 class="portfolio-card__title">Sathies Jewellery — Brand Film</h3>
+              <p class="portfolio-card__client">Sathies Jewellery</p>
+            </div>
+          </article>
+
+          <article class="portfolio-card" data-category="jewellery">
+            <div class="portfolio-card__image">
+              <div class="portfolio-card__placeholder" style="background:linear-gradient(135deg,#1a1a2a,#3a3a4a);" aria-hidden="true">🌟</div>
+              <div class="portfolio-card__overlay">
+                <span class="portfolio-card__overlay-tag">Jewellery</span>
+                <h3 class="portfolio-card__overlay-title">Rathna Mahal — Festive Campaign</h3>
+              </div>
+            </div>
+            <div class="portfolio-card__body">
+              <span class="portfolio-card__tag">Jewellery</span>
+              <h3 class="portfolio-card__title">Rathna Mahal — Festive Campaign</h3>
+              <p class="portfolio-card__client">Rathna Mahal Jewellers</p>
+            </div>
+          </article>
+
+          <article class="portfolio-card" data-category="jewellery">
+            <div class="portfolio-card__image">
+              <div class="portfolio-card__placeholder" style="background:linear-gradient(135deg,#2a1a1a,#4a2a2a);" aria-hidden="true">✨</div>
+              <div class="portfolio-card__overlay">
+                <span class="portfolio-card__overlay-tag">Jewellery</span>
+                <h3 class="portfolio-card__overlay-title">Sornam Jewellers — TV Commercial</h3>
+              </div>
+            </div>
+            <div class="portfolio-card__body">
+              <span class="portfolio-card__tag">Jewellery</span>
+              <h3 class="portfolio-card__title">Sornam Jewellers — TV Commercial</h3>
+              <p class="portfolio-card__client">Sornam Jewellers</p>
+            </div>
+          </article>
+
+          <!-- Industrial -->
+          <article class="portfolio-card" data-category="industrial">
+            <div class="portfolio-card__image">
+              <div class="portfolio-card__placeholder" style="background:linear-gradient(135deg,#1a1a1a,#3a3a3a);" aria-hidden="true">🏗️</div>
+              <div class="portfolio-card__overlay">
+                <span class="portfolio-card__overlay-tag">Industrial</span>
+                <h3 class="portfolio-card__overlay-title">Span Tower — Corporate Film</h3>
+              </div>
+            </div>
+            <div class="portfolio-card__body">
+              <span class="portfolio-card__tag">Industrial</span>
+              <h3 class="portfolio-card__title">Span Tower — Corporate Film</h3>
+              <p class="portfolio-card__client">Span Tower</p>
+            </div>
+          </article>
+
+          <article class="portfolio-card" data-category="industrial">
+            <div class="portfolio-card__image">
+              <div class="portfolio-card__placeholder" style="background:linear-gradient(135deg,#0a2a2a,#1a4a4a);" aria-hidden="true">🔩</div>
+              <div class="portfolio-card__overlay">
+                <span class="portfolio-card__overlay-tag">Industrial</span>
+                <h3 class="portfolio-card__overlay-title">Taian Lanka Steel — Brand Identity Film</h3>
+              </div>
+            </div>
+            <div class="portfolio-card__body">
+              <span class="portfolio-card__tag">Industrial</span>
+              <h3 class="portfolio-card__title">Taian Lanka Steel — Brand Identity Film</h3>
+              <p class="portfolio-card__client">Taian Lanka Steel</p>
+            </div>
+          </article>
+
+          <!-- Indian Market -->
+          <article class="portfolio-card" data-category="indian-market">
+            <div class="portfolio-card__image">
+              <div class="portfolio-card__placeholder" style="background:linear-gradient(135deg,#2a0a0a,#4a1a0a);" aria-hidden="true">🪔</div>
+              <div class="portfolio-card__overlay">
+                <span class="portfolio-card__overlay-tag">Indian Market</span>
+                <h3 class="portfolio-card__overlay-title">Little Asia Emporium — Tamil TVC</h3>
+              </div>
+            </div>
+            <div class="portfolio-card__body">
+              <span class="portfolio-card__tag">Indian Market</span>
+              <h3 class="portfolio-card__title">Little Asia Emporium — Tamil TVC</h3>
+              <p class="portfolio-card__client">Little Asia Emporium</p>
+            </div>
+          </article>
+
+          <article class="portfolio-card" data-category="indian-market">
+            <div class="portfolio-card__image">
+              <div class="portfolio-card__placeholder" style="background:linear-gradient(135deg,#1a0a2a,#3a1a4a);" aria-hidden="true">🎊</div>
+              <div class="portfolio-card__overlay">
+                <span class="portfolio-card__overlay-tag">Indian Market</span>
+                <h3 class="portfolio-card__overlay-title">Kamsins — Indian Market Campaign</h3>
+              </div>
+            </div>
+            <div class="portfolio-card__body">
+              <span class="portfolio-card__tag">Indian Market</span>
+              <h3 class="portfolio-card__title">Kamsins — Indian Market Campaign</h3>
+              <p class="portfolio-card__client">Kamsins</p>
+            </div>
+          </article>
+
+          <!-- Films -->
+          <article class="portfolio-card" data-category="films">
+            <div class="portfolio-card__image">
+              <div class="portfolio-card__placeholder" style="background:linear-gradient(135deg,#0a0a1a,#1a1a3a);" aria-hidden="true">🎬</div>
+              <div class="portfolio-card__overlay">
+                <span class="portfolio-card__overlay-tag">Feature Film</span>
+                <h3 class="portfolio-card__overlay-title">Abhitha (2026)</h3>
+              </div>
+            </div>
+            <div class="portfolio-card__body">
+              <span class="portfolio-card__tag">Films</span>
+              <h3 class="portfolio-card__title">Abhitha</h3>
+              <p class="portfolio-card__client">Feature Film · 2026 · Director</p>
+            </div>
+          </article>
+
+          <article class="portfolio-card" data-category="films">
+            <div class="portfolio-card__image">
+              <div class="portfolio-card__placeholder" style="background:linear-gradient(135deg,#0a1a0a,#1a3a1a);" aria-hidden="true">🎞️</div>
+              <div class="portfolio-card__overlay">
+                <span class="portfolio-card__overlay-tag">Feature Film</span>
+                <h3 class="portfolio-card__overlay-title">Padhany (2016)</h3>
+              </div>
+            </div>
+            <div class="portfolio-card__body">
+              <span class="portfolio-card__tag">Films</span>
+              <h3 class="portfolio-card__title">Padhany</h3>
+              <p class="portfolio-card__client">Feature Film · 2016</p>
+            </div>
+          </article>
+
+          <article class="portfolio-card" data-category="films">
+            <div class="portfolio-card__image">
+              <div class="portfolio-card__placeholder" style="background:linear-gradient(135deg,#1a0a0a,#3a1a1a);" aria-hidden="true">🏆</div>
+              <div class="portfolio-card__overlay">
+                <span class="portfolio-card__overlay-tag">Feature Film</span>
+                <h3 class="portfolio-card__overlay-title">Ondikku Ondi (2018)</h3>
+              </div>
+            </div>
+            <div class="portfolio-card__body">
+              <span class="portfolio-card__tag">Films</span>
+              <h3 class="portfolio-card__title">Ondikku Ondi</h3>
+              <p class="portfolio-card__client">Feature Film · 2018</p>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="no-results" role="status">No projects found in this category.</p>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-banner" aria-labelledby="port-cta-heading">
+      <h2 id="port-cta-heading" class="anim-slide-up">Let's create together</h2>
+      <p class="anim-fade-in">Ready to bring your brand to life? We'd love to hear your brief.</p>
+      <a href="contact.html" class="btn btn--outline-white btn--lg">Start a Project</a>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img src="assets/logo/ADJP Logo for Dark Background Transparent.png" alt="ADJP Creative" class="footer__logo-img">
+          <p>A creative production agency with 33+ years of experience crafting brand stories, award-winning films, and campaigns that make an impact.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">in</a>
+            <a href="#" aria-label="YouTube">▶</a>
+            <a href="#" aria-label="LinkedIn">li</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer__col-title">Quick Links</p>
+          <ul class="footer__col-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">Categories</p>
+          <ul class="footer__col-links">
+            <li><a href="portfolio.html">Food &amp; Beverage</a></li>
+            <li><a href="portfolio.html">Finance</a></li>
+            <li><a href="portfolio.html">Jewellery</a></li>
+            <li><a href="portfolio.html">Feature Films</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">Contact</p>
+          <ul class="footer__col-links">
+            <li style="color:rgba(255,255,255,0.6);font-size:0.9rem;">adjpcreative@gmail.com</li>
+            <li style="color:rgba(255,255,255,0.6);font-size:0.9rem;">+94 77 XXX XXXX</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2024 ADJP Creative. All rights reserved.</p>
+        <p>Built with passion &amp; purpose.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/network.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/lazy-load.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/portfolio-filter.js"></script>
+<script src="js/btn-ripple.js"></script>
+</body>
+</html>

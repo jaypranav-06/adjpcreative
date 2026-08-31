@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About ADJP Creative — 33+ years of bold, purposeful creative production. Our story, our people, our mission.">
+  <title>About — ADJP Creative</title>
+  <link rel="icon" type="image/png" href="assets/logo/Favicon ADJP new .png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/about.css">
+</head>
+<body class="page--dark">
+
+  <!-- NAV -->
+  <header class="nav" role="banner">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="ADJP Creative home">
+        <img src="assets/logo/ADJP Logo for Dark Background Transparent.png" alt="ADJP Creative" class="nav__logo-img">
+      </a>
+      <nav class="nav__links" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <!-- <a href="portfolio.html">Portfolio</a> -->
+        <a href="about.html" class="active">About</a>
+        <!-- <a href="blog.html">Blog</a> -->
+      </nav>
+      <a href="contact.html" class="btn btn--primary btn--sm nav__cta">Get in Touch</a>
+      <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+  <div class="nav__mobile" aria-hidden="true">
+    <nav class="nav__mobile-links">
+      <a href="index.html">Home</a>
+      <!-- <a href="portfolio.html">Portfolio</a> -->
+      <a href="about.html" class="active">About</a>
+      <!-- <a href="blog.html">Blog</a> -->
+    </nav>
+    <div class="nav__mobile-cta">
+      <a href="contact.html" class="btn btn--primary" style="width:100%;justify-content:center;">Get in Touch</a>
+    </div>
+  </div>
+
+  <!-- MOBILE FLOATING HEADER (≤768px only) -->
+  <header class="mob-header" id="mob-header" role="banner" aria-label="Mobile navigation">
+    <div class="mob-header__bar">
+      <a href="index.html" class="mob-header__logo" aria-label="ADJP Creative home">
+        <img src="assets/logo/ADJP Logo for Dark Background Transparent.png" alt="ADJP Creative">
+      </a>
+      <a href="contact.html" class="mob-header__cta">Get in Touch</a>
+      <button class="mob-header__toggle" id="mobNavToggle"
+        aria-expanded="false"
+        aria-controls="mob-nav-panel"
+        aria-label="Open navigation">
+        <span class="mob-toggle__line"></span>
+        <span class="mob-toggle__line"></span>
+        <span class="mob-toggle__line"></span>
+      </button>
+    </div>
+    <nav class="mob-nav-panel" id="mob-nav-panel" aria-hidden="true">
+      <div class="mob-nav-panel-inner">
+        <a href="index.html" class="mob-nav-link" data-page="index.html">
+          <span>Home</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+        <a href="about.html" class="mob-nav-link" data-page="about.html">
+          <span>About</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+        <a href="contact.html" class="mob-nav-cta">Get in Touch</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ABOUT HERO -->
+    <section class="about-hero" aria-labelledby="about-heading">
+      <div class="about-panel">
+        <div class="about-panel-inner">
+
+          <!-- LEFT -->
+          <div class="about-panel__left">
+            <h1 id="about-heading" class="about-panel__heading">About ADJP<br><span class="about-panel__heading-green">Creative</span></h1>
+            <p class="about-panel__desc">A creative production agency forged over three decades — where every idea is built to create real-world impact.</p>
+          </div>
+
+          <!-- DIVIDER -->
+          <div class="about-panel__divider" aria-hidden="true">
+            <div class="about-panel__divider-line"></div>
+            <div class="about-panel__divider-dot"></div>
+          </div>
+
+          <!-- RIGHT -->
+          <div class="about-panel__right">
+            <div class="values-grid">
+
+              <div class="value-item">
+                <div class="value-item__icon">
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#31C438" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="14" cy="11" r="6"/>
+                    <path d="M11 17v2a3 3 0 0 0 6 0v-2"/>
+                    <line x1="14" y1="5" x2="14" y2="3"/>
+                    <line x1="19.5" y1="7" x2="21" y2="5.5"/>
+                    <line x1="8.5" y1="7" x2="7" y2="5.5"/>
+                  </svg>
+                </div>
+                <p class="value-item__primary">33+ Years</p>
+                <p class="value-item__secondary">of Experience</p>
+              </div>
+
+              <div class="value-item">
+                <div class="value-item__icon">
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#31C438" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="7" width="22" height="16" rx="2"/>
+                    <path d="M3 11h22"/>
+                    <path d="M8 7V4"/>
+                    <path d="M20 7V4"/>
+                    <path d="M8 4h12"/>
+                  </svg>
+                </div>
+                <p class="value-item__primary">Story Driven</p>
+                <p class="value-item__secondary">Creative Production</p>
+              </div>
+
+              <div class="value-item">
+                <div class="value-item__icon">
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#31C438" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="14" cy="14" r="10"/>
+                    <circle cx="14" cy="14" r="5"/>
+                    <circle cx="14" cy="14" r="1.5" fill="#31C438" stroke="none"/>
+                    <line x1="14" y1="4" x2="14" y2="6"/>
+                    <line x1="14" y1="22" x2="14" y2="24"/>
+                    <line x1="4" y1="14" x2="6" y2="14"/>
+                    <line x1="22" y1="14" x2="24" y2="14"/>
+                  </svg>
+                </div>
+                <p class="value-item__primary">Purposeful</p>
+                <p class="value-item__secondary">Every Project</p>
+              </div>
+
+              <div class="value-item">
+                <div class="value-item__icon">
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#31C438" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="10" cy="10" r="3.5"/>
+                    <circle cx="18" cy="10" r="3.5"/>
+                    <path d="M3 23c0-4 3.1-7 7-7"/>
+                    <path d="M25 23c0-4-3.1-7-7-7"/>
+                    <path d="M10 16c1.2-.6 2.5-1 4-1s2.8.4 4 1"/>
+                  </svg>
+                </div>
+                <p class="value-item__primary">Trusted by</p>
+                <p class="value-item__secondary">Leading Brands</p>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SLOGAN -->
+      <div class="about-slogan" aria-label="Agency tagline">
+        <span class="about-slogan__dash"></span>
+        <p class="about-slogan__text">Ideas. <em>Impact.</em></p>
+        <span class="about-slogan__dash"></span>
+      </div>
+    </section>
+
+    <!-- STORY SPLIT -->
+    <section class="about-story" aria-labelledby="story-heading">
+      <div class="container">
+        <div class="story-split">
+          <div class="story-split__content anim-slide-up">
+            <span class="section-heading__label">Who We Are</span>
+            <h2 id="story-heading">33+ years of stories that move people</h2>
+            <p>ADJP Creative is a full-spectrum creative production agency based in Sri Lanka. Since our founding, we have been at the intersection of storytelling and commercial strategy — producing work that resonates across screens, industries, and generations.</p>
+            <p>We started with a simple conviction: that great ideas, when executed with precision and passion, have the power to change how people see a brand. That conviction hasn't changed. What has grown is the breadth of our work — from TV commercials to national award-nominated feature films.</p>
+            <p>Our portfolio spans Food &amp; Beverage, Finance, Textile, Jewellery, Industrial, and Indian-market campaigns, working with household names like Elephant House, LB Finance, Munchee, and a constellation of Sri Lanka's most trusted brands.</p>
+            <div class="mt-md" style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;">
+              <a href="contact.html" class="btn btn--primary">Work With Us</a>
+              <button class="btn-see-more" id="openBioModal">About MD</button>
+            </div>
+          </div>
+          <!-- GALLERY: main preview + vertical thumbnail rail -->
+          <div class="about-gallery anim-fade-in">
+
+            <!-- Main large preview -->
+            <div class="about-gallery__main" id="galleryMain">
+              <img class="about-gallery__img" id="galleryImg"
+                src="assets/images/Profile%20Picture/Sruthiy%20Prabha%2010.jpg"
+                alt="Portrait of Sruthiy Prabha">
+
+              <!-- Bottom-left label -->
+              <div class="about-gallery__label" id="galleryLabel">
+                <span class="about-gallery__label-line"></span>
+                <span id="galleryLabelText">MD OF ADJP CREATIVE — SRUTHIY PRABHA</span>
+              </div>
+
+              <!-- Bottom-right counter -->
+              <div class="about-gallery__counter" id="galleryCounter">01 / 21</div>
+            </div>
+
+            <!-- Thumbnail rail with arrow navigation -->
+            <div class="about-gallery__rail-wrap">
+              <button class="gallery-arrow gallery-arrow--up" id="galleryArrowUp" aria-label="Previous images" disabled>&#8963;</button>
+              <div class="about-gallery__rail" id="galleryRail" role="group" aria-label="Gallery images"></div>
+              <button class="gallery-arrow gallery-arrow--down" id="galleryArrowDown" aria-label="Next images">&#8964;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BTS REELS -->
+    <section class="about-reels" aria-labelledby="reels-heading">
+      <div class="container">
+        <div class="section-heading section-heading--center anim-slide-up">
+          <span class="section-heading__label">Behind the Scenes</span>
+          <h2 id="reels-heading">From the set</h2>
+          <p>A glimpse into the craft and energy behind our productions.</p>
+        </div>
+        <div class="reels-grid anim-stagger-children">
+          <div class="reel-item">
+            <div class="reel-item__frame">
+              <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2243856863115366%2F&show_text=false&width=267&t=0" width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
+            <p class="reel-item__label">Abhitha Movie BTS</p>
+          </div>
+          <div class="reel-item">
+            <div class="reel-item__frame">
+              <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2000518797494279%2F&show_text=false&width=267&t=0" width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
+            <p class="reel-item__label">Abhitha Movie BTS 2</p>
+          </div>
+          <div class="reel-item">
+            <div class="reel-item__frame">
+              <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F824331640614170%2F&show_text=false&width=267&t=0" width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
+            <p class="reel-item__label">Abhitha Movie BTS 3</p>
+          </div>
+          <div class="reel-item">
+            <div class="reel-item__frame">
+              <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1089055884056832%2F&show_text=false&width=267&t=0" width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
+            <p class="reel-item__label">Abhitha Movie BTS 4</p>
+          </div>
+          <div class="reel-item">
+            <div class="reel-item__frame">
+              <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2118106102150799%2F&show_text=false&width=267&t=0" width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
+            <p class="reel-item__label">Abhitha Movie BTS 5</p>
+          </div>
+          <div class="reel-item">
+            <div class="reel-item__frame">
+              <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1884510299180929%2F&show_text=false&width=267&t=0" width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
+            <p class="reel-item__label">Abhitha Movie BTS 6</p>
+          </div>
+          <div class="reel-item reel-item--wide">
+            <div class="reel-item__frame reel-item__frame--wide">
+              <iframe src="https://www.facebook.com/plugins/video.php?height=317&href=https%3A%2F%2Fwww.facebook.com%2Fshruthi.prabha%2Fvideos%2F962518841207411%2F&show_text=false&width=560&t=0" width="560" height="317" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
+            <p class="reel-item__label">BTS of Live Instrument Recording for a Music Video</p>
+          </div>
+          <div class="reel-item reel-item--wide">
+            <div class="reel-item__frame reel-item__frame--wide">
+              <iframe src="https://www.facebook.com/plugins/video.php?height=317&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1799233541521625%2F&show_text=false&width=560&t=0" width="560" height="317" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
+            <p class="reel-item__label">Lankadeepa Interview</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="about-stats" aria-label="Agency statistics">
+      <div class="container">
+        <div class="grid-4 anim-stagger-children">
+          <div class="stat">
+            <div class="stat__number" data-count="33" data-suffix="+">33+</div>
+            <div class="stat__label">Years Active</div>
+          </div>
+          <div class="stat">
+            <div class="stat__number" data-count="3">3</div>
+            <div class="stat__label">Feature Films</div>
+          </div>
+          <div class="stat">
+            <div class="stat__number" data-count="2">2</div>
+            <div class="stat__label">National Awards</div>
+          </div>
+          <div class="stat">
+            <div class="stat__number" data-count="16" data-suffix="+">16+</div>
+            <div class="stat__label">Major Brand Clients</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUES -->
+    <section class="about-values" aria-labelledby="values-heading">
+      <div class="container">
+        <div class="section-heading section-heading--center anim-slide-up">
+          <span class="section-heading__label">What Drives Us</span>
+          <h2 id="values-heading">Our creative philosophy</h2>
+          <p>Four pillars that define how we approach every project — from a 30-second ad to a full-length feature.</p>
+        </div>
+        <div class="grid-4 anim-stagger-children">
+          <div class="value-card">
+            <div class="value-card__number">01</div>
+            <h3>Story First</h3>
+            <p>Before a single frame is shot, we ask: what story needs to be told? The idea is always the foundation.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-card__number">02</div>
+            <h3>Craft &amp; Precision</h3>
+            <p>Technical excellence is non-negotiable. Every shot, every note, every word is considered and intentional.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-card__number">03</div>
+            <h3>Commercial Impact</h3>
+            <p>Beautiful work that doesn't move the needle isn't enough. We measure success by the impact it creates for our clients.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-card__number">04</div>
+            <h3>Long Partnerships</h3>
+            <p>Our deepest relationships are with clients who trust us to evolve their brand over years — not just a single campaign.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLIENT LOGOS -->
+    <section class="about-clients" aria-labelledby="clients-about-heading">
+      <div class="container">
+        <div class="section-heading section-heading--center anim-slide-up">
+          <span class="section-heading__label">Clients</span>
+          <h2 id="clients-about-heading">Brands we've built with</h2>
+        </div>
+        <div class="client-logos anim-stagger-children">
+          <div class="client-logo-item">LB Finance</div>
+          <div class="client-logo-item">Elephant House</div>
+          <div class="client-logo-item">Munchee</div>
+          <div class="client-logo-item">Shree Madhavi</div>
+          <div class="client-logo-item">Sathies Jewellery</div>
+          <div class="client-logo-item">Rathna Mahal</div>
+          <div class="client-logo-item">Sornam</div>
+          <div class="client-logo-item">Little Asia</div>
+          <div class="client-logo-item">Kamsins</div>
+          <div class="client-logo-item">Jeyechandrans</div>
+          <div class="client-logo-item">Sarita Textorium</div>
+          <div class="client-logo-item">7 Stories Ranjanas</div>
+          <div class="client-logo-item">Ganesh Textiles</div>
+          <div class="client-logo-item">Span Tower</div>
+          <div class="client-logo-item">Taian Lanka Steel</div>
+          <div class="client-logo-item">Palani Grand</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-banner" aria-labelledby="about-cta-heading">
+      <h2 id="about-cta-heading" class="anim-slide-up">Ready to work with us?</h2>
+      <p class="anim-fade-in">Tell us about your project and let's explore what we can create together.</p>
+      <a href="contact.html" class="btn btn--outline-white btn--lg">Get in Touch</a>
+    </section>
+
+  </main>
+
+  <!-- BIO MODAL -->
+  <div class="bio-modal" id="bioModal" role="dialog" aria-modal="true" aria-labelledby="bioModalTitle" hidden>
+    <div class="bio-modal__backdrop" id="bioModalBackdrop"></div>
+    <div class="bio-modal__panel">
+      <button class="bio-modal__close" id="closeBioModal" aria-label="Close">&times;</button>
+      <div class="bio-modal__content">
+        <span class="bio-modal__label">About the Managing Director</span>
+        <h2 id="bioModalTitle" class="bio-modal__heading">Sruthiy Prabha</h2>
+        <div class="bio-modal__body">
+          <p>Sruthiy Prabha has built a career that spans music and cinema. Over more than three decades, he has worked as a student of Hindustani music, a music director, and now a film director.</p>
+          <p>Prabha began his journey at the age of six through radio. His education in Hindustani music and sound studies laid the groundwork for his later work in the industry. In 1991, he formed a music group that performed South Indian film songs across Sri Lanka, collaborating with artists including Malaysia Vasudevan.</p>
+          <p>By 1998, he had directed music for more than 100 radio programmes. His work later expanded into South Indian cinema, where he directed music for films including Pathani, Namma Ooru Pasakkara Pasanga, and Ondikku Ondi.</p>
+          <p>Prabha's work has earned recognition at different stages of his career. His awards include a National Award for Direction in 2009, recognition at the Chinnathirai Tele Awards in 2018, and a National Appreciation Award in 2024 for his contribution to the arts.</p>
+          <p>In addition to his work in recorded music, he has directed music for more than 100 stage productions.</p>
+          <p>Prabha recently made his debut as a film director with Abhitha. The film premiered at Savoy 3D Cinema. Produced by Abhitha Prakash, the film stars Mahendra Perera, Paboda Sandeepani, Isuru Lokuhettiarachchi, and Ryan Van Rooyen.</p>
+<p>Prabha's work includes projects such as the Dream Team World Cup Song and upcoming films including Abitha 2025. He is also the only Sri Lankan member of the Cine Musician Union. His career reflects a continuing engagement with music and cinema, moving between industries while maintaining a presence in both.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img src="assets/logo/ADJP Logo for Dark Background Transparent.png" alt="ADJP Creative" class="footer__logo-img">
+          <p>A creative production agency with 33+ years of experience crafting brand stories, award-winning films, and campaigns that make an impact.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">in</a>
+            <a href="#" aria-label="YouTube">▶</a>
+            <a href="#" aria-label="LinkedIn">li</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer__col-title">Quick Links</p>
+          <ul class="footer__col-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">Work</p>
+          <ul class="footer__col-links">
+            <li><a href="contact.html">Brand Commercials</a></li>
+            <li><a href="contact.html">Jingles</a></li>
+            <li><a href="contact.html">Feature Films</a></li>
+            <li><a href="contact.html">Brand Strategy</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">Contact</p>
+          <ul class="footer__col-links">
+            <li style="color:rgba(255,255,255,0.6);font-size:0.9rem;">adjpcreative@gmail.com</li>
+            <li style="color:rgba(255,255,255,0.6);font-size:0.9rem;">+94 77 XXX XXXX</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2024 ADJP Creative. All rights reserved.</p>
+        <p>Built with passion &amp; purpose.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/network.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/lazy-load.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/about-gallery.js"></script>
+  <script>
+    (function () {
+      document.querySelectorAll('.reel-item__frame').forEach(function (frame) {
+        var iframe = frame.querySelector('iframe');
+        if (!iframe) return;
+
+        var srcParam = iframe.src.match(/href=([^&]+)/);
+        var fbUrl = srcParam ? decodeURIComponent(srcParam[1]) : 'https://www.facebook.com';
+
+        // Loader
+        var loader = document.createElement('div');
+        loader.className = 'embed-loader';
+        loader.innerHTML =
+          '<div class="embed-loader__spinner"></div>' +
+          '<span class="embed-loader__text">Loading video…</span>';
+        frame.appendChild(loader);
+
+        function showFallback() {
+          loader.classList.add('loaded');
+          iframe.style.display = 'none';
+          var card = document.createElement('div');
+          card.className = 'embed-fb-fallback';
+          card.innerHTML =
+            '<svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.884v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>' +
+            '<p>This video couldn\'t load here.<br>Click below to watch on Facebook.</p>' +
+            '<a href="' + fbUrl + '" target="_blank" rel="noopener">Watch on Facebook</a>';
+          frame.appendChild(card);
+        }
+
+        var loaded = false;
+        iframe.addEventListener('load', function () {
+          loaded = true;
+          loader.classList.add('loaded');
+        });
+
+        // If iframe never loads within 6s, show fallback
+        setTimeout(function () {
+          if (!loaded) showFallback();
+        }, 6000);
+      });
+    })();
+  </script>
+  <script>
+    (function () {
+      var modal    = document.getElementById('bioModal');
+      var openBtn  = document.getElementById('openBioModal');
+      var closeBtn = document.getElementById('closeBioModal');
+      var backdrop = document.getElementById('bioModalBackdrop');
+
+      function openModal() {
+        modal.hidden = false;
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+      }
+
+      function closeModal() {
+        modal.hidden = true;
+        document.body.style.overflow = '';
+        openBtn.focus();
+      }
+
+      openBtn.addEventListener('click', openModal);
+      closeBtn.addEventListener('click', closeModal);
+      backdrop.addEventListener('click', closeModal);
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !modal.hidden) closeModal();
+      });
+    })();
+  </script>
+  <script src="js/mobile-nav.js"></script>
+<script src="js/btn-ripple.js"></script>
+</body>
+</html>
