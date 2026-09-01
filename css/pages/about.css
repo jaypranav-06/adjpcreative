@@ -285,13 +285,13 @@
 /* Arrow buttons */
 .gallery-arrow {
   flex-shrink: 0;
-  width: 82px;
-  height: 28px;
-  border-radius: 6px;
-  border: 1px solid rgba(255,255,255,0.12);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.14);
   background: rgba(255,255,255,0.04);
-  color: rgba(241,239,233,0.5);
-  font-size: 13px;
+  color: rgba(241,239,233,0.55);
+  font-size: 14px;
   line-height: 1;
   cursor: pointer;
   display: flex;
@@ -303,8 +303,8 @@
 
 .gallery-arrow:hover:not(:disabled) {
   color: #2CB32E;
-  border-color: rgba(44,179,46,0.4);
-  background: rgba(44,179,46,0.08);
+  border-color: rgba(44,179,46,0.45);
+  background: rgba(44,179,46,0.1);
 }
 
 .gallery-arrow:disabled {
@@ -312,15 +312,23 @@
   cursor: default;
 }
 
-/* Thumbnail rail — clipped window, height = 5 thumbs + 4 gaps */
+/* Thumbnail rail — scrollable, all thumbs in DOM */
 .about-gallery__rail {
   display: flex;
   flex-direction: column;
   gap: 10px;
   flex-shrink: 0;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   height: calc(5 * 82px + 4 * 10px);
-  padding-right: 6px;
+  padding-right: 4px;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.about-gallery__rail::-webkit-scrollbar {
+  display: none;
 }
 
 /* Individual thumbnail */
@@ -539,6 +547,44 @@
 
 .bio-modal__body p:last-child {
   margin-bottom: 0;
+}
+
+.bio-modal__section-heading {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #2CB32E;
+  margin: 1.75rem 0 0.6rem;
+}
+
+.bio-modal__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.bio-modal__list li {
+  color: rgba(241,239,233,0.65);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  padding-left: 1.1rem;
+  position: relative;
+}
+
+.bio-modal__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #2CB32E;
+  flex-shrink: 0;
 }
 
 /* ── BTS REELS ───────────────────────────────── */
@@ -1148,14 +1194,14 @@
     height: 68px;
   }
   .gallery-arrow {
-    width: 68px;
+    width: 32px;
+    height: 32px;
   }
 }
 
 @media (max-width: 767px) {
   /* ── Hero panel ── */
   .about-hero {
-    /* floating mob-header replaces the desktop nav on mobile */
     padding-top: calc(max(14px, env(safe-area-inset-top)) + clamp(64px, 16vw, 88px) + 28px);
     padding-bottom: 0;
   }
@@ -1188,14 +1234,14 @@
     max-width: 100%;
   }
 
-  /* ── Values grid ── */
+  /* ── Values grid: 2×2 ── */
   .values-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px 0;
+    gap: 20px 0;
   }
 
   .value-item {
-    padding: 0 10px;
+    padding: 0 12px;
     border-left: none;
   }
 
@@ -1204,9 +1250,9 @@
   }
 
   .value-item__icon {
-    width: 44px;
-    height: 44px;
-    margin-bottom: 0.55rem;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 0.6rem;
   }
 
   .value-item__icon svg {
@@ -1215,11 +1261,11 @@
   }
 
   .value-item__primary {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .value-item__secondary {
-    font-size: 11px;
+    font-size: 12px;
   }
 
   /* ── Slogan ── */
@@ -1257,7 +1303,7 @@
     padding: clamp(40px, 10vw, 60px) 1rem;
   }
 
-  /* ── Story split — single column, text first then gallery ── */
+  /* ── Story split: single column ── */
   .story-split {
     gap: 2rem;
     grid-template-columns: 1fr;
@@ -1278,7 +1324,6 @@
     margin-bottom: 1rem;
   }
 
-  /* Buttons row — stack on very small screens */
   .story-split__content .mt-md {
     flex-direction: column;
     align-items: stretch;
@@ -1291,55 +1336,62 @@
     justify-content: center;
   }
 
-  /* ── Gallery — stack vertically on mobile ── */
+  /* ── Gallery: image full-width, thumbs horizontal strip below ── */
   .about-gallery {
     flex-direction: column;
     gap: 10px;
+    width: 100%;
   }
 
   .about-gallery__main {
-    aspect-ratio: 4/5;
+    aspect-ratio: 3/4;
     width: 100%;
     border-radius: 12px;
   }
 
-  /* Rail wraps horizontally below the image */
+  /* Rail-wrap becomes a full-width row: arrow | scrollable rail | arrow */
   .about-gallery__rail-wrap {
     flex-direction: row;
     align-items: center;
+    align-self: stretch;
     width: 100%;
     gap: 6px;
   }
 
   .about-gallery__rail {
     flex-direction: row;
-    height: auto;
-    width: auto;
-    overflow: hidden;
+    /* reset desktop height; flex:1 fills remaining width */
+    height: 60px;
+    width: 0;          /* allow flex:1 to size it */
+    flex: 1 1 0;
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
     padding-right: 0;
+    padding-bottom: 0;
     gap: 8px;
-    flex: 1;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    scroll-snap-type: x proximity;
   }
 
-  .gallery-arrow {
-    width: 28px;
-    height: 52px;
-    flex-shrink: 0;
+  .about-gallery__rail::-webkit-scrollbar {
+    display: none;
   }
-
-  .gallery-arrow--up  { transform: rotate(-90deg); }
-  .gallery-arrow--down { transform: rotate(90deg); }
 
   .gallery-thumb {
     width: 52px;
     height: 52px;
     flex-shrink: 0;
+    scroll-snap-align: center;
   }
 
-  /* Marker sits below thumb on horizontal rail */
+  /* Marker moves below the thumb on horizontal rail */
   .gallery-thumb__marker {
     right: auto;
-    bottom: -8px;
+    bottom: -7px;
     top: auto;
     left: 50%;
     transform: translateX(-50%);
@@ -1351,21 +1403,36 @@
     transform: translateY(-2px);
   }
 
-  /* ── BTS reels — full width on mobile ── */
+  .gallery-arrow {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+
+  .gallery-arrow--up  { transform: rotate(-90deg); }
+  .gallery-arrow--down { transform: rotate(90deg); }
+
+  /* ── Stats: 2-column grid, tighter text ── */
+  .about-stats .stat__number {
+    font-size: clamp(2rem, 8vw, 2.8rem);
+  }
+
+  /* ── BTS reels: full-width, centered column ── */
   .reels-grid {
-    gap: 1.25rem;
+    gap: 1.5rem;
     flex-direction: column;
     align-items: center;
+    padding: 0 0.5rem;
   }
 
   .reel-item {
     width: 100%;
-    max-width: 360px;
+    max-width: 100%;
   }
 
   .reel-item__frame {
     width: 100%;
-    max-width: 360px;
+    max-width: 100%;
     height: auto;
     aspect-ratio: 9/16;
   }
@@ -1380,7 +1447,7 @@
   .reel-item__frame--wide {
     aspect-ratio: 16/9;
     width: 100%;
-    max-width: 360px;
+    max-width: 100%;
     height: auto;
   }
 
@@ -1394,51 +1461,61 @@
   /* ── Bio modal ── */
   .bio-modal {
     padding: 1rem;
+    align-items: flex-end;
   }
 
   .bio-modal__panel {
-    padding: 1.75rem 1.1rem 1.5rem;
-    border-radius: 14px;
+    padding: 1.75rem 1.25rem 1.5rem;
+    border-radius: 20px 20px 14px 14px;
+    max-height: 90vh;
   }
 
   .bio-modal__heading {
     font-size: 1.4rem;
   }
 
-  /* ── Client logos tighter on mobile ── */
+  /* ── Client logos ── */
+  .client-logos {
+    gap: 0.5rem;
+  }
+
   .client-logo-item {
-    min-width: 80px;
-    padding: 0.5rem 0.75rem;
-    font-size: 0.68rem;
+    min-width: 0;
+    flex: 1 1 calc(50% - 0.5rem);
+    max-width: calc(50% - 0.25rem);
+    padding: 0.55rem 0.5rem;
+    font-size: 0.66rem;
+    text-align: center;
   }
 }
 
-/* ── Extra small (360px and below) ──────────────── */
-@media (max-width: 360px) {
+/* ── Extra small (≤ 390px) ── */
+@media (max-width: 390px) {
   .about-panel {
     padding: 0 0.75rem;
   }
 
   .about-panel > div {
-    padding: 18px 12px;
+    padding: 18px 14px;
   }
 
   .about-panel__heading {
     font-size: clamp(28px, 8.5vw, 38px);
   }
 
+  /* Stack values to single column at very small widths */
   .values-grid {
     grid-template-columns: 1fr;
-    gap: 12px 0;
+    gap: 14px 0;
   }
 
   .value-item {
     border-left: none !important;
-    padding-left: 0 !important;
+    padding: 0 !important;
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
   }
 
   .value-item__icon {
@@ -1447,22 +1524,25 @@
   }
 
   .gallery-thumb {
-    width: 44px;
-    height: 44px;
+    width: 46px;
+    height: 46px;
+  }
+
+  .about-gallery__rail {
+    height: 54px;
   }
 
   .gallery-arrow {
-    width: 24px;
-    height: 44px;
+    width: 28px;
+    height: 28px;
   }
 
   .story-split__content h2 {
     font-size: clamp(1.35rem, 7vw, 1.8rem);
   }
 
-  .reel-item,
-  .reel-item__frame,
-  .reel-item__frame--wide {
+  .client-logo-item {
+    flex: 1 1 100%;
     max-width: 100%;
   }
 }

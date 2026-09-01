@@ -105,30 +105,38 @@
     }
   ];
 
-  const mainImg    = document.getElementById('galleryImg');
-  const labelText  = document.getElementById('galleryLabelText');
-  const counter    = document.getElementById('galleryCounter');
-  const rail       = document.getElementById('galleryRail');
-  const arrowUp    = document.getElementById('galleryArrowUp');
-  const arrowDown  = document.getElementById('galleryArrowDown');
+  const mainImg   = document.getElementById('galleryImg');
+  const labelText = document.getElementById('galleryLabelText');
+  const counter   = document.getElementById('galleryCounter');
+  const rail      = document.getElementById('galleryRail');
+  const arrowUp   = document.getElementById('galleryArrowUp');
+  const arrowDown = document.getElementById('galleryArrowDown');
 
   if (!mainImg || !rail) return;
 
-  /* How many thumbs visible in the rail window at once */
-  var WINDOW_SIZE  = 5;
-  var windowStart  = 0; /* first visible gallery index */
-  var activeIndex  = 0;
-  var animating    = false;
-  var thumbEls     = [];
+  var activeIndex = 0;
+  var animating   = false;
+  var thumbEls    = [];
 
-  function pad(n) {
-    return n < 10 ? '0' + n : '' + n;
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+  /* Detect whether rail is horizontal (mobile) or vertical (desktop) */
+  function isHorizontal() {
+    return getComputedStyle(rail).flexDirection === 'row';
+  }
+
+  /* Thumb size + gap in pixels for one step */
+  function stepSize() {
+    var thumb = thumbEls[0];
+    if (!thumb) return 92;
+    var rect = thumb.getBoundingClientRect();
+    return isHorizontal() ? rect.width + 8 : rect.height + 10;
   }
 
   /* Build all thumbnail elements once */
   gallery.forEach(function (item, i) {
     var btn = document.createElement('button');
-    btn.className    = 'gallery-thumb' + (i === 0 ? ' active' : '');
+    btn.className = 'gallery-thumb' + (i === 0 ? ' active' : '');
     btn.dataset.index = i;
     btn.setAttribute('aria-label', 'View ' + item.alt);
     btn.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
@@ -146,39 +154,47 @@
     btn.appendChild(img);
     btn.appendChild(overlay);
     btn.appendChild(marker);
+    rail.appendChild(btn);
     thumbEls.push(btn);
   });
 
-  /* Render the visible window of thumbs into the rail */
-  function renderRail() {
-    rail.innerHTML = '';
-    var end = Math.min(windowStart + WINDOW_SIZE, gallery.length);
-    for (var i = windowStart; i < end; i++) {
-      rail.appendChild(thumbEls[i]);
-    }
-    arrowUp.disabled   = windowStart === 0;
-    arrowDown.disabled = windowStart + WINDOW_SIZE >= gallery.length;
-  }
-
-  /* Scroll the window so the active thumb is visible */
-  function ensureActiveVisible() {
-    if (activeIndex < windowStart) {
-      windowStart = activeIndex;
-      renderRail();
-    } else if (activeIndex >= windowStart + WINDOW_SIZE) {
-      windowStart = activeIndex - WINDOW_SIZE + 1;
-      renderRail();
+  /* Update arrow disabled state based on scroll position */
+  function syncArrows() {
+    if (isHorizontal()) {
+      arrowUp.disabled   = rail.scrollLeft <= 2;
+      arrowDown.disabled = rail.scrollLeft >= rail.scrollWidth - rail.clientWidth - 2;
+    } else {
+      arrowUp.disabled   = rail.scrollTop <= 2;
+      arrowDown.disabled = rail.scrollTop >= rail.scrollHeight - rail.clientHeight - 2;
     }
   }
 
-  /* Initialise — explicit set so browser cache never shows stale src */
-  mainImg.src                    = gallery[0].src;
-  mainImg.alt                    = gallery[0].alt;
-  mainImg.style.objectPosition   = gallery[0].position || 'center center';
-  labelText.textContent    = gallery[0].title;
-  counter.textContent      = '01 / ' + pad(gallery.length);
+  /* Scroll the rail so the active thumb is visible */
+  function scrollToActive() {
+    var thumb = thumbEls[activeIndex];
+    if (!thumb) return;
+    if (isHorizontal()) {
+      var left = thumb.offsetLeft - rail.clientWidth / 2 + thumb.offsetWidth / 2;
+      rail.scrollTo({ left: left, behavior: 'smooth' });
+    } else {
+      var top = thumb.offsetTop - rail.clientHeight / 2 + thumb.offsetHeight / 2;
+      rail.scrollTo({ top: top, behavior: 'smooth' });
+    }
+  }
 
-  renderRail();
+  /* Initialise */
+  mainImg.src                  = gallery[0].src;
+  mainImg.alt                  = gallery[0].alt;
+  mainImg.style.objectPosition = gallery[0].position || 'center center';
+  labelText.textContent        = gallery[0].title;
+  counter.textContent          = '01 / ' + pad(gallery.length);
+
+  syncArrows();
+  rail.addEventListener('scroll', function () {
+    syncArrows();
+    /* keep wheelTarget in sync when rail is scrolled by buttons/touch */
+    if (wheelRaf === null) wheelTarget = isHorizontal() ? rail.scrollLeft : rail.scrollTop;
+  }, { passive: true });
 
   function switchTo(index) {
     if (index === activeIndex || animating) return;
@@ -188,12 +204,11 @@
     mainImg.style.transform = 'scale(1.015)';
 
     setTimeout(function () {
-      mainImg.src   = gallery[index].src;
-      mainImg.alt   = gallery[index].alt;
+      mainImg.src                  = gallery[index].src;
+      mainImg.alt                  = gallery[index].alt;
       mainImg.style.objectPosition = gallery[index].position || 'center center';
-
-      labelText.textContent = gallery[index].title;
-      counter.textContent   = pad(index + 1) + ' / ' + pad(gallery.length);
+      labelText.textContent        = gallery[index].title;
+      counter.textContent          = pad(index + 1) + ' / ' + pad(gallery.length);
 
       mainImg.style.transform = 'scale(1.02)';
       void mainImg.offsetWidth;
@@ -207,13 +222,13 @@
       });
 
       activeIndex = index;
-      ensureActiveVisible();
+      scrollToActive();
 
       setTimeout(function () { animating = false; }, 420);
     }, 360);
   }
 
-  /* Wire thumb click + keyboard nav */
+  /* Thumb click + keyboard nav */
   thumbEls.forEach(function (btn, i) {
     btn.addEventListener('click', function () { switchTo(i); });
 
@@ -233,19 +248,49 @@
     });
   });
 
-  /* Arrow buttons scroll one at a time */
+  /* Arrow buttons scroll the rail by one thumb step */
   arrowUp.addEventListener('click', function () {
-    if (windowStart > 0) {
-      windowStart -= 1;
-      renderRail();
+    var step = stepSize();
+    if (isHorizontal()) {
+      rail.scrollBy({ left: -step, behavior: 'smooth' });
+    } else {
+      rail.scrollBy({ top: -step, behavior: 'smooth' });
     }
   });
 
   arrowDown.addEventListener('click', function () {
-    if (windowStart + WINDOW_SIZE < gallery.length) {
-      windowStart += 1;
-      renderRail();
+    var step = stepSize();
+    if (isHorizontal()) {
+      rail.scrollBy({ left: step, behavior: 'smooth' });
+    } else {
+      rail.scrollBy({ top: step, behavior: 'smooth' });
     }
   });
+
+  /* Smooth momentum scroller for mouse-wheel (desktop vertical rail) */
+  var wheelTarget = null;
+  var wheelRaf    = null;
+
+  function wheelTick() {
+    var current = rail.scrollTop;
+    var dist    = wheelTarget - current;
+    if (Math.abs(dist) < 0.5) {
+      rail.scrollTop = wheelTarget;
+      wheelRaf = null;
+      syncArrows();
+      return;
+    }
+    rail.scrollTop = current + dist * 0.12;
+    syncArrows();
+    wheelRaf = requestAnimationFrame(wheelTick);
+  }
+
+  rail.addEventListener('wheel', function (e) {
+    if (isHorizontal()) return;
+    e.preventDefault();
+    if (wheelTarget === null) wheelTarget = rail.scrollTop;
+    wheelTarget = Math.max(0, Math.min(rail.scrollHeight - rail.clientHeight, wheelTarget + e.deltaY * 0.8));
+    if (!wheelRaf) wheelRaf = requestAnimationFrame(wheelTick);
+  }, { passive: false });
 
 })();

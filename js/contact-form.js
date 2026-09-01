@@ -25,12 +25,32 @@
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    if (validate()) {
-      form.style.display = 'none';
-      const privacyNote = document.querySelector('.ct-privacy');
-      if (privacyNote) privacyNote.style.display = 'none';
-      if (successMsg) successMsg.classList.add('visible');
+    if (!validate()) {
+      /* Scroll first invalid field into view on mobile */
+      var firstInvalid = form.querySelector('.is-invalid');
+      if (firstInvalid) {
+        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        firstInvalid.focus({ preventScroll: true });
+      }
+      return;
     }
+
+    var submitBtn = form.querySelector('.ct-submit-btn');
+    if (submitBtn) {
+      submitBtn.classList.add('is-loading');
+      submitBtn.disabled = true;
+    }
+
+    /* Simulate async submit — replace with real fetch when backend is ready */
+    setTimeout(function () {
+      form.style.display = 'none';
+      var privacyNote = document.querySelector('.ct-privacy');
+      if (privacyNote) privacyNote.style.display = 'none';
+      if (successMsg) {
+        successMsg.classList.add('visible');
+        successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 600);
   });
 
   function validate() {

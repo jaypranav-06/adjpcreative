@@ -44,10 +44,18 @@
   margin: 0 auto;
   padding: calc(var(--nav-height) + 80px) 40px 100px;
   display: grid;
+  /* Left col: intro + details + map stacked | Right col: form spans all rows */
   grid-template-columns: 0.9fr 1.15fr;
-  gap: 90px;
+  grid-template-rows: auto auto auto;
+  column-gap: 90px;
+  row-gap: 48px;
   align-items: start;
 }
+
+.contact-intro  { grid-column: 1; grid-row: 1; }
+.contact-right  { grid-column: 2; grid-row: 1 / 4; }
+.contact-details { grid-column: 1; grid-row: 2; }
+.contact-map-wrap { grid-column: 1; grid-row: 3; }
 
 /* ── Entry animations ─────────────────────── */
 .ct-anim-left,
@@ -363,6 +371,7 @@
   border: 1px solid rgba(44,179,46,0.28);
   background: linear-gradient(145deg, rgba(255,255,255,0.018), rgba(44,179,46,0.012));
   box-shadow: 0 0 60px rgba(44,179,46,0.04);
+  scroll-margin-top: calc(var(--nav-height, 68px) + 24px);
 }
 
 /* Form header */
@@ -415,7 +424,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .ct-field-group {
@@ -427,7 +436,7 @@
 
 .ct-field-group--full {
   grid-column: 1 / -1;
-  margin-bottom: 0;
+  margin-bottom: 18px;
 }
 
 /* Labels */
@@ -477,24 +486,37 @@
 }
 
 .ct-input.is-invalid {
-  border-color: rgba(229,62,62,0.7);
+  border-color: rgba(229,62,62,0.75);
+  background: rgba(229,62,62,0.04);
+  animation: ct-shake 0.35s cubic-bezier(.36,.07,.19,.97) both;
 }
 
 .ct-input.is-invalid:focus {
-  box-shadow: 0 0 0 3px rgba(229,62,62,0.1);
+  border-color: rgba(229,62,62,0.85);
+  box-shadow: 0 0 0 3px rgba(229,62,62,0.12);
 }
 
 .ct-input.is-valid {
   border-color: rgba(44,179,46,0.5);
 }
 
+@keyframes ct-shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-5px); }
+  40%       { transform: translateX(5px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px); }
+}
+
 /* Select */
 .ct-select {
   appearance: none;
+  -webkit-appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23F4F4F1' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 16px center;
-  padding-right: 40px;
+  background-size: 12px 8px;
+  padding-right: 44px;
   cursor: pointer;
 }
 
@@ -507,7 +529,8 @@
 .ct-textarea {
   min-height: 150px;
   resize: vertical;
-  margin-bottom: 6px;
+  margin-bottom: 0;
+  padding-bottom: 12px;
 }
 
 .ct-char-count {
@@ -515,16 +538,32 @@
   color: #777F7A;
   text-align: right;
   display: block;
-  margin-bottom: 24px;
+  margin-top: 4px;
+  margin-bottom: 20px;
+  padding-right: 2px;
 }
 
 /* Field error */
 .ct-field-error {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 5px;
   font-size: 12px;
   color: #e05454;
   font-weight: 500;
-  margin-top: 4px;
+  margin-top: 5px;
+  line-height: 1.4;
+}
+
+.ct-field-error::before {
+  content: '';
+  display: inline-block;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23e05454' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='8' cy='8' r='6.5'/%3E%3Cline x1='8' y1='5' x2='8' y2='8.5'/%3E%3Ccircle cx='8' cy='11' r='0.75' fill='%23e05454' stroke='none'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 /* Submit button */
@@ -565,10 +604,29 @@
   transform: translateX(3px);
 }
 
-.ct-submit-btn:disabled {
-  opacity: 0.6;
+.ct-submit-btn:disabled,
+.ct-submit-btn.is-loading {
+  opacity: 0.65;
   cursor: not-allowed;
   transform: none;
+  pointer-events: none;
+}
+
+.ct-submit-btn.is-loading .ct-submit-btn__text::after {
+  content: '…';
+  animation: ct-ellipsis 1.2s steps(4, end) infinite;
+}
+
+@keyframes ct-ellipsis {
+  0%   { content: ''; }
+  25%  { content: '.'; }
+  50%  { content: '..'; }
+  75%  { content: '...'; }
+  100% { content: ''; }
+}
+
+.ct-submit-btn:active:not(:disabled):not(.is-loading) {
+  transform: scale(0.98);
 }
 
 /* Privacy note */
@@ -648,10 +706,17 @@
 @media (max-width: 860px) {
   .contact-wrap {
     grid-template-columns: 1fr;
-    gap: 56px;
+    grid-template-rows: none;
+    gap: 40px;
     padding-top: calc(var(--nav-height) + 48px);
     padding-inline: 24px;
   }
+
+  /* Mobile order: ① intro ② form ③ details ④ map */
+  .contact-intro    { grid-column: 1; grid-row: auto; order: 1; }
+  .contact-right    { grid-column: 1; grid-row: auto; order: 2; }
+  .contact-details  { grid-column: 1; grid-row: auto; order: 3; }
+  .contact-map-wrap { grid-column: 1; grid-row: auto; order: 4; }
 
   .ct-heading {
     font-size: clamp(50px, 14vw, 72px);
@@ -711,6 +776,63 @@
     gap: 14px;
   }
 
+  /* Inputs — larger touch targets, 16px prevents iOS auto-zoom */
+  .ct-input {
+    padding: 14px 14px;
+    font-size: 16px;
+    border-radius: 10px;
+  }
+
+  /* Select — keep chevron correctly positioned at mobile padding */
+  .ct-select {
+    background-position: right 14px center;
+    padding-right: 40px;
+  }
+
+  /* Field rows and full-width groups — more breathing room */
+  .ct-field-row {
+    margin-bottom: 14px;
+  }
+
+  .ct-field-group--full {
+    margin-bottom: 14px;
+  }
+
+  /* Message textarea — comfortable height, clear bottom gap */
+  .ct-textarea {
+    min-height: 120px;
+    padding: 14px;
+  }
+
+  .ct-char-count {
+    margin-bottom: 16px;
+  }
+
+  /* Error messages — slightly larger, full width */
+  .ct-field-error {
+    font-size: 13px;
+    margin-top: 6px;
+    gap: 6px;
+  }
+
+  .ct-field-error::before {
+    width: 15px;
+    height: 15px;
+  }
+
+  /* Invalid field — stronger red left border for at-a-glance scanning */
+  .ct-input.is-invalid {
+    border-left: 3px solid rgba(229,62,62,0.85);
+    padding-left: 12px;
+  }
+
+  /* Submit button — taller for easier tapping */
+  .ct-submit-btn {
+    height: 54px;
+    font-size: 15px;
+    border-radius: 10px;
+  }
+
   /* Map overlay */
   .ct-map__overlay {
     width: 120px;
@@ -754,6 +876,32 @@
 
   .ct-form-panel {
     padding: 16px 12px;
+  }
+
+  .ct-input {
+    font-size: 16px;
+    padding: 13px 12px;
+  }
+
+  .ct-field-error {
+    font-size: 12px;
+  }
+
+  .ct-submit-btn {
+    height: 50px;
+  }
+
+  .ct-success {
+    padding: 32px 16px;
+  }
+
+  .ct-success__icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .ct-success__heading {
+    font-size: 1.25rem;
   }
 
   .ct-map__overlay {

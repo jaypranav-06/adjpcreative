@@ -29,7 +29,7 @@
         <!-- <a href="blog.html">Blog</a> -->
         <a href="contact.html" class="active">Contact</a>
       </nav>
-      <a href="contact.html" class="btn btn--primary btn--sm nav__cta">Get in Touch</a>
+      <a href="#contact-form" class="btn btn--primary btn--sm nav__cta">Get in Touch</a>
       <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -44,7 +44,7 @@
       <a href="contact.html" class="active">Contact</a>
     </nav>
     <div class="nav__mobile-cta">
-      <a href="contact.html" class="btn btn--primary" style="width:100%;justify-content:center;">Get in Touch</a>
+      <a href="#contact-form" class="btn btn--primary" style="width:100%;justify-content:center;">Get in Touch</a>
     </div>
   </div>
 
@@ -54,7 +54,7 @@
       <a href="index.html" class="mob-header__logo" aria-label="ADJP Creative home">
         <img src="assets/logo/ADJP Logo for Dark Background Transparent.png" alt="ADJP Creative">
       </a>
-      <a href="contact.html" class="mob-header__cta">Get in Touch</a>
+      <a href="#contact-form" class="mob-header__cta">Get in Touch</a>
       <button class="mob-header__toggle" id="mobNavToggle"
         aria-expanded="false"
         aria-controls="mob-nav-panel"
@@ -78,7 +78,7 @@
           <span>Contact</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
-        <a href="contact.html" class="mob-nav-cta">Get in Touch</a>
+        <a href="#contact-form" class="mob-nav-cta">Get in Touch</a>
       </div>
     </nav>
   </header>
@@ -91,8 +91,8 @@
 
     <div class="contact-wrap">
 
-      <!-- ═══ LEFT COLUMN ═══ -->
-      <div class="contact-left ct-anim-left">
+      <!-- ① Intro text (desktop: left col top; mobile: first) -->
+      <div class="contact-intro ct-anim-left">
 
         <!-- Eyebrow -->
         <div class="ct-eyebrow">
@@ -110,87 +110,11 @@
         <!-- Intro paragraph -->
         <p class="ct-intro">Whether you're a brand looking for a campaign partner, a producer exploring collaboration, or someone with a story worth telling — reach out and let's explore what we can create together.</p>
 
-        <!-- Contact detail cards -->
-        <div class="ct-items">
+      </div><!-- /contact-intro -->
 
-          <a href="mailto:adjpcreative@gmail.com" class="ct-item">
-            <div class="ct-item__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="4" width="20" height="16" rx="3"/>
-                <path d="M2 7l10 7 10-7"/>
-              </svg>
-            </div>
-            <div class="ct-item__body">
-              <span class="ct-item__label">Email</span>
-              <span class="ct-item__value">adjpcreative@gmail.com</span>
-            </div>
-            <div class="ct-item__arrow" aria-hidden="true">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-                <path d="M3 8h10M9 4l4 4-4 4"/>
-              </svg>
-            </div>
-          </a>
-
-          <div class="ct-item">
-            <div class="ct-item__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-                <circle cx="12" cy="10" r="3"/>
-              </svg>
-            </div>
-            <div class="ct-item__body">
-              <span class="ct-item__label">Address</span>
-              <span class="ct-item__value">ADJP Creative<br>Colombo, Sri Lanka</span>
-            </div>
-            <div class="ct-item__arrow" aria-hidden="true">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-                <path d="M3 8h10M9 4l4 4-4 4"/>
-              </svg>
-            </div>
-          </div>
-
-        </div><!-- /ct-items -->
-
-        <!-- Social links -->
-        <div class="ct-social">
-          <p class="ct-social__label">Follow Us</p>
-          <div class="ct-social__row">
-            <a href="#" class="ct-social__btn" aria-label="Facebook">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-            </a>
-            <a href="#" class="ct-social__btn" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-            </a>
-            <a href="#" class="ct-social__btn" aria-label="YouTube">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
-            </a>
-            <a href="#" class="ct-social__btn" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Map -->
-        <div class="ct-map" id="ctMap">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.58545196867!2d79.77444699999999!3d6.9218374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae253d10f7a7003%3A0x320b2e4d32d3838d!2sColombo%2C%20Sri%20Lanka!5e0!3m2!1sen!2slk!4v1700000000000!5m2!1sen!2slk&style=feature:all|element:labels.text.fill|color:0x8D978F&style=feature:all|element:geometry|color:0x06100c"
-            title="ADJP Creative location"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            aria-label="Map showing ADJP Creative location in Colombo, Sri Lanka">
-          </iframe>
-          <div class="ct-map__overlay">
-            <p class="ct-map__city">Colombo</p>
-            <p class="ct-map__country">Sri Lanka</p>
-            <a href="https://maps.google.com/?q=Colombo,Sri+Lanka" target="_blank" rel="noopener noreferrer" class="ct-map__link">Open in Maps →</a>
-          </div>
-        </div>
-
-      </div><!-- /contact-left -->
-
-      <!-- ═══ RIGHT COLUMN — FORM ═══ -->
+      <!-- ② Form (desktop: right col spans rows 1–2; mobile: second) -->
       <div class="contact-right ct-anim-right">
-        <div class="ct-form-panel">
+        <div class="ct-form-panel" id="contact-form">
 
           <!-- Form header -->
           <div class="ct-form-header">
@@ -221,24 +145,18 @@
               </div>
             </div>
 
-            <div class="ct-field-row">
-              <div class="ct-field-group">
-                <label for="phone" class="ct-label">Phone <span class="ct-optional">(optional)</span></label>
-                <input type="tel" id="phone" name="phone" class="ct-input" placeholder="+94 77 XXX XXXX" autocomplete="tel">
-              </div>
-              <div class="ct-field-group">
-                <label for="service" class="ct-label">Service Interested In</label>
-                <select id="service" name="service" class="ct-input ct-select">
-                  <option value="" disabled selected>Select a service…</option>
-                  <option value="brand-commercial">Brand Commercials</option>
-                  <option value="jingle">Jingles &amp; Audio</option>
-                  <option value="feature-film">Feature Films</option>
-                  <option value="brand-strategy">Brand Strategy</option>
-                  <option value="music-production">Music Production</option>
-                  <option value="post-production">Post Production</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
+            <div class="ct-field-group ct-field-group--full">
+              <label for="service" class="ct-label">Service Interested In</label>
+              <select id="service" name="service" class="ct-input ct-select">
+                <option value="" disabled selected>Select a service…</option>
+                <option value="brand-commercial">Brand Commercials</option>
+                <option value="jingle">Jingles &amp; Audio</option>
+                <option value="feature-film">Feature Films</option>
+                <option value="brand-strategy">Brand Strategy</option>
+                <option value="music-production">Music Production</option>
+                <option value="post-production">Post Production</option>
+                <option value="other">Other</option>
+              </select>
             </div>
 
             <div class="ct-field-group ct-field-group--full">
@@ -279,6 +197,89 @@
         </div>
       </div><!-- /contact-right -->
 
+      <!-- ③ Contact details (desktop: left col row 2; mobile: third) -->
+      <div class="contact-details ct-anim-left">
+
+        <!-- Contact detail cards -->
+        <div class="ct-items">
+
+          <a href="mailto:adjpcreative@gmail.com" class="ct-item">
+            <div class="ct-item__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="3"/>
+                <path d="M2 7l10 7 10-7"/>
+              </svg>
+            </div>
+            <div class="ct-item__body">
+              <span class="ct-item__label">Email</span>
+              <span class="ct-item__value">adjpcreative@gmail.com</span>
+            </div>
+            <div class="ct-item__arrow" aria-hidden="true">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <path d="M3 8h10M9 4l4 4-4 4"/>
+              </svg>
+            </div>
+          </a>
+
+          <div class="ct-item">
+            <div class="ct-item__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div class="ct-item__body">
+              <span class="ct-item__label">Address</span>
+              <span class="ct-item__value">16 Harmers Avenue<br>Colombo 06, Sri Lanka</span>
+            </div>
+            <div class="ct-item__arrow" aria-hidden="true">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <path d="M3 8h10M9 4l4 4-4 4"/>
+              </svg>
+            </div>
+          </div>
+
+        </div><!-- /ct-items -->
+
+        <!-- Social links -->
+        <div class="ct-social">
+          <p class="ct-social__label">Follow Us</p>
+          <div class="ct-social__row">
+            <a href="#" class="ct-social__btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="#" class="ct-social__btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="#" class="ct-social__btn" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
+            </a>
+            <a href="#" class="ct-social__btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /contact-details -->
+
+      <!-- ④ Map (desktop: left col row 3; mobile: fourth) -->
+      <div class="contact-map-wrap ct-anim-left">
+        <div class="ct-map" id="ctMap">
+          <iframe
+            src="https://maps.google.com/maps?q=16+Harmers+Avenue+Colombo+06+Sri+Lanka&t=&z=17&ie=UTF8&iwloc=&output=embed"
+            title="ADJP Creative location"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            aria-label="Map showing ADJP Creative at 16 Harmers Avenue, Colombo 06">
+          </iframe>
+          <div class="ct-map__overlay">
+            <p class="ct-map__city">Colombo 06</p>
+            <p class="ct-map__country">16 Harmers Avenue</p>
+            <a href="https://maps.google.com/?q=16+Harmers+Avenue+Colombo+06+Sri+Lanka" target="_blank" rel="noopener noreferrer" class="ct-map__link">Open in Maps →</a>
+          </div>
+        </div>
+      </div><!-- /contact-map-wrap -->
+
     </div><!-- /contact-wrap -->
   </main>
 
@@ -309,7 +310,6 @@
           <ul class="footer__col-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="blog.html">Blog</a></li>
           </ul>
         </div>
         <div>
@@ -325,7 +325,6 @@
           <p class="footer__col-title">Contact</p>
           <ul class="footer__col-links">
             <li style="color:rgba(255,255,255,0.6);font-size:0.9rem;">adjpcreative@gmail.com</li>
-            <li style="color:rgba(255,255,255,0.6);font-size:0.9rem;">+94 77 XXX XXXX</li>
           </ul>
         </div>
       </div>
