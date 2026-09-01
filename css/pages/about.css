@@ -1383,7 +1383,12 @@
     align-items: center;
     align-self: stretch;
     width: 100%;
-    gap: 6px;
+    gap: 4px;
+    /* Break out of panel inner padding so arrows never clip */
+    margin-left: calc(-1 * clamp(16px, 4vw, 24px));
+    margin-right: calc(-1 * clamp(16px, 4vw, 24px));
+    padding-left: 8px;
+    padding-right: 8px;
   }
 
   .about-gallery__rail {
@@ -1432,8 +1437,8 @@
   }
 
   .gallery-arrow {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     flex-shrink: 0;
   }
 
@@ -1494,13 +1499,19 @@
 
   .bio-modal__panel {
     border-radius: 20px 20px 0 0;
-    max-height: 92vh;
+    max-height: 72vh;
     width: 100%;
     max-width: 100%;
   }
 
   .bio-modal__header {
-    padding: 1rem 1.1rem 0.9rem;
+    padding: 0.75rem 1.25rem 0.85rem;
+  }
+
+  .bio-modal__close {
+    width: 38px;
+    height: 38px;
+    font-size: 1.3rem;
   }
 
   .bio-modal__content {
