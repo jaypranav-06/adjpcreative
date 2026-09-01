@@ -380,9 +380,13 @@
   <div class="bio-modal" id="bioModal" role="dialog" aria-modal="true" aria-labelledby="bioModalTitle" hidden>
     <div class="bio-modal__backdrop" id="bioModalBackdrop"></div>
     <div class="bio-modal__panel">
-      <button class="bio-modal__close" id="closeBioModal" aria-label="Close">&times;</button>
+      <!-- Sticky header — always visible, never scrolls away -->
+      <div class="bio-modal__header">
+        <span class="bio-modal__header-title">Music Director • Composer • Film Director</span>
+        <button class="bio-modal__close" id="closeBioModal" aria-label="Close">&times;</button>
+      </div>
       <div class="bio-modal__content">
-        <span class="bio-modal__label">Music Director • Composer • Film Director</span>
+        <span class="bio-modal__label">About the Managing Director</span>
         <h2 id="bioModalTitle" class="bio-modal__heading">Sruthiy Prabha</h2>
         <div class="bio-modal__body">
           <p>Sruthiy Prabha is a distinguished Sri Lankan music director, composer, and filmmaker whose career spans more than three decades across radio, music, theatre, television, and cinema.</p>
