@@ -41,6 +41,7 @@
     updateMeta(title, runtime);
 
     var isFacebook = src.indexOf('facebook.com') !== -1;
+    var isYouTube  = src.indexOf('youtube.com') !== -1;
 
     if (card) {
       card.style.height   = '';
@@ -73,10 +74,18 @@
       iframe.style.display = 'none';
       var fallback = document.createElement('div');
       fallback.className = 'embed-fb-fallback';
-      fallback.innerHTML =
-        '<svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.884v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>' +
-        '<p>This video is only available on Facebook.<br>Please click the link below to watch it.</p>' +
-        '<a href="' + fbDirectUrl + '" target="_blank" rel="noopener">Open Video on Facebook →</a>';
+      if (isYouTube) {
+        var ytId = src.split('/embed/')[1].split('?')[0];
+        fallback.innerHTML =
+          '<svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40" aria-hidden="true"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>' +
+          '<p>This video is only available on YouTube.<br>Please click the link below to watch it.</p>' +
+          '<a href="https://www.youtube.com/watch?v=' + ytId + '" target="_blank" rel="noopener">Open Video on YouTube →</a>';
+      } else {
+        fallback.innerHTML =
+          '<svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.884v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>' +
+          '<p>This video is only available on Facebook.<br>Please click the link below to watch it.</p>' +
+          '<a href="' + fbDirectUrl + '" target="_blank" rel="noopener">Open Video on Facebook →</a>';
+      }
       frameWrap.appendChild(fallback);
     }
 
