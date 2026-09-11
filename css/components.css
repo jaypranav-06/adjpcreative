@@ -810,6 +810,13 @@ body.page--dark .client-logo-item:hover {
   display: none;
 }
 
+/* Hide desktop nav on mobile so it doesn't intercept taps */
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+}
+
 @media (max-width: 768px) {
   .mob-header {
     display: block;
