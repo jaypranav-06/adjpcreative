@@ -17,7 +17,7 @@
 <body class="page--dark">
 
   <!-- NAV -->
-  <header class="nav" role="banner">
+  <header class="nav" role="banner">5
     <div class="container nav__inner">
       <a href="index.html" class="nav__logo" aria-label="ADJP Creative home">
         <img src="assets/logo/ADJP Logo for Dark Background Transparent.png" alt="ADJP Creative" class="nav__logo-img">
@@ -413,8 +413,8 @@
                 </button>
                 <span class="showreel__play-label">Select a reel below</span>
               </div>
-              <div class="showreel__meta" aria-hidden="true">
-                <span class="showreel__meta-runtime" id="showreel-active-runtime">
+              <div class="showreel__meta">
+                <span class="showreel__meta-runtime" id="showreel-active-runtime" aria-hidden="true">
                   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" width="12" height="12"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1.5"/></svg>
                   —
                 </span>
@@ -422,16 +422,19 @@
                   <span class="showreel__meta-dot"></span>
                   ADJP CREATIVE SHOWREEL
                 </span>
+                <a class="showreel__meta-direct" id="showreel-direct-link" href="https://www.facebook.com/reel/957372693989755/" target="_blank" rel="noopener">
+                  Watch Direct ↗
+                </a>
               </div>
             </div>
 
           </div><!-- /showreel__card -->
         </div>
 
-        <!-- Tab strip -->
+        <!-- Showcase 3x2 Grid -->
         <div class="showreel__tabs" role="tablist" aria-label="Showreel videos">
 
-          <!-- TAB 1 -->
+          <!-- CARD 1 -->
           <button class="showreel__tab active"
                   role="tab"
                   aria-selected="true"
@@ -439,19 +442,30 @@
                   data-title="LB FINANCE COMMERCIAL TVC"
                   data-runtime="— MIN"
                   data-num="01">
-            <span class="showreel__tab-num">01</span>
-            <span class="showreel__tab-info">
+            <div class="showreel__tab-top">
+              <span class="showreel__tab-num">01</span>
+              <span class="showreel__tab-tag">Commercial</span>
+            </div>
+            <div class="showreel__tab-info">
               <span class="showreel__tab-title">LB Finance TVC</span>
               <span class="showreel__tab-sub">Brand Commercial</span>
-            </span>
-            <svg class="showreel__tab-play" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <circle cx="8" cy="8" r="7" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-              <path d="M6.5 5.5l5 2.5-5 2.5V5.5z" fill="currentColor"/>
-            </svg>
+            </div>
+            <div class="showreel__tab-footer">
+              <span class="showreel__tab-status">
+                <span class="showreel__tab-dot"></span>
+                <span class="showreel__tab-status-text">Now Playing</span>
+              </span>
+              <span class="showreel__tab-play-icon" aria-hidden="true">
+                <svg viewBox="0 0 16 16" fill="none">
+                  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/>
+                  <path d="M6.5 5.5l5 2.5-5 2.5V5.5z" fill="currentColor"/>
+                </svg>
+              </span>
+            </div>
             <div class="showreel__tab-bar"></div>
           </button>
 
-          <!-- TAB 2 -->
+          <!-- CARD 2 -->
           <button class="showreel__tab"
                   role="tab"
                   aria-selected="false"
@@ -459,19 +473,30 @@
                   data-title="ABHITHA — SINHALA FEATURE FILM"
                   data-runtime="— MIN"
                   data-num="02">
-            <span class="showreel__tab-num">02</span>
-            <span class="showreel__tab-info">
+            <div class="showreel__tab-top">
+              <span class="showreel__tab-num">02</span>
+              <span class="showreel__tab-tag">Feature Film</span>
+            </div>
+            <div class="showreel__tab-info">
               <span class="showreel__tab-title">Abhitha Sinhala Movie</span>
               <span class="showreel__tab-sub">Directed &amp; Scored Music</span>
-            </span>
-            <svg class="showreel__tab-play" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <circle cx="8" cy="8" r="7" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-              <path d="M6.5 5.5l5 2.5-5 2.5V5.5z" fill="currentColor"/>
-            </svg>
+            </div>
+            <div class="showreel__tab-footer">
+              <span class="showreel__tab-status">
+                <span class="showreel__tab-dot"></span>
+                <span class="showreel__tab-status-text">Play Video</span>
+              </span>
+              <span class="showreel__tab-play-icon" aria-hidden="true">
+                <svg viewBox="0 0 16 16" fill="none">
+                  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/>
+                  <path d="M6.5 5.5l5 2.5-5 2.5V5.5z" fill="currentColor"/>
+                </svg>
+              </span>
+            </div>
             <div class="showreel__tab-bar"></div>
           </button>
 
-          <!-- TAB 3 -->
+          <!-- CARD 3 -->
           <button class="showreel__tab"
                   role="tab"
                   aria-selected="false"
@@ -479,19 +504,30 @@
                   data-title="PL. MTT. MUTHUKARUPPAN CHETTIAR JEWELLERS TVC"
                   data-runtime="— MIN"
                   data-num="03">
-            <span class="showreel__tab-num">03</span>
-            <span class="showreel__tab-info">
+            <div class="showreel__tab-top">
+              <span class="showreel__tab-num">03</span>
+              <span class="showreel__tab-tag">Commercial</span>
+            </div>
+            <div class="showreel__tab-info">
               <span class="showreel__tab-title">Muthukaruppan Chettiar</span>
               <span class="showreel__tab-sub">Jewellers TVC</span>
-            </span>
-            <svg class="showreel__tab-play" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <circle cx="8" cy="8" r="7" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-              <path d="M6.5 5.5l5 2.5-5 2.5V5.5z" fill="currentColor"/>
-            </svg>
+            </div>
+            <div class="showreel__tab-footer">
+              <span class="showreel__tab-status">
+                <span class="showreel__tab-dot"></span>
+                <span class="showreel__tab-status-text">Play Video</span>
+              </span>
+              <span class="showreel__tab-play-icon" aria-hidden="true">
+                <svg viewBox="0 0 16 16" fill="none">
+                  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/>
+                  <path d="M6.5 5.5l5 2.5-5 2.5V5.5z" fill="currentColor"/>
+                </svg>
+              </span>
+            </div>
             <div class="showreel__tab-bar"></div>
           </button>
 
-          <!-- TAB 4 -->
+          <!-- CARD 4 -->
           <button class="showreel__tab"
                   role="tab"
                   aria-selected="false"
@@ -499,19 +535,30 @@
                   data-title="PL. MTT. MUTHUKARUPPAN CHETTIAR JEWELLERS — DOCUMENTARY TVC"
                   data-runtime="— MIN"
                   data-num="04">
-            <span class="showreel__tab-num">04</span>
-            <span class="showreel__tab-info">
+            <div class="showreel__tab-top">
+              <span class="showreel__tab-num">04</span>
+              <span class="showreel__tab-tag">Commercial</span>
+            </div>
+            <div class="showreel__tab-info">
               <span class="showreel__tab-title">Muthukaruppan Chettiar</span>
               <span class="showreel__tab-sub">Documentary TVC</span>
-            </span>
-            <svg class="showreel__tab-play" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <circle cx="8" cy="8" r="7" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-              <path d="M6.5 5.5l5 2.5-5 2.5V5.5z" fill="currentColor"/>
-            </svg>
+            </div>
+            <div class="showreel__tab-footer">
+              <span class="showreel__tab-status">
+                <span class="showreel__tab-dot"></span>
+                <span class="showreel__tab-status-text">Play Video</span>
+              </span>
+              <span class="showreel__tab-play-icon" aria-hidden="true">
+                <svg viewBox="0 0 16 16" fill="none">
+                  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/>
+                  <path d="M6.5 5.5l5 2.5-5 2.5V5.5z" fill="currentColor"/>
+                </svg>
+              </span>
+            </div>
             <div class="showreel__tab-bar"></div>
           </button>
 
-          <!-- TAB 5 -->
+          <!-- CARD 5 -->
           <button class="showreel__tab"
                   role="tab"
                   aria-selected="false"
@@ -520,36 +567,57 @@
                   data-title="SHREE MADHAVI JEWELLERS TVC"
                   data-runtime="— MIN"
                   data-num="05">
-            <span class="showreel__tab-num">05</span>
-            <span class="showreel__tab-info">
+            <div class="showreel__tab-top">
+              <span class="showreel__tab-num">05</span>
+              <span class="showreel__tab-tag">Commercial</span>
+            </div>
+            <div class="showreel__tab-info">
               <span class="showreel__tab-title">Shree Madhavi Jewellers</span>
               <span class="showreel__tab-sub">Brand TVC</span>
-            </span>
-            <svg class="showreel__tab-play" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <circle cx="8" cy="8" r="7" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-              <path d="M6.5 5.5l5 2.5-5 2.5V5.5z" fill="currentColor"/>
-            </svg>
+            </div>
+            <div class="showreel__tab-footer">
+              <span class="showreel__tab-status">
+                <span class="showreel__tab-dot"></span>
+                <span class="showreel__tab-status-text">Play Video</span>
+              </span>
+              <span class="showreel__tab-play-icon" aria-hidden="true">
+                <svg viewBox="0 0 16 16" fill="none">
+                  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/>
+                  <path d="M6.5 5.5l5 2.5-5 2.5V5.5z" fill="currentColor"/>
+                </svg>
+              </span>
+            </div>
             <div class="showreel__tab-bar"></div>
           </button>
 
-          <!-- TAB 6 -->
-          <button class="showreel__tab showreel__tab--full"
+          <!-- CARD 6 -->
+          <button class="showreel__tab"
                   role="tab"
                   aria-selected="false"
                   data-video-id="mkDwvQpeNlg"
                   data-title="LB FINANCE NALLUR DOCUMENTARY"
                   data-runtime="— MIN"
                   data-num="06">
-            <span class="showreel__tab-num">06</span>
-            <span class="showreel__tab-info">
-              <span class="showreel__tab-title">LB Finance Nallur Documentary</span>
+            <div class="showreel__tab-top">
+              <span class="showreel__tab-num">06</span>
+              <span class="showreel__tab-tag">Documentary</span>
+            </div>
+            <div class="showreel__tab-info">
+              <span class="showreel__tab-title">LB Finance Nallur</span>
               <span class="showreel__tab-sub">Documentary Video</span>
-            </span>
-            <div class="showreel__tab-tag" aria-hidden="true">Documentary</div>
-            <svg class="showreel__tab-play" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <circle cx="8" cy="8" r="7" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-              <path d="M6.5 5.5l5 2.5-5 2.5V5.5z" fill="currentColor"/>
-            </svg>
+            </div>
+            <div class="showreel__tab-footer">
+              <span class="showreel__tab-status">
+                <span class="showreel__tab-dot"></span>
+                <span class="showreel__tab-status-text">Play Video</span>
+              </span>
+              <span class="showreel__tab-play-icon" aria-hidden="true">
+                <svg viewBox="0 0 16 16" fill="none">
+                  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/>
+                  <path d="M6.5 5.5l5 2.5-5 2.5V5.5z" fill="currentColor"/>
+                </svg>
+              </span>
+            </div>
             <div class="showreel__tab-bar"></div>
           </button>
 
@@ -921,7 +989,7 @@
         <div>
           <p class="footer__col-title">Contact</p>
           <ul class="footer__col-links" style="gap:0.75rem;">
-            <li style="color:rgba(255,255,255,0.6);font-size:0.9rem;">adjpcreative@gmail.com</li>
+            <li style="color:rgba(255,255,255,0.6);font-size:0.9rem;">hello@adjpcreative.com</li>
           </ul>
         </div>
       </div>
