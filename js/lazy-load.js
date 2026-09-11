@@ -8,12 +8,13 @@
   var placeholder   = document.getElementById('showreel-placeholder');
   var activeTitle   = document.getElementById('showreel-active-title');
   var activeRuntime = document.getElementById('showreel-active-runtime');
+  var directLink    = document.getElementById('showreel-direct-link');
 
   if (!tabs.length || !frameWrap) return;
 
   var currentSrc = null;
 
-  function updateMeta(title, runtime) {
+  function updateMeta(title, runtime, directUrl, isFacebook) {
     if (activeTitle) {
       activeTitle.innerHTML = '<span class="showreel__meta-dot"></span>' + title;
     }
@@ -21,6 +22,11 @@
       activeRuntime.innerHTML =
         '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" width="12" height="12">' +
         '<circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1.5"/></svg>' + runtime;
+    }
+    if (directLink && directUrl) {
+      directLink.href = directUrl;
+      directLink.style.display = 'inline-flex';
+      directLink.textContent = isFacebook ? 'Watch on Facebook ↗' : 'Watch on YouTube ↗';
     }
   }
 
@@ -38,10 +44,10 @@
     }
     if (placeholder) placeholder.style.display = 'none';
 
-    updateMeta(title, runtime);
-
     var isFacebook = src.indexOf('facebook.com') !== -1;
     var isYouTube  = src.indexOf('youtube.com') !== -1;
+
+    updateMeta(title, runtime, directUrl, isFacebook);
 
     if (card) {
       card.style.height   = '';
@@ -121,13 +127,8 @@
               ? iframe.contentDocument.body.scrollHeight
               : null;
             if (h !== null && h < 80) { showFbError(); return; }
-          } catch (e) { /* cross-origin — ignore */ }
-          try {
-            if (!iframe.contentWindow || iframe.clientWidth === 0) showFbError();
-          } catch (e) {
-            showFbError();
-          }
-        }, 1500);
+          } catch (e) { /* cross-origin — normal behavior */ }
+        }, 2000);
       }
     });
 
@@ -135,7 +136,7 @@
     if (isFacebook) {
       setTimeout(function () {
         if (!fbLoaded) showFbError();
-      }, 7000);
+      }, 10000);
     }
 
     if (fbScale) {
@@ -172,10 +173,12 @@
         'autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share',
         directUrl, fbScale);
     } else if (videoId && !videoId.startsWith('YOUR_VIDEO_ID')) {
+      var ytDirectUrl = 'https://www.youtube.com/watch?v=' + videoId;
       loadEmbed(
         'https://www.youtube.com/embed/' + videoId + '?rel=0&modestbranding=1',
         title, runtime,
-        'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+        'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
+        ytDirectUrl
       );
     } else {
       // Placeholder video — show cinematic placeholder
@@ -198,9 +201,13 @@
       tabs.forEach(function (t) {
         t.classList.remove('active');
         t.setAttribute('aria-selected', 'false');
+        var txt = t.querySelector('.showreel__tab-status-text');
+        if (txt) txt.textContent = 'Play Video';
       });
       tab.classList.add('active');
       tab.setAttribute('aria-selected', 'true');
+      var curTxt = tab.querySelector('.showreel__tab-status-text');
+      if (curTxt) curTxt.textContent = 'Now Playing';
       handleTab(tab);
     });
   });
@@ -217,6 +224,8 @@
   // Auto-load first tab on page load
   var firstTab = document.querySelector('.showreel__tab.active');
   if (firstTab) {
+    var curTxt = firstTab.querySelector('.showreel__tab-status-text');
+    if (curTxt) curTxt.textContent = 'Now Playing';
     handleTab(firstTab);
   }
 

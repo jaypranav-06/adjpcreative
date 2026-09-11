@@ -1255,45 +1255,92 @@
   box-shadow: 0 0 6px rgba(44,179,46,0.8);
 }
 
+/* ── Direct link button in meta bar ──────────── */
+.showreel__meta-direct {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(244,244,242,0.65);
+  text-decoration: none;
+  padding: 0.35rem 0.8rem;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all var(--transition);
+}
+
+.showreel__meta-direct:hover {
+  color: #2CB32E;
+  background: rgba(44,179,46,0.15);
+  border-color: rgba(44,179,46,0.4);
+  box-shadow: 0 0 12px rgba(44,179,46,0.25);
+  transform: translateY(-1px);
+}
+
 /* ── Player wrapper ──────────────────────────── */
 .showreel__player {
   max-width: 960px;
-  margin: 0 auto 2rem;
+  margin: 0 auto 3rem;
 }
 
-/* ── Tab strip ───────────────────────────────── */
+/* ── Showcase 3x2 Grid ───────────────────────── */
 .showreel__tabs {
   max-width: 960px;
-  margin: 0 auto;
+  margin: 1.75rem auto 0;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 14px;
-  overflow: hidden;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
 }
 
 .showreel__tab {
   position: relative;
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1.1rem 1.25rem;
-  background: #0f1613;
-  border: none;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.15rem 1.25rem;
+  min-height: 120px;
+  background: rgba(14, 21, 17, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
   cursor: pointer;
   text-align: left;
-  transition: background var(--transition);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  -webkit-appearance: none;
+  appearance: none;
+  color: #F4F4F2;
+  font-family: inherit;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .showreel__tab:hover {
-  background: #162019;
+  background: rgba(20, 32, 25, 0.85);
+  border-color: rgba(44, 179, 46, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35), 0 0 16px rgba(44, 179, 46, 0.08);
 }
 
 .showreel__tab.active {
-  background: #111e18;
+  background: linear-gradient(145deg, rgba(20, 36, 26, 0.95) 0%, rgba(13, 23, 17, 0.95) 100%);
+  border-color: rgba(44, 179, 46, 0.65);
+  box-shadow: 
+    0 10px 32px rgba(0, 0, 0, 0.4),
+    0 0 24px rgba(44, 179, 46, 0.18),
+    inset 0 1px 0 rgba(44, 179, 46, 0.3);
 }
 
 /* Green top-border indicator on active */
@@ -1302,24 +1349,32 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 2.5px;
   background: #2CB32E;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.35s ease;
-  box-shadow: 0 0 8px rgba(44,179,46,0.6);
+  box-shadow: 0 0 10px rgba(44, 179, 46, 0.8);
 }
 
 .showreel__tab.active .showreel__tab-bar {
   transform: scaleX(1);
 }
 
+/* Top row: Track number + Category pill tag */
+.showreel__tab-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 0.65rem;
+}
+
 .showreel__tab-num {
-  font-size: 0.65rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.25);
-  flex-shrink: 0;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.3);
   transition: color var(--transition);
 }
 
@@ -1327,21 +1382,48 @@
   color: #2CB32E;
 }
 
+.showreel__tab-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(244, 244, 242, 0.55);
+  transition: all var(--transition);
+}
+
+.showreel__tab:hover .showreel__tab-tag {
+  color: rgba(244, 244, 242, 0.85);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.showreel__tab.active .showreel__tab-tag {
+  background: rgba(44, 179, 46, 0.15);
+  border-color: rgba(44, 179, 46, 0.4);
+  color: #2CB32E;
+  box-shadow: 0 0 10px rgba(44, 179, 46, 0.12);
+}
+
+/* Middle info: Title + Subtitle */
 .showreel__tab-info {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 0.2rem;
+  width: 100%;
+  margin-bottom: 0.75rem;
   min-width: 0;
 }
 
 .showreel__tab-title {
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   font-weight: 700;
-  color: rgba(244,244,242,0.6);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  color: rgba(244, 244, 242, 0.75);
+  line-height: 1.3;
   transition: color var(--transition);
 }
 
@@ -1350,117 +1432,102 @@
 }
 
 .showreel__tab-sub {
-  font-size: 0.65rem;
-  color: rgba(244,244,242,0.3);
-  letter-spacing: 0.04em;
-}
-
-.showreel__tab-play {
-  width: 28px;
-  height: 28px;
-  flex-shrink: 0;
-  color: rgba(255,255,255,0.25);
+  font-size: 0.68rem;
+  color: rgba(244, 244, 242, 0.35);
+  letter-spacing: 0.03em;
   transition: color var(--transition);
 }
 
-.showreel__tab.active .showreel__tab-play,
-.showreel__tab:hover .showreel__tab-play {
+.showreel__tab.active .showreel__tab-sub {
+  color: rgba(244, 244, 242, 0.55);
+}
+
+/* Footer: Status (Now Playing / Play Video) + Play icon */
+.showreel__tab-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.showreel__tab.active .showreel__tab-footer {
+  border-top-color: rgba(44, 179, 46, 0.15);
+}
+
+.showreel__tab-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(244, 244, 242, 0.3);
+  transition: color var(--transition);
+}
+
+.showreel__tab-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all var(--transition);
+}
+
+.showreel__tab.active .showreel__tab-status {
   color: #2CB32E;
 }
 
-/* ── Full-width 6th tab for LB Finance Nallur Documentary (Desktop & Tablet) ── */
-@media (min-width: 768px) {
-  .showreel__tab--full,
-  .showreel__tab:nth-child(6) {
-    grid-column: 1 / -1;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.15rem 1.5rem;
-    text-align: center;
-  }
-
-  .showreel__tab--full .showreel__tab-num {
-    position: absolute;
-    left: 1.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  .showreel__tab--full .showreel__tab-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-  }
-
-  .showreel__tab--full .showreel__tab-title {
-    font-size: 0.88rem;
-    text-align: center;
-    color: rgba(244,244,242,0.85);
-  }
-
-  .showreel__tab--full.active .showreel__tab-title {
-    color: #F4F4F2;
-  }
-
-  .showreel__tab--full .showreel__tab-sub {
-    font-size: 0.7rem;
-    text-align: center;
-  }
-
-  .showreel__tab-tag {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.22rem 0.65rem;
-    border-radius: 20px;
-    background: rgba(44, 179, 46, 0.12);
-    border: 1px solid rgba(44, 179, 46, 0.3);
-    color: #2CB32E;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    flex-shrink: 0;
-    position: absolute;
-    right: calc(1.5rem + 36px);
-    top: 50%;
-    transform: translateY(-50%);
-    margin-right: 0;
-  }
-
-  .showreel__tab--full .showreel__tab-play {
-    position: absolute;
-    right: 1.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-  }
+.showreel__tab.active .showreel__tab-dot {
+  background: #2CB32E;
+  box-shadow: 0 0 8px rgba(44, 179, 46, 0.9);
+  animation: pulse-dot 1.8s infinite ease-in-out;
 }
 
-/* Tablet adjustments (768px – 960px) so 5 tabs fit smoothly */
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.35); opacity: 0.6; }
+}
+
+.showreel__tab:hover:not(.active) .showreel__tab-status {
+  color: rgba(244, 244, 242, 0.6);
+}
+
+.showreel__tab-play-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: rgba(255, 255, 255, 0.25);
+  transition: all var(--transition);
+}
+
+.showreel__tab-play-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.showreel__tab:hover .showreel__tab-play-icon {
+  color: #2CB32E;
+  transform: scale(1.12);
+}
+
+.showreel__tab.active .showreel__tab-play-icon {
+  color: #2CB32E;
+}
+
+/* ── Tablet adjustments (768px – 960px) ──────── */
 @media (min-width: 768px) and (max-width: 960px) {
-  .showreel__tab {
-    padding: 0.9rem 0.65rem;
-    gap: 0.4rem;
-  }
-  .showreel__tab-num {
-    font-size: 0.6rem;
-  }
-  .showreel__tab-title {
-    font-size: 0.74rem;
-  }
-  .showreel__tab-sub {
-    font-size: 0.58rem;
-  }
-  .showreel__tab-play {
-    width: 20px;
-    height: 20px;
+  .showreel__tabs {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
   }
 }
 
-/* ── Mobile (≤ 767px) ────────────────────────── */
+/* ── Mobile (≤ 767px) — Studio Tracklist ──────── */
 @media (max-width: 767px) {
   .showreel__play-btn {
     width: 60px;
@@ -1472,10 +1539,11 @@
     height: 22px;
   }
 
-  /* Card: break out of container padding so iframe has full viewport width */
+  /* Break player out to screen edges for cinematic full-bleed view */
   .showreel__player {
     margin-left: -1rem;
     margin-right: -1rem;
+    margin-bottom: 1.25rem;
   }
 
   .showreel__card {
@@ -1485,54 +1553,229 @@
     min-height: clamp(200px, 56.25vw, 360px);
   }
 
+  /* Sleek, Single-Column Studio Tracklist */
   .showreel__tabs {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    margin-top: 1.25rem;
+    padding: 0 1rem;
+    max-width: 100%;
+  }
+
+  .showreel__tab {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.85rem;
+    padding: 0.75rem 0.95rem;
+    min-height: 62px;
+    border-radius: 12px;
+    background: rgba(14, 21, 17, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .showreel__tab:hover {
+    transform: none;
+    background: rgba(18, 28, 22, 0.85);
+    border-color: rgba(44, 179, 46, 0.35);
+  }
+
+  .showreel__tab.active {
+    background: linear-gradient(90deg, rgba(20, 38, 27, 0.96) 0%, rgba(12, 22, 16, 0.92) 100%);
+    border-color: rgba(44, 179, 46, 0.55);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 18px rgba(44, 179, 46, 0.12);
+  }
+
+  /* Glowing vertical emerald indicator bar on the left edge */
+  .showreel__tab-bar {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    width: 3.5px;
+    height: 100%;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.25s ease;
+    box-shadow: 0 0 10px rgba(44, 179, 46, 0.8);
+  }
+
+  .showreel__tab.active .showreel__tab-bar {
+    transform: scaleY(1);
+  }
+
+  /* Track Number Badge: Compact 34x34 frosted chip */
+  .showreel__tab-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    flex-shrink: 0;
+    margin-bottom: 0;
+  }
+
+  .showreel__tab-num {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: rgba(244, 244, 242, 0.45);
+  }
+
+  .showreel__tab.active .showreel__tab-top {
+    background: rgba(44, 179, 46, 0.15);
+    border-color: rgba(44, 179, 46, 0.4);
+  }
+
+  .showreel__tab.active .showreel__tab-num {
+    color: #2CB32E;
   }
 
   .showreel__tab-tag {
     display: none;
   }
 
-  .showreel__tab {
-    padding: 0.85rem 0.5rem;
-    justify-content: center;
-    text-align: center;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.25rem;
-  }
-
-  .showreel__tab-num {
-    font-size: 0.55rem;
-  }
-
+  /* Info block: Title & Subtitle */
   .showreel__tab-info {
+    flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 0.15rem;
-    width: 100%;
+    gap: 0.2rem;
+    margin-bottom: 0;
   }
 
   .showreel__tab-title {
-    font-size: 0.7rem;
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: rgba(244, 244, 242, 0.88);
     line-height: 1.25;
-    text-align: center;
-    white-space: normal;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+    white-space: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .showreel__tab.active .showreel__tab-title {
+    color: #FFFFFF;
   }
 
   .showreel__tab-sub {
-    font-size: 0.58rem;
-    text-align: center;
+    font-size: 0.68rem;
+    color: rgba(244, 244, 242, 0.42);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  .showreel__tab-play {
+  .showreel__tab.active .showreel__tab-sub {
+    color: rgba(44, 179, 46, 0.85);
+  }
+
+  /* Footer Action area: Status & Play Icon */
+  .showreel__tab-footer {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-top: 0;
+    border-top: none;
+    width: auto;
+  }
+
+  /* Inactive state: hide status text, show clean circular play icon */
+  .showreel__tab:not(.active) .showreel__tab-status {
     display: none;
+  }
+
+  .showreel__tab:not(.active) .showreel__tab-play-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(244, 244, 242, 0.45);
+    transition: all var(--transition);
+  }
+
+  .showreel__tab:not(.active) .showreel__tab-play-icon svg {
+    width: 13px;
+    height: 13px;
+    margin-left: 1px;
+  }
+
+  /* Active state: show luminous NOW PLAYING badge, hide play icon */
+  .showreel__tab.active .showreel__tab-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #2CB32E;
+    background: rgba(44, 179, 46, 0.15);
+    border: 1px solid rgba(44, 179, 46, 0.4);
+    padding: 0.3rem 0.65rem;
+    border-radius: 20px;
+  }
+
+  .showreel__tab.active .showreel__tab-play-icon {
+    display: none;
+  }
+
+  .showreel__tab-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #2CB32E;
+    box-shadow: 0 0 8px rgba(44, 179, 46, 0.9);
+    animation: pulse-dot 1.8s infinite ease-in-out;
+  }
+
+  .showreel__meta-direct {
+    font-size: 0.6rem;
+    padding: 0.28rem 0.65rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .showreel__tabs {
+    padding: 0 0.75rem;
+  }
+  .showreel__tab {
+    padding: 0.65rem 0.8rem;
+    gap: 0.65rem;
+  }
+  .showreel__tab-top {
+    width: 30px;
+    height: 30px;
+  }
+  .showreel__tab-num {
+    font-size: 0.68rem;
+  }
+  .showreel__tab-title {
+    font-size: 0.8rem;
+  }
+  .showreel__tab-sub {
+    font-size: 0.64rem;
+  }
+  .showreel__tab.active .showreel__tab-status {
+    font-size: 0.58rem;
+    padding: 0.25rem 0.5rem;
   }
 }
 

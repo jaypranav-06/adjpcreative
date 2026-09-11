@@ -56,10 +56,18 @@
   }
 
   // Active link
-  const path = window.location.pathname.split('/').pop() || 'index.html';
+  var currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+  var pageName = currentPath.split('/').pop().replace('.html', '') || 'home';
+  if (currentPath === '/') pageName = 'home';
+
   document.querySelectorAll('.nav__links a, .nav__mobile-links a').forEach(function (link) {
-    const href = link.getAttribute('href');
-    if (href === path || (path === '' && href === 'index.html')) {
+    var href = link.getAttribute('href');
+    if (!href) return;
+    var linkTarget = href.split('#')[0].replace(/\/$/, '') || '/';
+    var linkName = linkTarget.split('/').pop().replace('.html', '') || 'home';
+    if (linkTarget === '/' || linkTarget === '') linkName = 'home';
+
+    if (linkName === pageName) {
       link.classList.add('active');
     }
   });

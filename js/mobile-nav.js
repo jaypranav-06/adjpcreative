@@ -47,10 +47,18 @@
   });
 
   // Mark active page
-  var page = window.location.pathname.split('/').pop() || 'index.html';
+  var currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+  var pageName = currentPath.split('/').pop().replace('.html', '') || 'home';
+  if (currentPath === '/') pageName = 'home';
+
   panel.querySelectorAll('.mob-nav-link').forEach(function (link) {
     var href = link.getAttribute('href');
-    if (href === page || (page === '' && href === 'index.html')) {
+    if (!href) return;
+    var linkTarget = href.split('#')[0].replace(/\/$/, '') || '/';
+    var linkName = linkTarget.split('/').pop().replace('.html', '') || 'home';
+    if (linkTarget === '/' || linkTarget === '') linkName = 'home';
+
+    if (linkName === pageName) {
       link.classList.add('active');
     }
   });

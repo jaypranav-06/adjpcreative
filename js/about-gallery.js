@@ -130,7 +130,8 @@
     var thumb = thumbEls[0];
     if (!thumb) return 92;
     var rect = thumb.getBoundingClientRect();
-    return isHorizontal() ? rect.width + 8 : rect.height + 10;
+    var gap = parseFloat(getComputedStyle(rail).gap) || (isHorizontal() ? 8 : 10);
+    return isHorizontal() ? rect.width + gap : rect.height + gap;
   }
 
   /* Build all thumbnail elements once */
@@ -292,5 +293,11 @@
     wheelTarget = Math.max(0, Math.min(rail.scrollHeight - rail.clientHeight, wheelTarget + e.deltaY * 0.8));
     if (!wheelRaf) wheelRaf = requestAnimationFrame(wheelTick);
   }, { passive: false });
+
+  /* Keep arrows and active scroll position dynamic across screen resize / orientation changes */
+  window.addEventListener('resize', function () {
+    syncArrows();
+    scrollToActive();
+  });
 
 })();

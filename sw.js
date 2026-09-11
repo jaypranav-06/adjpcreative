@@ -1,10 +1,11 @@
-var CACHE = 'adjp-v1';
+var CACHE = 'adjp-v3';
 
 var PRECACHE = [
   '/',
-  '/index.html',
-  '/about.html',
-  '/contact.html',
+  '/about',
+  '/contact',
+  '/portfolio',
+  '/blog',
   '/css/base.css',
   '/css/layout.css',
   '/css/components.css',
@@ -23,11 +24,40 @@ var PRECACHE = [
   '/assets/logo/ADJP favicon.png'
 ];
 
-/* Install — pre-cache shell assets */
+/* Helper to strip the 'redirected' flag from responses.
+   Chrome throws if a response with redirected: true is returned
+   to a navigation request whose redirect mode is 'manual'. */
+function cleanResponse(response) {
+  if (!response || !response.redirected) {
+    return Promise.resolve(response);
+  }
+  return response.blob().then(function (blob) {
+    return new Response(blob, {
+      headers: response.headers,
+      status: response.status,
+      statusText: response.statusText
+    });
+  });
+}
+
+/* Install — pre-cache shell assets with clean non-redirected responses */
 self.addEventListener('install', function (e) {
   e.waitUntil(
     caches.open(CACHE).then(function (cache) {
-      return cache.addAll(PRECACHE);
+      return Promise.all(
+        PRECACHE.map(function (url) {
+          return fetch(url, { redirect: 'follow' })
+            .then(function (res) {
+              if (!res.ok) return null;
+              return cleanResponse(res).then(function (clean) {
+                return cache.put(url, clean);
+              });
+            })
+            .catch(function () {
+              /* ignore single failure during precache */
+            });
+        })
+      );
     }).then(function () {
       return self.skipWaiting();
     })
@@ -48,7 +78,7 @@ self.addEventListener('activate', function (e) {
   );
 });
 
-/* Fetch — cache-first for shell, network-first for everything else */
+/* Fetch — network-first for navigation with cleanResponse, cache-first for static assets */
 self.addEventListener('fetch', function (e) {
   var req = e.request;
 
@@ -64,25 +94,50 @@ self.addEventListener('fetch', function (e) {
     return;
   }
 
+  /* Handle navigation requests (page loads) */
+  if (req.mode === 'navigate') {
+    e.respondWith(
+      fetch(req)
+        .then(function (response) {
+          return cleanResponse(response).then(function (clean) {
+            if (clean && clean.status === 200) {
+              var clone = clean.clone();
+              caches.open(CACHE).then(function (cache) {
+                cache.put(req, clone);
+              });
+            }
+            return clean;
+          });
+        })
+        .catch(function () {
+          /* Offline fallback */
+          return caches.match(req).then(function (cached) {
+            if (cached) return cleanResponse(cached);
+            return caches.match('/').then(function (root) {
+              return root ? cleanResponse(root) : null;
+            });
+          });
+        })
+    );
+    return;
+  }
+
+  /* Static assets: cache-first with cleanResponse fallback */
   e.respondWith(
     caches.match(req).then(function (cached) {
-      var networkFetch = fetch(req).then(function (response) {
+      if (cached) {
+        return cleanResponse(cached);
+      }
+
+      return fetch(req).then(function (response) {
         if (response && response.status === 200 && response.type === 'basic') {
           var clone = response.clone();
           caches.open(CACHE).then(function (cache) {
             cache.put(req, clone);
           });
         }
-        return response;
+        return cleanResponse(response);
       });
-
-      /* Return cache immediately if available, otherwise wait for network */
-      return cached || networkFetch;
-    }).catch(function () {
-      /* Offline fallback for navigation requests */
-      if (req.mode === 'navigate') {
-        return caches.match('/index.html');
-      }
     })
   );
 });

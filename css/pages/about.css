@@ -206,8 +206,8 @@
 /* ── CAREER GALLERY ──────────────────────────── */
 .about-gallery {
   display: flex;
-  gap: 14px;
-  align-items: stretch;
+  gap: 16px;
+  align-items: center;
 }
 
 /* Main preview panel */
@@ -276,10 +276,11 @@
 .about-gallery__rail-wrap {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
   flex-shrink: 0;
   align-items: center;
-  align-self: flex-start; /* don't stretch to image height */
+  justify-content: center;
+  align-self: center; /* dynamically center beside main preview */
 }
 
 /* Arrow buttons */
@@ -318,6 +319,7 @@
   flex-direction: column;
   gap: 10px;
   flex-shrink: 0;
+  position: relative;
   overflow-y: auto;
   overflow-x: hidden;
   height: calc(5 * 82px + 4 * 10px);
@@ -1217,9 +1219,22 @@
     border-left: 1px solid rgba(255,255,255,0.08);
   }
 
+  .about-gallery {
+    max-width: 620px;
+    margin: 0 auto;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .about-gallery__rail-wrap {
+    align-self: center;
+  }
   .gallery-thumb {
     width: 68px;
     height: 68px;
+  }
+  .about-gallery__rail {
+    height: calc(5 * 68px + 4 * 10px);
   }
   .gallery-arrow {
     width: 32px;
@@ -1366,9 +1381,11 @@
 
   /* ── Gallery: image full-width, thumbs horizontal strip below ── */
   .about-gallery {
+    display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
     width: 100%;
+    max-width: 100%;
   }
 
   .about-gallery__main {
@@ -1377,31 +1394,34 @@
     border-radius: 12px;
   }
 
-  /* Rail-wrap becomes a full-width row: arrow | scrollable rail | arrow */
+  /* Rail-wrap: cleanly aligned to match the main preview image */
   .about-gallery__rail-wrap {
+    display: flex;
     flex-direction: row;
     align-items: center;
-    align-self: stretch;
+    justify-content: space-between;
     width: 100%;
-    gap: 4px;
-    /* Break out of panel inner padding so arrows never clip */
-    margin-left: calc(-1 * clamp(16px, 4vw, 24px));
-    margin-right: calc(-1 * clamp(16px, 4vw, 24px));
-    padding-left: 8px;
-    padding-right: 8px;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    gap: 8px;
   }
 
   .about-gallery__rail {
+    display: flex;
     flex-direction: row;
+    align-items: center;
+    position: relative;
     /* reset desktop height; flex:1 fills remaining width */
-    height: 60px;
+    height: 64px;
     width: 0;          /* allow flex:1 to size it */
-    flex: 1 1 0;
+    flex: 1 1 auto;
     min-width: 0;
     overflow-x: auto;
     overflow-y: hidden;
-    padding-right: 0;
-    padding-bottom: 0;
+    margin: 0;
+    padding: 0;
     gap: 8px;
     scroll-behavior: smooth;
     scrollbar-width: none;
@@ -1424,12 +1444,15 @@
   /* Marker moves below the thumb on horizontal rail */
   .gallery-thumb__marker {
     right: auto;
-    bottom: -7px;
+    bottom: -6px;
     top: auto;
     left: 50%;
     transform: translateX(-50%);
     width: 20px;
-    height: 2px;
+    height: 2.5px;
+    background: #2CB32E;
+    border-radius: 2px;
+    box-shadow: 0 0 6px rgba(44, 179, 46, 0.8);
   }
 
   .gallery-thumb:hover {
@@ -1437,13 +1460,18 @@
   }
 
   .gallery-arrow {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
     flex-shrink: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
   }
 
   .gallery-arrow--up  { transform: rotate(-90deg); }
-  .gallery-arrow--down { transform: rotate(90deg); }
+  .gallery-arrow--down { transform: rotate(-90deg); }
 
   /* ── Stats: 2-column grid, tighter text ── */
   .about-stats .stat__number {
@@ -1583,13 +1611,18 @@
     margin-bottom: 0;
   }
 
+  .about-gallery__rail-wrap {
+    gap: 6px;
+  }
+
   .gallery-thumb {
     width: 46px;
     height: 46px;
   }
 
   .about-gallery__rail {
-    height: 54px;
+    height: 56px;
+    gap: 6px;
   }
 
   .gallery-arrow {
