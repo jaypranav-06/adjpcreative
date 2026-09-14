@@ -12,15 +12,18 @@
   height: var(--nav-height);
   background-color: transparent;
   border-bottom: 1px solid transparent;
-  transition: border-color var(--transition), box-shadow var(--transition), background-color var(--transition);
+  transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav--scrolled {
-  background-color: transparent;
-  border-bottom-color: transparent;
-  box-shadow: none;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
+  background-color: #040A08;
+  background-color: rgba(4, 10, 8, 0.96);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 .nav__inner {
@@ -818,6 +821,19 @@ body.page--dark .client-logo-item:hover {
 }
 
 @media (max-width: 768px) {
+  /* Prevent content peeking through top notch gap while scrolling */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: calc(max(14px, env(safe-area-inset-top)) + 14px);
+    background: linear-gradient(to bottom, rgba(4, 10, 8, 0.95) 40%, rgba(4, 10, 8, 0) 100%);
+    pointer-events: none;
+    z-index: 1090;
+  }
+
   .mob-header {
     display: block;
     position: fixed;
@@ -828,12 +844,21 @@ body.page--dark .client-logo-item:hover {
     width: calc(100% - clamp(24px, 7vw, 44px));
     max-width: 720px;
     border-radius: clamp(16px, 5vw, 26px);
-    background: rgba(4, 10, 8, 0.92);
+    background: #040A08;
+    background: rgba(4, 10, 8, 0.98);
     border: 1px solid rgba(255, 255, 255, 0.16);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    box-shadow: 0 14px 38px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 14px 38px rgba(0, 0, 0, 0.45);
     overflow: hidden;
+    transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .mob-header--scrolled {
+    background: #040A08;
+    background: rgba(4, 10, 8, 0.98);
+    border-color: rgba(255, 255, 255, 0.24);
+    box-shadow: 0 14px 38px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.08);
   }
 
   .mob-header__bar {

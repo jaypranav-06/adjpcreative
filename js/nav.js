@@ -6,7 +6,8 @@
 
   // Scroll state
   function onScroll() {
-    if (window.scrollY > 50) {
+    if (!nav) return;
+    if (window.scrollY > 20) {
       nav.classList.add('nav--scrolled');
     } else {
       nav.classList.remove('nav--scrolled');

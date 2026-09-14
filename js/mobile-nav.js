@@ -9,6 +9,18 @@
 
   var isOpen = false;
 
+  // Scroll state
+  function onScroll() {
+    if (!header) return;
+    if (window.scrollY > 20) {
+      header.classList.add('mob-header--scrolled');
+    } else {
+      header.classList.remove('mob-header--scrolled');
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
   function openMenu() {
     isOpen = true;
     header.classList.add('is-open');

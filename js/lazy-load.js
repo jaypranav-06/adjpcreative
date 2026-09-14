@@ -195,38 +195,51 @@
     }
   }
 
-  // Tab click
+  function switchTab(tab) {
+    if (!tab) return;
+    tabs.forEach(function (t) {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+    handleTab(tab);
+  }
+
+  // Tab click listeners
   tabs.forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      tabs.forEach(function (t) {
-        t.classList.remove('active');
-        t.setAttribute('aria-selected', 'false');
-        var txt = t.querySelector('.showreel__tab-status-text');
-        if (txt) txt.textContent = 'Play Video';
-      });
-      tab.classList.add('active');
-      tab.setAttribute('aria-selected', 'true');
-      var curTxt = tab.querySelector('.showreel__tab-status-text');
-      if (curTxt) curTxt.textContent = 'Now Playing';
-      handleTab(tab);
+    tab.addEventListener('click', function (e) {
+      e.preventDefault();
+      switchTab(tab);
     });
   });
+
+  // Event delegation on container for responsive / mobile tap handling
+  var tabsContainer = document.querySelector('.showreel__tabs');
+  if (tabsContainer) {
+    tabsContainer.addEventListener('click', function (e) {
+      var tab = e.target.closest('.showreel__tab');
+      if (tab) {
+        e.preventDefault();
+        switchTab(tab);
+      }
+    });
+  }
 
   // Main play button triggers active tab
   var mainPlay = document.getElementById('showreel-main-play');
   if (mainPlay) {
-    mainPlay.addEventListener('click', function () {
-      var active = document.querySelector('.showreel__tab.active');
-      if (active) active.click();
+    mainPlay.addEventListener('click', function (e) {
+      e.preventDefault();
+      var active = document.querySelector('.showreel__tab.active') || tabs[0];
+      if (active) switchTab(active);
     });
   }
 
   // Auto-load first tab on page load
-  var firstTab = document.querySelector('.showreel__tab.active');
+  var firstTab = document.querySelector('.showreel__tab.active') || tabs[0];
   if (firstTab) {
-    var curTxt = firstTab.querySelector('.showreel__tab-status-text');
-    if (curTxt) curTxt.textContent = 'Now Playing';
-    handleTab(firstTab);
+    switchTab(firstTab);
   }
 
 })();

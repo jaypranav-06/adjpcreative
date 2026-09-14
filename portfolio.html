@@ -3,23 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ADJP Creative portfolio — Brand commercials, feature films, jingles, and campaigns across Brands & Corporates, Finance, Textile, Jewellery, and more.">
-  <title>Portfolio — ADJP Creative</title>
+  <meta name="description" content="Explore the portfolio of ADJP Creative (adjpcreative) and Managing Director Sruthiy Prabha — featuring TV commercials, brand jingles, and feature films.">
+  <meta name="keywords" content="adjp portfolio, adjp creative portfolio, adjpcreative, sruthiy prabha films, brand commercials sri lanka, commercials chennai, jingles portfolio">
+  <title>Portfolio — ADJP Creative | Commercials, Films &amp; Jingles by Sruthiy Prabha</title>
   <link rel="canonical" href="https://adjpcreative.com/portfolio">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="ADJP Creative">
   <meta property="og:url" content="https://adjpcreative.com/portfolio">
-  <meta property="og:title" content="Portfolio — ADJP Creative">
-  <meta property="og:description" content="ADJP Creative portfolio — Brand commercials, feature films, jingles, and campaigns across Brands & Corporates, Finance, Textile, Jewellery, and more.">
+  <meta property="og:title" content="Portfolio — ADJP Creative | Commercials, Films &amp; Jingles by Sruthiy Prabha">
+  <meta property="og:description" content="Explore the portfolio of ADJP Creative (adjpcreative) and Managing Director Sruthiy Prabha — featuring TV commercials, brand jingles, and feature films.">
   <meta property="og:image" content="https://adjpcreative.com/assets/images/Background%20IMage%20for%20Home.png">
   <meta property="og:locale" content="en_US">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Portfolio — ADJP Creative">
-  <meta name="twitter:description" content="ADJP Creative portfolio — Brand commercials, feature films, jingles, and campaigns across Brands & Corporates, Finance, Textile, Jewellery, and more.">
+  <meta name="twitter:title" content="Portfolio — ADJP Creative | Commercials, Films &amp; Jingles by Sruthiy Prabha">
+  <meta name="twitter:description" content="Explore the portfolio of ADJP Creative (adjpcreative) and Managing Director Sruthiy Prabha — featuring TV commercials, brand jingles, and feature films.">
   <meta name="twitter:image" content="https://adjpcreative.com/assets/images/Background%20IMage%20for%20Home.png">
   <link rel="icon" type="image/png" href="assets/logo/Favicon ADJP new .png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,38 +30,88 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/pages/portfolio.css">
+
+  <!-- Structured Data (Schema.org) for Portfolio CollectionPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": "https://adjpcreative.com/portfolio#webpage",
+        "url": "https://adjpcreative.com/portfolio",
+        "name": "Portfolio — ADJP Creative",
+        "description": "Showcase of brand commercials, feature films, and jingles produced by ADJP Creative and directed by Sruthiy Prabha.",
+        "isPartOf": {
+          "@id": "https://adjpcreative.com/#website"
+        }
+      },
+      {
+        "@type": ["Organization", "ProfessionalService"],
+        "@id": "https://adjpcreative.com/#organization",
+        "name": "ADJP Creative",
+        "alternateName": ["ADJP", "adjpcreative", "ADJP Creative Agency", "ADJP Productions"],
+        "url": "https://adjpcreative.com/",
+        "founder": {
+          "@type": "Person",
+          "name": "Sruthiy Prabha",
+          "jobTitle": "Managing Director"
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body class="page--dark">
 
   <!-- NAV -->
   <header class="nav" role="banner">
     <div class="container nav__inner">
-      <a href="/" class="nav__logo" aria-label="ADJP Creative home">
-        <img src="assets/logo/ADJP Logo for Dark Background Transparent.png" alt="ADJP Creative" class="nav__logo-img">
+      <a href="index.html" class="nav__logo" aria-label="ADJP Creative home">
+        <img src="assets/logo/ADJP Logo for Dark Background Transparent.png" alt="ADJP Creative - Advertising &amp; Film Production by Sruthiy Prabha" class="nav__logo-img">
       </a>
       <nav class="nav__links" aria-label="Primary navigation">
-        <a href="/">Home</a>
-        <!-- <a href="portfolio">Portfolio</a> -->
-        <a href="about">About</a>
-        <!-- <a href="blog">Blog</a> -->
+        <a href="index.html">Home</a>
+        <!-- <a href="portfolio.html">Portfolio</a> -->
+        <a href="about.html">About</a>
+        <!-- <a href="blog.html">Blog</a> -->
       </nav>
-      <a href="contact" class="btn btn--primary btn--sm nav__cta">Get in Touch</a>
+      <a href="contact.html" class="btn btn--primary btn--sm nav__cta">Get in Touch</a>
       <button class="nav__hamburger" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
   </header>
-  <div class="nav__mobile" aria-hidden="true">
-    <nav class="nav__mobile-links">
-      <a href="/">Home</a>
-      <!-- <a href="portfolio">Portfolio</a> -->
-      <a href="about">About</a>
-      <!-- <a href="blog">Blog</a> -->
-    </nav>
-    <div class="nav__mobile-cta">
-      <a href="contact" class="btn btn--primary" style="width:100%;justify-content:center;">Get in Touch</a>
+  <!-- MOBILE FLOATING HEADER (≤768px only) -->
+  <header class="mob-header" id="mob-header" role="banner" aria-label="Mobile navigation">
+    <div class="mob-header__bar">
+      <a href="index.html" class="mob-header__logo" aria-label="ADJP Creative home">
+        <img src="assets/logo/ADJP Logo for Dark Background Transparent.png" alt="ADJP Creative - Advertising &amp; Film Production by Sruthiy Prabha">
+      </a>
+      <a href="contact.html" class="mob-header__cta">Get in Touch</a>
+      <button class="mob-header__toggle" id="mobNavToggle"
+        aria-expanded="false"
+        aria-controls="mob-nav-panel"
+        aria-label="Open navigation">
+        <span class="mob-toggle__line"></span>
+        <span class="mob-toggle__line"></span>
+        <span class="mob-toggle__line"></span>
+      </button>
     </div>
-  </div>
+    <nav class="mob-nav-panel" id="mob-nav-panel" aria-hidden="true">
+      <div class="mob-nav-panel-inner">
+        <a href="index.html" class="mob-nav-link" data-page="home">
+          <span>Home</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+        <a href="about.html" class="mob-nav-link" data-page="about">
+          <span>About</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+        <a href="contact.html" class="mob-nav-cta">Get in Touch</a>
+      </div>
+    </nav>
+  </header>
 
   <main>
 
@@ -427,7 +478,7 @@
     <section class="cta-banner" aria-labelledby="port-cta-heading">
       <h2 id="port-cta-heading" class="anim-slide-up">Let's create together</h2>
       <p class="anim-fade-in">Ready to bring your brand to life? We'd love to hear your brief.</p>
-      <a href="contact" class="btn btn--outline-white btn--lg">Start a Project</a>
+      <a href="contact.html" class="btn btn--outline-white btn--lg">Start a Project</a>
     </section>
 
   </main>
@@ -437,23 +488,23 @@
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">
-          <img src="assets/logo/ADJP Logo for Dark Background Transparent.png" alt="ADJP Creative" class="footer__logo-img">
-          <p>A creative production company with 35+ years of experience making brand stories, award-winning films, and campaigns that make a real difference.</p>
+          <img src="assets/logo/ADJP Logo for Dark Background Transparent.png" alt="ADJP Creative - Advertising &amp; Film Production by Sruthiy Prabha" class="footer__logo-img">
+          <p>ADJP Creative (adjpcreative) is an independent creative agency and production house led by Managing Director <strong>Sruthiy Prabha</strong>, crafting TV commercials, brand jingles, and feature films for 35+ years.</p>
         </div>
         <div>
           <p class="footer__col-title">Quick Links</p>
           <ul class="footer__col-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="about">About</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
           </ul>
         </div>
         <div>
           <p class="footer__col-title">Categories</p>
           <ul class="footer__col-links">
-            <li><a href="portfolio">Brands &amp; Corporates</a></li>
-            <li><a href="portfolio">Finance</a></li>
-            <li><a href="portfolio">Jewellery</a></li>
-            <li><a href="portfolio">Feature Films</a></li>
+            <li><a href="portfolio.html?filter=fnb">Brands &amp; Corporates</a></li>
+            <li><a href="portfolio.html?filter=finance">Finance</a></li>
+            <li><a href="portfolio.html?filter=jewellery">Jewellery</a></li>
+            <li><a href="portfolio.html?filter=films">Feature Films</a></li>
           </ul>
         </div>
         <div>
@@ -464,7 +515,7 @@
         </div>
       </div>
       <div class="footer__bottom">
-        <p>&copy; 2024 ADJP Creative. All rights reserved.</p>
+        <p>&copy; 2024 ADJP Creative (adjpcreative.com). Founded by Sruthiy Prabha. All rights reserved.</p>
         <p>Built with passion &amp; purpose.</p>
       </div>
     </div>
@@ -477,6 +528,7 @@
   <script src="js/lazy-load.js"></script>
   <script src="js/animations.js"></script>
   <script src="js/portfolio-filter.js"></script>
+  <script src="js/mobile-nav.js"></script>
 <script src="js/btn-ripple.js"></script>
 </body>
 </html>

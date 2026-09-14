@@ -5,103 +5,103 @@
     {
       title: 'MD OF ADJP CREATIVE — SRUTHIY PRABHA',
       src:   'assets/images/Profile%20Picture/Sruthiy%20Prabha%2010.jpg',
-      alt:   'Portrait of Sruthiy Prabha'
+      alt:   'Sruthiy Prabha — Music Director, Filmmaker & Managing Director of ADJP Creative'
     },
     {
       title: 'MD OF ADJP CREATIVE — SRUTHIY PRABHA',
       src:   'assets/images/Profile%20Picture/Sruthiy%20Prabha%206.jpg',
-      alt:   'Portrait of Sruthiy Prabha 6'
+      alt:   'Sruthiy Prabha — Founder & Managing Director, ADJP Creative (adjpcreative)'
     },
     {
       title: 'LB FINANCE BTS',
       src:   'assets/images/behind%20the%20scenes%20images/Jaffna%203.jpg',
-      alt:   'Behind the scenes — Jaffna'
+      alt:   'Sruthiy Prabha directing LB Finance commercial in Jaffna — ADJP Creative'
     },
     {
       title: 'LB FINANCE BTS',
       src:   'assets/images/behind%20the%20scenes%20images/jaffna%2012.jpg',
-      alt:   'Behind the scenes — Jaffna 12'
+      alt:   'ADJP Creative behind the scenes — LB Finance commercial directed by Sruthiy Prabha'
     },
     {
       title: 'LB FINANCE BTS',
       src:   'assets/images/behind%20the%20scenes%20images/jaffna%2014.jpg',
-      alt:   'Behind the scenes — Jaffna 14'
+      alt:   'Sruthiy Prabha film production for LB Finance — ADJP Creative'
     },
     {
       title: 'LB FINANCE BTS',
       src:   'assets/images/behind%20the%20scenes%20images/jaffna%2017.jpg',
-      alt:   'Behind the scenes — Jaffna 17'
+      alt:   'Commercial shoot set in Jaffna by ADJP Creative and Sruthiy Prabha'
     },
     {
       title: 'LB FINANCE BTS',
       src:   'assets/images/behind%20the%20scenes%20images/jaffna%2018.jpg',
-      alt:   'Behind the scenes — Jaffna 18'
+      alt:   'ADJP Creative production crew and director Sruthiy Prabha on location'
     },
     {
       title: 'MADHAVI',
       src:   'assets/images/behind%20the%20scenes%20images/Madhavi%202.jpg',
-      alt:   'Behind the scenes — Madhavi'
+      alt:   'Sruthiy Prabha directing Shree Madhavi Jewellers commercial — ADJP Creative'
     },
     {
       title: 'MADHAVI',
       src:   'assets/images/behind%20the%20scenes%20images/Madhavi%207.jpg',
-      alt:   'Behind the scenes — Madhavi 7'
+      alt:   'Commercial shoot for Madhavi Jewellers by ADJP Creative'
     },
     {
       title: 'MUTHU KARUPPAN',
       src:   'assets/images/behind%20the%20scenes%20images/muthu%20karuppan%201.jpg',
-      alt:   'Behind the scenes — Muthu Karuppan'
+      alt:   'Sruthiy Prabha on set for Muthu Karuppan production — ADJP Creative'
     },
     {
       title: 'MUTHU KARUPPAN',
       src:   'assets/images/behind%20the%20scenes%20images/muthu%20karuppan%202.jpg',
-      alt:   'Behind the scenes — Muthu Karuppan 2'
+      alt:   'Film production by ADJP Creative and director Sruthiy Prabha'
     },
     {
       title: 'ONDIKKU ONDI',
       src:   'assets/images/behind%20the%20scenes%20images/Ondikku%20ondi.jpg',
-      alt:   'Feature film — Ondikku Ondi'
+      alt:   'Sruthiy Prabha music director for South Indian feature film Ondikku Ondi — ADJP Creative'
     },
     {
       title: 'PADHANY',
       src:   'assets/images/behind%20the%20scenes%20images/padhany.jpg',
-      alt:   'Feature film — Padhany'
+      alt:   'Music Director Sruthiy Prabha composing for feature film Padhany — ADJP Creative'
     },
     {
       title: 'PLMTT',
       src:   'assets/images/behind%20the%20scenes%20images/PLMTT%202.jpg',
-      alt:   'Production — PLMTT'
+      alt:   'PLMTT commercial shoot directed by Sruthiy Prabha — ADJP Creative'
     },
     {
       title: 'PLMTT',
       src:   'assets/images/behind%20the%20scenes%20images/PLMTT%203.jpg',
-      alt:   'Production — PLMTT 3',
+      alt:   'Commercial production for PLMTT Jewellers by ADJP Creative',
       position: 'right center'
     },
     {
       title: 'PLMTT',
       src:   'assets/images/behind%20the%20scenes%20images/PLMTT%205.jpg',
-      alt:   'Production — PLMTT 5'
+      alt:   'Sruthiy Prabha behind the scenes directing PLMTT campaign — ADJP Creative'
     },
     {
       title: 'PLMTT',
       src:   'assets/images/behind%20the%20scenes%20images/PLMTT%207.jpg',
-      alt:   'Production — PLMTT 7'
+      alt:   'Behind the scenes filming PLMTT with ADJP Creative production team'
     },
     {
       title: 'PLMTT',
       src:   'assets/images/behind%20the%20scenes%20images/PLMTT%208.jpg',
-      alt:   'Production — PLMTT 8'
+      alt:   'Director Sruthiy Prabha on camera set for PLMTT — ADJP Creative'
     },
     {
       title: 'PLMTT',
       src:   'assets/images/behind%20the%20scenes%20images/PLMTT%209.jpg',
-      alt:   'Production — PLMTT 9'
+      alt:   'ADJP Creative filming high-end jewellery commercial'
     },
     {
       title: 'CHENNAI',
       src:   'assets/images/behind%20the%20scenes%20images/shoot%20in%20chennai%203.jpg',
-      alt:   'Production shoot in Chennai'
+      alt:   'Director & Composer Sruthiy Prabha on film set in Chennai, India — ADJP Creative'
     }
   ];
 

@@ -1468,6 +1468,28 @@
   transition: color var(--transition);
 }
 
+.showreel__tab-status-text {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Dynamic status text swap governed by .active class */
+.showreel__tab .showreel__status-now {
+  display: none !important;
+}
+
+.showreel__tab .showreel__status-play {
+  display: inline !important;
+}
+
+.showreel__tab.active .showreel__status-now {
+  display: inline !important;
+}
+
+.showreel__tab.active .showreel__status-play {
+  display: none !important;
+}
+
 .showreel__tab-dot {
   width: 6px;
   height: 6px;

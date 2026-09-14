@@ -334,9 +334,12 @@
    PORTFOLIO — MOBILE OVERRIDES
    ============================================= */
 @media (max-width: 767px) {
-  /* Filter bar: scroll horizontally, don't wrap */
+  /* Filter bar: scroll horizontally, don't wrap, clear floating mobile header */
   .filter-bar {
     padding: 0.75rem 0;
+    top: calc(max(14px, env(safe-area-inset-top)) + clamp(58px, 15vw, 76px) + 8px);
+    background-color: #0D1512;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
   }
 
   .filter-bar__inner {

@@ -1,11 +1,12 @@
-var CACHE = 'adjp-v4';
+var CACHE = 'adjp-v6';
 
 var PRECACHE = [
   '/',
-  '/about',
-  '/contact',
-  '/portfolio',
-  '/blog',
+  '/index.html',
+  '/about.html',
+  '/contact.html',
+  '/portfolio.html',
+  '/blog.html',
   '/css/base.css',
   '/css/layout.css',
   '/css/components.css',
@@ -28,43 +29,31 @@ var PRECACHE = [
    Chrome throws if a response with redirected: true is returned
    to a navigation request whose redirect mode is 'manual'. */
 function cleanResponse(response) {
-  if (!response || !response.redirected) {
-    return Promise.resolve(response);
-  }
-  return response.blob().then(function (blob) {
-    return new Response(blob, {
-      headers: response.headers,
+  if (!response) return Promise.resolve(response);
+  if (!response.redirected) return Promise.resolve(response);
+
+  /* Reconstruct response from blob without redirected flag */
+  return response.blob().then(function (body) {
+    return new Response(body, {
       status: response.status,
-      statusText: response.statusText
+      statusText: response.statusText,
+      headers: response.headers
     });
   });
 }
 
-/* Install — pre-cache shell assets with clean non-redirected responses */
+/* Install — precache core assets */
 self.addEventListener('install', function (e) {
   e.waitUntil(
     caches.open(CACHE).then(function (cache) {
-      return Promise.all(
-        PRECACHE.map(function (url) {
-          return fetch(url, { redirect: 'follow' })
-            .then(function (res) {
-              if (!res.ok) return null;
-              return cleanResponse(res).then(function (clean) {
-                return cache.put(url, clean);
-              });
-            })
-            .catch(function () {
-              /* ignore single failure during precache */
-            });
-        })
-      );
+      return cache.addAll(PRECACHE);
     }).then(function () {
       return self.skipWaiting();
     })
   );
 });
 
-/* Activate — clear old caches */
+/* Activate — clean up old caches */
 self.addEventListener('activate', function (e) {
   e.waitUntil(
     caches.keys().then(function (keys) {
@@ -99,6 +88,21 @@ self.addEventListener('fetch', function (e) {
     e.respondWith(
       fetch(req)
         .then(function (response) {
+          // If server returned 404 for a clean URL (like python http.server),
+          // fallback to corresponding .html file
+          if (response && response.status === 404) {
+            var url = new URL(req.url);
+            var path = url.pathname.replace(/\/$/, '');
+            if (path && !path.endsWith('.html')) {
+              var htmlUrl = url.origin + path + '.html' + url.search;
+              return fetch(htmlUrl).then(function (fallbackResp) {
+                if (fallbackResp && fallbackResp.status === 200) {
+                  return cleanResponse(fallbackResp);
+                }
+                return cleanResponse(response);
+              });
+            }
+          }
           return cleanResponse(response).then(function (clean) {
             if (clean && clean.status === 200) {
               var clone = clean.clone();
@@ -111,9 +115,19 @@ self.addEventListener('fetch', function (e) {
         })
         .catch(function () {
           /* Offline fallback */
+          var url = new URL(req.url);
+          var path = url.pathname.replace(/\/$/, '');
           return caches.match(req).then(function (cached) {
             if (cached) return cleanResponse(cached);
-            return caches.match('/').then(function (root) {
+            if (path && !path.endsWith('.html')) {
+              return caches.match(path + '.html').then(function (htmlCached) {
+                if (htmlCached) return cleanResponse(htmlCached);
+                return caches.match('/index.html').then(function (root) {
+                  return root ? cleanResponse(root) : null;
+                });
+              });
+            }
+            return caches.match('/index.html').then(function (root) {
               return root ? cleanResponse(root) : null;
             });
           });
