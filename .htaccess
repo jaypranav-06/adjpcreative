@@ -2,6 +2,59 @@ Options -Indexes
 
 DirectoryIndex index.html
 
+# ── COMPRESSION ──────────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+# ── MIME TYPES ───────────────────────────────────────────────
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+  AddType video/mp4  .mp4
+</IfModule>
+
+# ── CACHE HEADERS ────────────────────────────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # Versioned CSS/JS (filenames contain ?v=N) — 1 year
+  <FilesMatch "\.(css|js)$">
+    ExpiresDefault "access plus 1 year"
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Images — 1 year (WebP + PNG/JPG kept as fallback)
+  <FilesMatch "\.(webp|png|jpg|jpeg|gif|svg|ico)$">
+    ExpiresDefault "access plus 1 year"
+    Header set Cache-Control "public, max-age=31536000"
+  </FilesMatch>
+
+  # Fonts — 1 year
+  <FilesMatch "\.(woff|woff2|ttf|otf|eot)$">
+    ExpiresDefault "access plus 1 year"
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Video — 1 month
+  <FilesMatch "\.(mp4|webm)$">
+    ExpiresDefault "access plus 1 month"
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+
+  # HTML — always revalidate so updates are seen immediately
+  <FilesMatch "\.html$">
+    ExpiresDefault "access plus 0 seconds"
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# ── SECURITY HEADERS ─────────────────────────────────────────
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
 RewriteEngine On
 
 # Force HTTPS
