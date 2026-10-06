@@ -23,9 +23,13 @@
   <meta name="twitter:description" content="ADJP Creative (adjpcreative / ADJP) is an advertising agency &amp; film production house founded by award-winning music director &amp; filmmaker Sruthiy Prabha. 35+ years crafting TV commercials, brand jingles, and feature films.">
   <meta name="twitter:image" content="https://adjpcreative.com/assets/images/Background%20IMage%20for%20Home.png">
   <link rel="icon" type="image/png" href="assets/logo/Favicon ADJP new .png">
+  <!-- Preload LCP image — browser fetches it immediately before parsing body -->
+  <link rel="preload" as="image" href="assets/images/Background IMage for Home.webp" type="image/webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Load font async to avoid render-blocking -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="css/base.css?v=3">
   <link rel="stylesheet" href="css/layout.css?v=3">
   <link rel="stylesheet" href="css/components.css?v=3">
@@ -229,7 +233,7 @@
       <div class="studio-bg" aria-hidden="true">
         <picture>
           <source srcset="assets/images/Background IMage for Home.webp" type="image/webp">
-          <img src="assets/images/Background IMage for Home.png" alt="ADJP Creative production studio — Colombo, Sri Lanka" class="studio-bg__img">
+          <img src="assets/images/Background IMage for Home.png" alt="ADJP Creative production studio — Colombo, Sri Lanka" class="studio-bg__img" fetchpriority="high" loading="eager" decoding="async">
         </picture>
         <!-- Looping video — shown during CAMERA and ACTION states -->
         <video class="studio-bg__video" src="assets/video/ADJP Background Loop.mp4" muted playsinline preload="none"></video>
