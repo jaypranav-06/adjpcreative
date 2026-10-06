@@ -41,16 +41,37 @@
       submitBtn.disabled = true;
     }
 
-    /* Simulate async submit — replace with real fetch when backend is ready */
-    setTimeout(function () {
-      form.style.display = 'none';
-      var privacyNote = document.querySelector('.ct-privacy');
-      if (privacyNote) privacyNote.style.display = 'none';
-      if (successMsg) {
-        successMsg.classList.add('visible');
-        successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    }, 600);
+    var payload = {
+      name:    (document.querySelector('#name')    || {}).value || '',
+      email:   (document.querySelector('#email')   || {}).value || '',
+      service: (document.querySelector('#service') || {}).value || '',
+      message: (document.querySelector('#message') || {}).value || '',
+    };
+
+    fetch('/send.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (data.ok) {
+          form.style.display = 'none';
+          var privacyNote = document.querySelector('.ct-privacy');
+          if (privacyNote) privacyNote.style.display = 'none';
+          if (successMsg) {
+            successMsg.classList.add('visible');
+            successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        } else {
+          showSubmitError('Something went wrong. Please email us directly at hello@adjpcreative.com');
+          if (submitBtn) { submitBtn.classList.remove('is-loading'); submitBtn.disabled = false; }
+        }
+      })
+      .catch(function () {
+        showSubmitError('Could not send message. Please email us directly at hello@adjpcreative.com');
+        if (submitBtn) { submitBtn.classList.remove('is-loading'); submitBtn.disabled = false; }
+      });
   });
 
   function validate() {
@@ -87,6 +108,16 @@
     }
 
     return valid;
+  }
+
+  function showSubmitError(msg) {
+    var existing = form.querySelector('.ct-submit-error');
+    if (existing) existing.remove();
+    var el = document.createElement('p');
+    el.className = 'ct-submit-error';
+    el.style.cssText = 'color:#e05454;margin-top:1rem;font-size:0.9rem;';
+    el.textContent = msg;
+    form.appendChild(el);
   }
 
   function showError(field, msg) {
