@@ -125,17 +125,18 @@ p {
 .text-muted { color: var(--color-text-muted); }
 .text-white { color: var(--color-white); }
 
-/* GSAP animation initial states */
-.anim-fade-in {
+/* GSAP animation initial states — only hide when JS has confirmed GSAP loaded.
+   Without this guard, a CDN timeout or ad-blocker leaves all content invisible. */
+.js-anim .anim-fade-in {
   opacity: 0;
 }
 
-.anim-slide-up {
+.js-anim .anim-slide-up {
   opacity: 0;
   transform: translateY(40px);
 }
 
-.anim-stagger-children > * {
+.js-anim .anim-stagger-children > * {
   opacity: 0;
   transform: translateY(30px);
 }

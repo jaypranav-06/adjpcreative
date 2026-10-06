@@ -561,6 +561,15 @@
   padding-bottom: var(--space-md);
 }
 
+.footer:not(:has(.footer__grid)) {
+  padding-top: var(--space-md);
+}
+
+.footer:not(:has(.footer__grid)) .footer__bottom {
+  border-top: none;
+  padding-top: 0;
+}
+
 .footer__grid {
   display: grid;
   gap: var(--space-md);

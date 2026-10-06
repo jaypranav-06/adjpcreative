@@ -1,16 +1,35 @@
 /* ANIMATIONS — GSAP ScrollTrigger setup */
 (function () {
-  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  /* Fallback: if GSAP didn't load, ensure nothing stays hidden */
+  function revealAll() {
+    document.documentElement.classList.remove('js-anim');
+  }
+
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+    revealAll();
+    return;
+  }
+
+  /* GSAP is available — enable CSS initial-hide states */
+  document.documentElement.classList.add('js-anim');
+
+  /* Safety net: if ScrollTrigger never fires within 4 s (e.g. layout stall),
+     reveal everything so content is never permanently hidden */
+  var safetyTimer = setTimeout(revealAll, 4000);
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // Default ScrollTrigger defaults
   ScrollTrigger.defaults({
     start: 'top 85%',
     once: true,
   });
 
-  // Fade-in elements
+  /* Clear safety timer once ScrollTrigger is actually processing */
+  ScrollTrigger.addEventListener('refresh', function () {
+    clearTimeout(safetyTimer);
+  });
+
+  /* Fade-in elements */
   gsap.utils.toArray('.anim-fade-in').forEach(function (el) {
     gsap.to(el, {
       opacity: 1,
@@ -20,7 +39,7 @@
     });
   });
 
-  // Slide-up elements
+  /* Slide-up elements */
   gsap.utils.toArray('.anim-slide-up').forEach(function (el) {
     gsap.to(el, {
       opacity: 1,
@@ -31,9 +50,9 @@
     });
   });
 
-  // Stagger children
+  /* Stagger children */
   gsap.utils.toArray('.anim-stagger-children').forEach(function (parent) {
-    const children = parent.children;
+    var children = parent.children;
     gsap.to(children, {
       opacity: 1,
       y: 0,
@@ -48,8 +67,8 @@
     });
   });
 
-  // Studio hero entrance — fade content in on load
-  const studioContent = document.querySelector('.studio-content');
+  /* Studio hero entrance */
+  var studioContent = document.querySelector('.studio-content');
   if (studioContent) {
     studioContent.style.opacity = '0';
     studioContent.style.transform = 'translateY(30px)';
@@ -62,11 +81,11 @@
     });
   }
 
-  // Counter animation for stat numbers
+  /* Counter animation for stat numbers */
   gsap.utils.toArray('.stat__number[data-count], .stat-card__number[data-count], .stat-item__number[data-count]').forEach(function (el) {
-    const target = parseInt(el.dataset.count, 10);
-    const suffix = el.dataset.suffix || '';
-    const obj = { val: 0 };
+    var target = parseInt(el.dataset.count, 10);
+    var suffix = el.dataset.suffix || '';
+    var obj = { val: 0 };
     el.textContent = '0' + suffix;
     ScrollTrigger.create({
       trigger: el,
@@ -89,13 +108,13 @@
     });
   });
 
-  // Page hero (non-home pages)
-  const pageHero = document.querySelector('.page-hero');
+  /* Page hero (non-home pages) */
+  var pageHero = document.querySelector('.page-hero');
   if (pageHero) {
-    const tl = gsap.timeline({ delay: 0.15 });
-    const label = pageHero.querySelector('.page-hero__label');
-    const heading = pageHero.querySelector('h1');
-    const sub = pageHero.querySelector('p');
+    var tl = gsap.timeline({ delay: 0.15 });
+    var label = pageHero.querySelector('.page-hero__label');
+    var heading = pageHero.querySelector('h1');
+    var sub = pageHero.querySelector('p');
     if (label) tl.from(label, { opacity: 0, x: -20, duration: 0.5, ease: 'power2.out' });
     if (heading) tl.from(heading, { opacity: 0, y: 24, duration: 0.6, ease: 'power2.out' }, '-=0.2');
     if (sub) tl.from(sub, { opacity: 0, y: 16, duration: 0.5, ease: 'power2.out' }, '-=0.2');

@@ -26,10 +26,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/pages/about.css?v=2.3">
+  <link rel="stylesheet" href="css/base.css?v=3">
+  <link rel="stylesheet" href="css/layout.css?v=3">
+  <link rel="stylesheet" href="css/components.css?v=3">
+  <link rel="stylesheet" href="css/pages/about.css?v=3">
 
   <!-- Structured Data (Schema.org) for About Page, Organization & Person -->
   <script type="application/ld+json">
@@ -92,7 +92,7 @@
         },
         "url": "https://adjpcreative.com/about",
         "image": "https://adjpcreative.com/assets/images/Profile%20Picture/Sruthiy%20Prabha%2010.jpg",
-        "description": "Sruthiy Prabha is an acclaimed music director, composer, and filmmaker with over 30 years of experience across radio (SLBC), South Indian cinema (Pathani, Ondikku Ondi), TV commercials, and feature films (Abhitha). Founder and Managing Director of ADJP Creative.",
+        "description": "Sruthiy Prabha is an acclaimed music director, composer, and filmmaker with over 35 years of experience across radio (SLBC), South Indian cinema (Pathani, Ondikku Ondi), TV commercials, and feature films (Abhitha). Founder and Managing Director of ADJP Creative.",
         "award": [
           "National Award for Best Music Direction (2009)",
           "Chinnathirai Tele Awards (2018)",
@@ -294,9 +294,12 @@
 
             <!-- Main large preview -->
             <div class="about-gallery__main" id="galleryMain">
-              <img class="about-gallery__img" id="galleryImg"
-                src="assets/images/Profile%20Picture/Sruthiy%20Prabha%2010.jpg"
-                alt="Sruthiy Prabha — Music Director, Filmmaker &amp; Managing Director of ADJP Creative">
+              <picture>
+                <source srcset="assets/images/Profile%20Picture/Sruthiy%20Prabha%2010.webp" type="image/webp">
+                <img class="about-gallery__img" id="galleryImg"
+                  src="assets/images/Profile%20Picture/Sruthiy%20Prabha%2010.jpg"
+                  alt="Sruthiy Prabha — Music Director, Filmmaker &amp; Managing Director of ADJP Creative">
+              </picture>
 
               <!-- Bottom-left label -->
               <div class="about-gallery__label" id="galleryLabel">
@@ -491,7 +494,7 @@
         <span class="bio-modal__label">About the Managing Director</span>
         <h2 id="bioModalTitle" class="bio-modal__heading">Sruthiy Prabha</h2>
         <div class="bio-modal__body">
-          <p>Sruthiy Prabha is a respected Sri Lankan music director, composer, and filmmaker with over 30 years of experience across radio, music, theatre, television, and cinema.</p>
+          <p>Sruthiy Prabha is a respected Sri Lankan music director, composer, and filmmaker with over 35 years of experience across radio, music, theatre, television, and cinema.</p>
           <p>His creative journey began at age six on the radio, where he first fell in love with music and the arts. He later trained in Hindustani music, Carnatic music, Western piano, and sound engineering. This strong training gave him a deep understanding of both how to create music and how to record it professionally.</p>
           <p>In 1991, Prabha formed the music band "Sruthiy," performing hit South Indian movie songs across Sri Lanka. Over the years, he worked and performed with famous artists and playback singers including Malaysia Vasudevan, P. Susheela, T. M. Soundararajan, Unnikrishnan, Velmurugan, Manorama, Deepan Chakravarthy, Sirkazhi Sivachidambaram, Karthik, Vijay Yesudas, S. P. B. Charan, Venkat Prabhu, and Yugendran. These experiences helped shape his musical style and built strong ties with the South Indian film music industry.</p>
           <p>By 1998, Prabha had composed and directed music for more than 100 light-music songs for the Sri Lanka Broadcasting Corporation (SLBC), building a reputation as a skilled and trusted music professional. He soon expanded into South Indian cinema, composing music for films including Pathani, Namma Ooru Pasakkara Pasanga, and Ondikku Ondi.</p>
@@ -559,13 +562,13 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="js/network.js"></script>
-  <script src="js/nav.js"></script>
-  <script src="js/lazy-load.js"></script>
-  <script src="js/animations.js"></script>
-  <script src="js/about-gallery.js?v=2.2"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" onerror="document.documentElement.classList.remove('js-anim')"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" onerror="document.documentElement.classList.remove('js-anim')"></script>
+  <script src="js/network.js?v=3"></script>
+  <script src="js/nav.js?v=3"></script>
+  <script src="js/lazy-load.js?v=3"></script>
+  <script src="js/animations.js?v=3"></script>
+  <script src="js/about-gallery.js?v=3"></script>
   <script>
     (function () {
       var frames = document.querySelectorAll('.reel-item__frame');
@@ -683,7 +686,7 @@
       });
     })();
   </script>
-  <script src="js/mobile-nav.js"></script>
-<script src="js/btn-ripple.js"></script>
+  <script src="js/mobile-nav.js?v=3"></script>
+  <script src="js/btn-ripple.js?v=3"></script>
 </body>
 </html>

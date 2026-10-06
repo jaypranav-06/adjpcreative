@@ -1,12 +1,10 @@
-var CACHE = 'adjp-v6';
+var CACHE = 'adjp-v7';
 
 var PRECACHE = [
   '/',
-  '/index.html',
-  '/about.html',
-  '/contact.html',
-  '/portfolio.html',
-  '/blog.html',
+  '/about',
+  '/contact',
+  '/blog',
   '/css/base.css',
   '/css/layout.css',
   '/css/components.css',
@@ -21,18 +19,14 @@ var PRECACHE = [
   '/js/contact-form.js',
   '/js/studio.js',
   '/js/network.js',
-  '/assets/logo/ADJP Logo for Dark Background Transparent.png',
-  '/assets/logo/ADJP favicon.png'
+  '/js/mobile-nav.js',
+  '/js/btn-ripple.js',
+  '/assets/logo/ADJP Logo for Dark Background Transparent.png'
 ];
 
-/* Helper to strip the 'redirected' flag from responses.
-   Chrome throws if a response with redirected: true is returned
-   to a navigation request whose redirect mode is 'manual'. */
+/* Rebuild a non-redirected response so Chrome doesn't reject it on navigate */
 function cleanResponse(response) {
-  if (!response) return Promise.resolve(response);
-  if (!response.redirected) return Promise.resolve(response);
-
-  /* Reconstruct response from blob without redirected flag */
+  if (!response || !response.redirected) return Promise.resolve(response);
   return response.blob().then(function (body) {
     return new Response(body, {
       status: response.status,
@@ -42,18 +36,24 @@ function cleanResponse(response) {
   });
 }
 
-/* Install — precache core assets */
+/* Install — precache core shell, then activate immediately */
 self.addEventListener('install', function (e) {
   e.waitUntil(
     caches.open(CACHE).then(function (cache) {
-      return cache.addAll(PRECACHE);
+      /* addAll with individual error suppression so one bad asset doesn't
+         block the whole install */
+      return Promise.all(
+        PRECACHE.map(function (url) {
+          return cache.add(url).catch(function () {});
+        })
+      );
     }).then(function () {
       return self.skipWaiting();
     })
   );
 });
 
-/* Activate — clean up old caches */
+/* Activate — delete every cache that isn't the current version */
 self.addEventListener('activate', function (e) {
   e.waitUntil(
     caches.keys().then(function (keys) {
@@ -67,68 +67,44 @@ self.addEventListener('activate', function (e) {
   );
 });
 
-/* Fetch — network-first for navigation with cleanResponse, cache-first for static assets */
+/* Fetch strategy:
+   - External resources (fonts, CDNs, Facebook, YouTube) → bypass SW entirely
+   - Navigation requests (HTML pages)                    → network-first, cache fallback
+   - Static assets (CSS, JS, images)                     → cache-first, update in background
+*/
 self.addEventListener('fetch', function (e) {
   var req = e.request;
 
-  /* Only handle GET requests on same origin */
   if (req.method !== 'GET') return;
-  if (req.url.indexOf(self.location.origin) === -1) return;
 
-  /* Skip Facebook / YouTube / external embeds — always network */
-  if (req.url.indexOf('facebook.com') !== -1 ||
-      req.url.indexOf('youtube.com') !== -1 ||
-      req.url.indexOf('googleapis.com') !== -1 ||
-      req.url.indexOf('cdnjs.cloudflare.com') !== -1) {
-    return;
-  }
+  var url = new URL(req.url);
 
-  /* Handle navigation requests (page loads) */
+  /* Bypass external origins */
+  if (url.origin !== self.location.origin) return;
+
+  /* ── Navigation (page loads) — always try network first ── */
   if (req.mode === 'navigate') {
     e.respondWith(
       fetch(req)
         .then(function (response) {
-          // If server returned 404 for a clean URL (like python http.server),
-          // fallback to corresponding .html file
-          if (response && response.status === 404) {
-            var url = new URL(req.url);
-            var path = url.pathname.replace(/\/$/, '');
-            if (path && !path.endsWith('.html')) {
-              var htmlUrl = url.origin + path + '.html' + url.search;
-              return fetch(htmlUrl).then(function (fallbackResp) {
-                if (fallbackResp && fallbackResp.status === 200) {
-                  return cleanResponse(fallbackResp);
-                }
-                return cleanResponse(response);
-              });
-            }
+          if (response && response.status === 200) {
+            var clone = response.clone();
+            caches.open(CACHE).then(function (cache) { cache.put(req, clone); });
           }
-          return cleanResponse(response).then(function (clean) {
-            if (clean && clean.status === 200) {
-              var clone = clean.clone();
-              caches.open(CACHE).then(function (cache) {
-                cache.put(req, clone);
-              });
-            }
-            return clean;
-          });
+          return cleanResponse(response);
         })
         .catch(function () {
-          /* Offline fallback */
-          var url = new URL(req.url);
-          var path = url.pathname.replace(/\/$/, '');
+          /* Offline: serve cached HTML if available */
           return caches.match(req).then(function (cached) {
             if (cached) return cleanResponse(cached);
-            if (path && !path.endsWith('.html')) {
-              return caches.match(path + '.html').then(function (htmlCached) {
-                if (htmlCached) return cleanResponse(htmlCached);
-                return caches.match('/index.html').then(function (root) {
-                  return root ? cleanResponse(root) : null;
-                });
-              });
-            }
-            return caches.match('/index.html').then(function (root) {
-              return root ? cleanResponse(root) : null;
+            /* Try adding .html suffix for clean-URL misses */
+            var htmlUrl = url.pathname.replace(/\/$/, '') + '.html';
+            return caches.match(htmlUrl).then(function (htmlCached) {
+              return htmlCached
+                ? cleanResponse(htmlCached)
+                : caches.match('/').then(function (root) {
+                    return root ? cleanResponse(root) : null;
+                  });
             });
           });
         })
@@ -136,21 +112,19 @@ self.addEventListener('fetch', function (e) {
     return;
   }
 
-  /* Static assets: cache-first with cleanResponse fallback */
+  /* ── Static assets — cache-first, stale-while-revalidate ── */
   e.respondWith(
-    caches.match(req).then(function (cached) {
-      if (cached) {
-        return cleanResponse(cached);
-      }
+    caches.open(CACHE).then(function (cache) {
+      return cache.match(req).then(function (cached) {
+        var fetchPromise = fetch(req).then(function (response) {
+          if (response && response.status === 200 && response.type === 'basic') {
+            cache.put(req, response.clone());
+          }
+          return response;
+        }).catch(function () { return cached; });
 
-      return fetch(req).then(function (response) {
-        if (response && response.status === 200 && response.type === 'basic') {
-          var clone = response.clone();
-          caches.open(CACHE).then(function (cache) {
-            cache.put(req, clone);
-          });
-        }
-        return cleanResponse(response);
+        /* Return cached immediately if available, fetch in background to update */
+        return cached || fetchPromise;
       });
     })
   );

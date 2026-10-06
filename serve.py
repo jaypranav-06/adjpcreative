@@ -14,7 +14,21 @@ import sys
 # Ensure .html MIME type is registered
 mimetypes.add_type('text/html', '.html')
 
+REDIRECTS = {
+    '/blog-post': '/blog/what-makes-a-tv-commercial-memorable',
+    '/blog-post.html': '/blog/what-makes-a-tv-commercial-memorable',
+}
+
 class CleanURLHandler(http.server.SimpleHTTPRequestHandler):
+    def do_GET(self):
+        path = self.path.split('?')[0]
+        if path in REDIRECTS:
+            self.send_response(301)
+            self.send_header('Location', REDIRECTS[path])
+            self.end_headers()
+            return
+        super().do_GET()
+
     def translate_path(self, path):
         clean_path = super().translate_path(path)
         if not os.path.exists(clean_path):
