@@ -1,9 +1,10 @@
-var CACHE = 'adjp-v9';
+var CACHE = 'adjp-v10';
 
 var PRECACHE = [
   '/',
   '/about',
   '/contact',
+  '/portfolio',
   '/blog',
   '/css/base.css',
   '/css/layout.css',
