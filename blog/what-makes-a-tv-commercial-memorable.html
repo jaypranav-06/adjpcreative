@@ -29,7 +29,40 @@
   <meta name="twitter:description" content="What makes a TV commercial truly memorable? Lessons from 35 years of production by Sruthiy Prabha and ADJP Creative.">
   <meta name="twitter:image" content="https://adjpcreative.com/assets/images/Background%20IMage%20for%20Home.png">
 
-  <link rel="icon" type="image/png" href="../assets/logo/Favicon ADJP new .png">
+  <!-- Favicons: Google Search & Browser tab support -->
+  <link rel="icon" type="image/png" sizes="48x48" href="../assets/logo/favicon-light-48x48.png?v=5">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/logo/favicon-light-32x32.png?v=5" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/logo/favicon-dark-32x32.png?v=5" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/logo/favicon-light-32x32.png?v=5" id="dynamic-favicon">
+  <link rel="apple-touch-icon" href="../assets/logo/favicon-dark-192x192.png?v=5">
+  <script>
+    (function(){
+      function updateFavicon(){
+        try {
+          var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var isSubdir = (location.pathname.indexOf('/blog/') !== -1 && location.pathname.indexOf('/blog.html') === -1) ||
+                         (document.getElementById('dynamic-favicon') && document.getElementById('dynamic-favicon').getAttribute('href').indexOf('../') === 0);
+          var base = isSubdir ? '../assets/logo/' : 'assets/logo/';
+          var targetHref = base + (isDark ? 'favicon-dark-32x32.png?v=5' : 'favicon-light-32x32.png?v=5');
+          var oldIcons = document.querySelectorAll("link[rel*='icon']:not([rel*='apple'])");
+          oldIcons.forEach(function(el){ if(el.parentNode) el.parentNode.removeChild(el); });
+          var link = document.createElement('link');
+          link.id = 'dynamic-favicon';
+          link.rel = 'icon';
+          link.type = 'image/png';
+          link.sizes = '32x32';
+          link.href = targetHref;
+          document.head.appendChild(link);
+        } catch(e) {}
+      }
+      updateFavicon();
+      try {
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        if(mq.addEventListener) mq.addEventListener('change', updateFavicon);
+        else if(mq.addListener) mq.addListener(updateFavicon);
+      } catch(e) {}
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">

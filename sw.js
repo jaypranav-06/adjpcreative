@@ -1,4 +1,4 @@
-var CACHE = 'adjp-v7';
+var CACHE = 'adjp-v9';
 
 var PRECACHE = [
   '/',
@@ -21,7 +21,11 @@ var PRECACHE = [
   '/js/network.js',
   '/js/mobile-nav.js',
   '/js/btn-ripple.js',
-  '/assets/logo/ADJP Logo for Dark Background Transparent.png'
+  '/assets/logo/ADJP Logo for Dark Background Transparent.png',
+  '/assets/logo/favicon-dark-32x32.png',
+  '/assets/logo/favicon-light-32x32.png',
+  '/assets/logo/favicon-dark.png',
+  '/assets/logo/favicon-light.png'
 ];
 
 /* Rebuild a non-redirected response so Chrome doesn't reject it on navigate */
