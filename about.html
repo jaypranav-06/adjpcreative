@@ -63,7 +63,7 @@
   <link rel="stylesheet" href="css/base.css?v=3">
   <link rel="stylesheet" href="css/layout.css?v=3">
   <link rel="stylesheet" href="css/components.css?v=3">
-  <link rel="stylesheet" href="css/pages/about.css?v=6">
+  <link rel="stylesheet" href="css/pages/about.css?v=9">
 
   <!-- Structured Data (Schema.org) for About Page, Organization & Person -->
   <script type="application/ld+json">
@@ -326,23 +326,31 @@
           <!-- GALLERY: main preview + vertical thumbnail rail -->
           <div class="about-gallery anim-fade-in">
 
-            <!-- Main large preview -->
-            <div class="about-gallery__main" id="galleryMain">
-              <picture>
-                <source srcset="assets/images/Profile%20Picture/Sruthiy%20Prabha%2010.webp" type="image/webp">
-                <img class="about-gallery__img" id="galleryImg"
-                  src="assets/images/Profile%20Picture/Sruthiy%20Prabha%2010.jpg"
-                  alt="Sruthiy Prabha — Music Director, Filmmaker &amp; Managing Director of ADJP Creative">
-              </picture>
+            <!-- Main large preview + View All -->
+            <div class="about-gallery__main-col">
+              <div class="about-gallery__main" id="galleryMain">
+                <picture>
+                  <source srcset="assets/images/Profile%20Picture/Sruthiy%20Prabha%2010.webp" type="image/webp">
+                  <img class="about-gallery__img" id="galleryImg"
+                    src="assets/images/Profile%20Picture/Sruthiy%20Prabha%2010.jpg"
+                    alt="Sruthiy Prabha — Music Director, Filmmaker &amp; Managing Director of ADJP Creative">
+                </picture>
 
-              <!-- Bottom-left label -->
-              <div class="about-gallery__label" id="galleryLabel">
-                <span class="about-gallery__label-line"></span>
-                <span id="galleryLabelText">MD OF ADJP CREATIVE — SRUTHIY PRABHA</span>
+                <!-- Bottom-left label -->
+                <div class="about-gallery__label" id="galleryLabel">
+                  <span class="about-gallery__label-line"></span>
+                  <span id="galleryLabelText">MD OF ADJP CREATIVE — SRUTHIY PRABHA</span>
+                </div>
+
+                <!-- Bottom-right counter -->
+                <div class="about-gallery__counter" id="galleryCounter">01 / 21</div>
               </div>
 
-              <!-- Bottom-right counter -->
-              <div class="about-gallery__counter" id="galleryCounter">01 / 21</div>
+              <!-- View All button -->
+              <button class="gallery-view-all-btn" id="galleryViewAll" aria-label="View all works categorised by country">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><rect x="1" y="1" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.4"/><rect x="8" y="1" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.4"/><rect x="1" y="8" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.4"/><rect x="8" y="8" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.4"/></svg>
+                View All
+              </button>
             </div>
 
             <!-- Thumbnail rail with arrow navigation -->
@@ -355,6 +363,38 @@
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4L6 7L9 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </button>
             </div>
+
+          </div>
+
+          <!-- View All Modal -->
+          <div class="gallery-modal" id="galleryModal" role="dialog" aria-modal="true" aria-label="All works gallery" hidden>
+            <div class="gallery-modal__backdrop" id="galleryModalBackdrop"></div>
+            <div class="gallery-modal__panel">
+              <div class="gallery-modal__header">
+                <span class="gallery-modal__title">ALL WORKS</span>
+                <button class="gallery-modal__close" id="galleryModalClose" aria-label="Close gallery">&#x2715;</button>
+              </div>
+              <div class="gallery-modal__tabs" role="tablist">
+                <button class="gallery-modal__tab active" id="tabIndia" role="tab" aria-selected="true" aria-controls="panelIndia">Works in India</button>
+                <button class="gallery-modal__tab" id="tabSriLanka" role="tab" aria-selected="false" aria-controls="panelSriLanka">Works in Sri Lanka</button>
+              </div>
+              <div class="gallery-modal__body">
+                <div class="gallery-modal__panel-grid" id="panelIndia" role="tabpanel" aria-labelledby="tabIndia"></div>
+                <div class="gallery-modal__panel-grid" id="panelSriLanka" role="tabpanel" aria-labelledby="tabSriLanka" hidden></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lightbox -->
+          <div class="gallery-lightbox" id="galleryLightbox" hidden>
+            <div class="gallery-lightbox__backdrop" id="lightboxBackdrop"></div>
+            <button class="gallery-lightbox__close" id="lightboxClose" aria-label="Close image">&#x2715;</button>
+            <button class="gallery-lightbox__nav gallery-lightbox__nav--prev" id="lightboxPrev" aria-label="Previous image">&#8249;</button>
+            <div class="gallery-lightbox__img-wrap">
+              <img class="gallery-lightbox__img" id="lightboxImg" src="" alt="">
+              <div class="gallery-lightbox__caption" id="lightboxCaption"></div>
+            </div>
+            <button class="gallery-lightbox__nav gallery-lightbox__nav--next" id="lightboxNext" aria-label="Next image">&#8250;</button>
           </div>
         </div>
       </div>
@@ -603,6 +643,178 @@
   <script src="js/lazy-load.js?v=3"></script>
   <script src="js/animations.js?v=3"></script>
   <script src="js/about-gallery.js?v=6"></script>
+  <script>
+    (function () {
+      var indiaWorks = [
+        { src: 'assets/images/behind%20the%20scenes%20images/INDIAN.jpeg',                  title: 'India' },
+        { src: 'assets/images/behind%20the%20scenes%20images/INDIAN.jpg',                   title: 'India' },
+        { src: 'assets/images/behind%20the%20scenes%20images/INDIAN%203.jpeg',              title: 'India' },
+        { src: 'assets/images/behind%20the%20scenes%20images/INDIAN%204.jpeg',              title: 'India' },
+        { src: 'assets/images/behind%20the%20scenes%20images/Ondikku%20ondi.jpg',           title: 'Ondikku Ondi — Feature Film' },
+        { src: 'assets/images/behind%20the%20scenes%20images/padhany.jpg',                  title: 'Padhany — Feature Film' },
+        { src: 'assets/images/behind%20the%20scenes%20images/PLMTT%202.jpg',                title: 'PLMTT — TVC' },
+        { src: 'assets/images/behind%20the%20scenes%20images/PLMTT%203.jpg',                title: 'PLMTT — TVC' },
+        { src: 'assets/images/behind%20the%20scenes%20images/PLMTT%205.jpg',                title: 'PLMTT — TVC' },
+        { src: 'assets/images/behind%20the%20scenes%20images/PLMTT%207.jpg',                title: 'PLMTT — TVC' },
+        { src: 'assets/images/behind%20the%20scenes%20images/PLMTT%208.jpg',                title: 'PLMTT — TVC' },
+        { src: 'assets/images/behind%20the%20scenes%20images/PLMTT%209.jpg',                title: 'PLMTT — TVC' },
+        { src: 'assets/images/behind%20the%20scenes%20images/shoot%20in%20chennai%203.jpg', title: 'Chennai Shoot' },
+        { src: 'assets/images/Profile%20Picture/Sruthiy%20Prabha%2010.jpg',                 title: 'Sruthiy Prabha' },
+        { src: 'assets/images/Profile%20Picture/Sruthiy%20Prabha%206.jpg',                  title: 'Sruthiy Prabha' }
+      ];
+
+      var sriLankaWorks = [
+        { src: 'assets/images/behind%20the%20scenes%20images/ABhitha%20FIlm%20Making%20.jpg', title: 'Abhitha — Feature Film' },
+        { src: 'assets/images/behind%20the%20scenes%20images/Abhitha%20FILM%202.jpg',          title: 'Abhitha — Feature Film' },
+        { src: 'assets/images/behind%20the%20scenes%20images/Abhitha%20FILM%203.jpg',          title: 'Abhitha — Feature Film' },
+        { src: 'assets/images/behind%20the%20scenes%20images/Abhitha%20FILM%204.jpg',          title: 'Abhitha — Feature Film' },
+        { src: 'assets/images/behind%20the%20scenes%20images/Abhitha%20FILM%205.jpg',          title: 'Abhitha — Feature Film' },
+        { src: 'assets/images/behind%20the%20scenes%20images/Abhitha%20FILM%206.jpg',          title: 'Abhitha — Feature Film' },
+        { src: 'assets/images/behind%20the%20scenes%20images/Abhitha%20FILM%207.jpg',          title: 'Abhitha — Feature Film' },
+        { src: 'assets/images/behind%20the%20scenes%20images/Jaffna%203.jpg',                  title: 'LB Finance — TVC' },
+        { src: 'assets/images/behind%20the%20scenes%20images/jaffna%2012.jpg',                 title: 'LB Finance — TVC' },
+        { src: 'assets/images/behind%20the%20scenes%20images/jaffna%2014.jpg',                 title: 'LB Finance — TVC' },
+        { src: 'assets/images/behind%20the%20scenes%20images/jaffna%2017.jpg',                 title: 'LB Finance — TVC' },
+        { src: 'assets/images/behind%20the%20scenes%20images/jaffna%2018.jpg',                 title: 'LB Finance — TVC' },
+        { src: 'assets/images/behind%20the%20scenes%20images/Madhavi%202.jpg',                 title: 'Madhavi Jewellers' },
+        { src: 'assets/images/behind%20the%20scenes%20images/Madhavi%207.jpg',                 title: 'Madhavi Jewellers' },
+        { src: 'assets/images/behind%20the%20scenes%20images/muthu%20karuppan%201.jpg',        title: 'Muthu Karuppan' },
+        { src: 'assets/images/behind%20the%20scenes%20images/muthu%20karuppan%202.jpg',        title: 'Muthu Karuppan' },
+        { src: 'assets/images/behind%20the%20scenes%20images/SRI%20LANKA%20CRICKET%20SONG.jpeg',      title: 'Sri Lanka Cricket Song' },
+        { src: 'assets/images/behind%20the%20scenes%20images/SRI%20LANKA%20TAMIL%20ARTIST%20SONG.jpg', title: 'Sri Lanka Tamil Artist Song' },
+        { src: 'assets/images/behind%20the%20scenes%20images/SRI%20LANKA.jpeg',               title: 'Sri Lanka' }
+      ];
+
+      var modal      = document.getElementById('galleryModal');
+      var backdrop   = document.getElementById('galleryModalBackdrop');
+      var closeBtn   = document.getElementById('galleryModalClose');
+      var openBtn    = document.getElementById('galleryViewAll');
+      var tabIndia   = document.getElementById('tabIndia');
+      var tabSL      = document.getElementById('tabSriLanka');
+      var panelIndia = document.getElementById('panelIndia');
+      var panelSL    = document.getElementById('panelSriLanka');
+
+      var lightbox     = document.getElementById('galleryLightbox');
+      var lbBackdrop   = document.getElementById('lightboxBackdrop');
+      var lbClose      = document.getElementById('lightboxClose');
+      var lbImg        = document.getElementById('lightboxImg');
+      var lbCaption    = document.getElementById('lightboxCaption');
+      var lbPrev       = document.getElementById('lightboxPrev');
+      var lbNext       = document.getElementById('lightboxNext');
+
+      if (!modal || !openBtn) return;
+
+      /* Flat list of all items in current active tab, for prev/next */
+      var lbItems  = [];
+      var lbIndex  = 0;
+
+      function openLightbox(items, index) {
+        lbItems = items;
+        lbIndex = index;
+        showLightboxItem();
+        lightbox.hidden = false;
+      }
+
+      function showLightboxItem() {
+        var item = lbItems[lbIndex];
+        lbImg.style.opacity = '0';
+        lbImg.src = item.src;
+        lbImg.alt = item.title;
+        lbCaption.textContent = item.title;
+        lbImg.onload = function () { lbImg.style.opacity = '1'; };
+        lbImg.style.transition = 'opacity 0.2s ease';
+        lbPrev.style.visibility = lbIndex === 0 ? 'hidden' : 'visible';
+        lbNext.style.visibility = lbIndex === lbItems.length - 1 ? 'hidden' : 'visible';
+      }
+
+      function closeLightbox() {
+        lightbox.hidden = true;
+        lbImg.src = '';
+      }
+
+      lbClose.addEventListener('click', closeLightbox);
+      lbBackdrop.addEventListener('click', closeLightbox);
+      lbPrev.addEventListener('click', function () { if (lbIndex > 0) { lbIndex--; showLightboxItem(); } });
+      lbNext.addEventListener('click', function () { if (lbIndex < lbItems.length - 1) { lbIndex++; showLightboxItem(); } });
+
+      /* Swipe support for mobile */
+      var lbTouchStartX = 0;
+      lightbox.addEventListener('touchstart', function (e) { lbTouchStartX = e.touches[0].clientX; }, { passive: true });
+      lightbox.addEventListener('touchend', function (e) {
+        var dx = e.changedTouches[0].clientX - lbTouchStartX;
+        if (Math.abs(dx) < 40) return;
+        if (dx < 0 && lbIndex < lbItems.length - 1) { lbIndex++; showLightboxItem(); }
+        if (dx > 0 && lbIndex > 0) { lbIndex--; showLightboxItem(); }
+      }, { passive: true });
+
+      function buildGrid(panel, items) {
+        if (panel.children.length) return;
+        items.forEach(function (item, i) {
+          var el = document.createElement('div');
+          el.className = 'gallery-modal__item';
+
+          var img = document.createElement('img');
+          img.src = item.src;
+          img.alt = item.title;
+          img.loading = 'lazy';
+
+          var lbl = document.createElement('div');
+          lbl.className = 'gallery-modal__item-label';
+          lbl.textContent = item.title;
+
+          el.appendChild(img);
+          el.appendChild(lbl);
+          panel.appendChild(el);
+
+          el.addEventListener('click', function () { openLightbox(items, i); });
+        });
+      }
+
+      function openModal() {
+        buildGrid(panelIndia, indiaWorks);
+        buildGrid(panelSL, sriLankaWorks);
+        modal.hidden = false;
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+      }
+
+      function closeModal() {
+        modal.hidden = true;
+        document.body.style.overflow = '';
+        openBtn.focus();
+      }
+
+      openBtn.addEventListener('click', openModal);
+      closeBtn.addEventListener('click', closeModal);
+      backdrop.addEventListener('click', closeModal);
+
+      document.addEventListener('keydown', function (e) {
+        if (!lightbox.hidden) {
+          if (e.key === 'Escape') { closeLightbox(); return; }
+          if (e.key === 'ArrowLeft' && lbIndex > 0) { lbIndex--; showLightboxItem(); }
+          if (e.key === 'ArrowRight' && lbIndex < lbItems.length - 1) { lbIndex++; showLightboxItem(); }
+          return;
+        }
+        if (e.key === 'Escape' && !modal.hidden) closeModal();
+      });
+
+      function switchTab(activeTab, activePanel, inactiveTab, inactivePanel) {
+        activeTab.classList.add('active');
+        activeTab.setAttribute('aria-selected', 'true');
+        inactiveTab.classList.remove('active');
+        inactiveTab.setAttribute('aria-selected', 'false');
+        activePanel.hidden = false;
+        inactivePanel.hidden = true;
+      }
+
+      tabIndia.addEventListener('click', function () {
+        switchTab(tabIndia, panelIndia, tabSL, panelSL);
+      });
+      tabSL.addEventListener('click', function () {
+        switchTab(tabSL, panelSL, tabIndia, panelIndia);
+      });
+    })();
+  </script>
   <script>
     (function () {
       var frames = document.querySelectorAll('.reel-item__frame');
