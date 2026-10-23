@@ -102,6 +102,76 @@
       title: 'CHENNAI',
       src:   'assets/images/behind%20the%20scenes%20images/shoot%20in%20chennai%203.jpg',
       alt:   'Director & Composer Sruthiy Prabha on film set in Chennai, India — ADJP Creative'
+    },
+    {
+      title: 'INDIA',
+      src:   'assets/images/behind%20the%20scenes%20images/INDIAN.jpeg',
+      alt:   'ADJP Creative production in India'
+    },
+    {
+      title: 'INDIA',
+      src:   'assets/images/behind%20the%20scenes%20images/INDIAN.jpg',
+      alt:   'ADJP Creative production in India'
+    },
+    {
+      title: 'INDIA',
+      src:   'assets/images/behind%20the%20scenes%20images/INDIAN%203.jpeg',
+      alt:   'ADJP Creative production in India'
+    },
+    {
+      title: 'INDIA',
+      src:   'assets/images/behind%20the%20scenes%20images/INDIAN%204.jpeg',
+      alt:   'ADJP Creative production in India'
+    },
+    {
+      title: 'ABHITHA — FEATURE FILM',
+      src:   'assets/images/behind%20the%20scenes%20images/ABhitha%20FIlm%20Making%20.jpg',
+      alt:   'Abhitha feature film directed by Sruthiy Prabha — ADJP Creative'
+    },
+    {
+      title: 'ABHITHA — FEATURE FILM',
+      src:   'assets/images/behind%20the%20scenes%20images/Abhitha%20FILM%202.jpg',
+      alt:   'Abhitha feature film BTS — ADJP Creative'
+    },
+    {
+      title: 'ABHITHA — FEATURE FILM',
+      src:   'assets/images/behind%20the%20scenes%20images/Abhitha%20FILM%203.jpg',
+      alt:   'Abhitha feature film BTS — ADJP Creative'
+    },
+    {
+      title: 'ABHITHA — FEATURE FILM',
+      src:   'assets/images/behind%20the%20scenes%20images/Abhitha%20FILM%204.jpg',
+      alt:   'Abhitha feature film BTS — ADJP Creative'
+    },
+    {
+      title: 'ABHITHA — FEATURE FILM',
+      src:   'assets/images/behind%20the%20scenes%20images/Abhitha%20FILM%205.jpg',
+      alt:   'Abhitha feature film BTS — ADJP Creative'
+    },
+    {
+      title: 'ABHITHA — FEATURE FILM',
+      src:   'assets/images/behind%20the%20scenes%20images/Abhitha%20FILM%206.jpg',
+      alt:   'Abhitha feature film BTS — ADJP Creative'
+    },
+    {
+      title: 'ABHITHA — FEATURE FILM',
+      src:   'assets/images/behind%20the%20scenes%20images/Abhitha%20FILM%207.jpg',
+      alt:   'Abhitha feature film BTS — ADJP Creative'
+    },
+    {
+      title: 'SRI LANKA CRICKET SONG',
+      src:   'assets/images/behind%20the%20scenes%20images/SRI%20LANKA%20CRICKET%20SONG.jpeg',
+      alt:   'Sri Lanka Cricket Song — ADJP Creative'
+    },
+    {
+      title: 'SRI LANKA TAMIL ARTIST SONG',
+      src:   'assets/images/behind%20the%20scenes%20images/SRI%20LANKA%20TAMIL%20ARTIST%20SONG.jpg',
+      alt:   'Sri Lanka Tamil Artist Song — ADJP Creative'
+    },
+    {
+      title: 'SRI LANKA',
+      src:   'assets/images/behind%20the%20scenes%20images/SRI%20LANKA.jpeg',
+      alt:   'ADJP Creative production in Sri Lanka'
     }
   ];
 
