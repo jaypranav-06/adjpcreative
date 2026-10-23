@@ -105,12 +105,16 @@
     }
   ];
 
-  const mainImg   = document.getElementById('galleryImg');
-  const labelText = document.getElementById('galleryLabelText');
-  const counter   = document.getElementById('galleryCounter');
-  const rail      = document.getElementById('galleryRail');
-  const arrowUp   = document.getElementById('galleryArrowUp');
-  const arrowDown = document.getElementById('galleryArrowDown');
+  const mainImg    = document.getElementById('galleryImg');
+  /* The <img> may sit inside a <picture> with a <source> — updating only
+     img.src is ignored when a matching <source> exists. Grab the sibling
+     <source> so we can clear its srcset on each switch. */
+  const mainSource = mainImg ? mainImg.closest('picture') && mainImg.closest('picture').querySelector('source') : null;
+  const labelText  = document.getElementById('galleryLabelText');
+  const counter    = document.getElementById('galleryCounter');
+  const rail       = document.getElementById('galleryRail');
+  const arrowUp    = document.getElementById('galleryArrowUp');
+  const arrowDown  = document.getElementById('galleryArrowDown');
 
   if (!mainImg || !rail) return;
 
@@ -205,6 +209,8 @@
     mainImg.style.transform = 'scale(1.015)';
 
     setTimeout(function () {
+      /* Clear the <source> srcset first so the browser uses img.src instead */
+      if (mainSource) mainSource.srcset = '';
       mainImg.src                  = gallery[index].src;
       mainImg.alt                  = gallery[index].alt;
       mainImg.style.objectPosition = gallery[index].position || 'center center';
@@ -231,6 +237,18 @@
 
   /* Thumb click + keyboard nav */
   thumbEls.forEach(function (btn, i) {
+    /* On mobile, touchend fires reliably even when the rail scroll container
+       would otherwise swallow or delay the synthetic click event. */
+    var touchMoved = false;
+    btn.addEventListener('touchstart', function () { touchMoved = false; }, { passive: true });
+    btn.addEventListener('touchmove', function () { touchMoved = true; }, { passive: true });
+    btn.addEventListener('touchend', function (e) {
+      if (!touchMoved) {
+        e.preventDefault(); /* block the subsequent synthetic click */
+        switchTo(i);
+      }
+    });
+
     btn.addEventListener('click', function () { switchTo(i); });
 
     btn.addEventListener('keydown', function (e) {
