@@ -195,61 +195,102 @@
   counter.textContent          = '01 / ' + pad(gallery.length);
 
   syncArrows();
-  rail.addEventListener('scroll', function () {
-    syncArrows();
-    /* keep wheelTarget in sync when rail is scrolled by buttons/touch */
-    if (wheelRaf === null) wheelTarget = isHorizontal() ? rail.scrollLeft : rail.scrollTop;
-  }, { passive: true });
+  rail.addEventListener('scroll', syncArrows, { passive: true });
+
+  /* Track active state & rapid image switching */
+  var switchTimer = null;
 
   function switchTo(index) {
-    if (index === activeIndex || animating) return;
-    animating = true;
+    if (index === activeIndex) return;
 
-    mainImg.style.opacity   = '0';
-    mainImg.style.transform = 'scale(1.015)';
+    /* 1. Instant feedback: update thumb state, counter, and label immediately */
+    thumbEls.forEach(function (t, i) {
+      var isActive = i === index;
+      t.classList.toggle('active', isActive);
+      t.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
 
-    setTimeout(function () {
-      /* Clear the <source> srcset first so the browser uses img.src instead */
+    labelText.textContent = gallery[index].title;
+    counter.textContent   = pad(index + 1) + ' / ' + pad(gallery.length);
+    activeIndex = index;
+    scrollToActive();
+
+    /* 2. Fast, responsive cross-fade for main preview (no long lock) */
+    if (switchTimer) clearTimeout(switchTimer);
+    mainImg.style.transition = 'opacity 0.15s ease, transform 0.15s ease';
+    mainImg.style.opacity    = '0.35';
+    mainImg.style.transform  = 'scale(1.01)';
+
+    switchTimer = setTimeout(function () {
       if (mainSource) mainSource.srcset = '';
       mainImg.src                  = gallery[index].src;
       mainImg.alt                  = gallery[index].alt;
       mainImg.style.objectPosition = gallery[index].position || 'center center';
-      labelText.textContent        = gallery[index].title;
-      counter.textContent          = pad(index + 1) + ' / ' + pad(gallery.length);
-
-      mainImg.style.transform = 'scale(1.02)';
-      void mainImg.offsetWidth;
-      mainImg.style.opacity   = '1';
-      mainImg.style.transform = 'scale(1)';
-
-      thumbEls.forEach(function (t, i) {
-        var isActive = i === index;
-        t.classList.toggle('active', isActive);
-        t.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-      });
-
-      activeIndex = index;
-      scrollToActive();
-
-      setTimeout(function () { animating = false; }, 420);
-    }, 360);
+      mainImg.style.opacity        = '1';
+      mainImg.style.transform      = 'scale(1)';
+    }, 110);
   }
+
+  /* Desktop Drag-to-Scroll support */
+  var isDragging  = false;
+  var startY      = 0;
+  var startX      = 0;
+  var scrollStart = 0;
+  var hasMoved    = false;
+
+  rail.addEventListener('mousedown', function (e) {
+    if (e.button !== 0) return; /* Left click only */
+    isDragging  = true;
+    hasMoved    = false;
+    startY      = e.pageY;
+    startX      = e.pageX;
+    scrollStart = isHorizontal() ? rail.scrollLeft : rail.scrollTop;
+    rail.classList.add('is-dragging');
+  });
+
+  window.addEventListener('mousemove', function (e) {
+    if (!isDragging) return;
+    var delta = isHorizontal() ? (e.pageX - startX) : (e.pageY - startY);
+    if (Math.abs(delta) > 5) {
+      hasMoved = true;
+    }
+    if (hasMoved) {
+      if (isHorizontal()) {
+        rail.scrollLeft = scrollStart - delta;
+      } else {
+        rail.scrollTop = scrollStart - delta;
+      }
+    }
+  });
+
+  window.addEventListener('mouseup', function () {
+    if (!isDragging) return;
+    isDragging = false;
+    rail.classList.remove('is-dragging');
+    setTimeout(function () { hasMoved = false; }, 40);
+  });
 
   /* Thumb click + keyboard nav */
   thumbEls.forEach(function (btn, i) {
-    /* On mobile, touchend fires reliably even when the rail scroll container
-       would otherwise swallow or delay the synthetic click event. */
+    /* Touch devices */
     var touchMoved = false;
     btn.addEventListener('touchstart', function () { touchMoved = false; }, { passive: true });
     btn.addEventListener('touchmove', function () { touchMoved = true; }, { passive: true });
     btn.addEventListener('touchend', function (e) {
       if (!touchMoved) {
-        e.preventDefault(); /* block the subsequent synthetic click */
+        e.preventDefault();
         switchTo(i);
       }
     });
 
-    btn.addEventListener('click', function () { switchTo(i); });
+    /* Mouse / desktop click */
+    btn.addEventListener('click', function (e) {
+      if (hasMoved) {
+        e.preventDefault();
+        return;
+      }
+      switchTo(i);
+    });
 
     btn.addEventListener('keydown', function (e) {
       if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
@@ -286,31 +327,17 @@
     }
   });
 
-  /* Smooth momentum scroller for mouse-wheel (desktop vertical rail) */
-  var wheelTarget = null;
-  var wheelRaf    = null;
-
-  function wheelTick() {
-    var current = rail.scrollTop;
-    var dist    = wheelTarget - current;
-    if (Math.abs(dist) < 0.5) {
-      rail.scrollTop = wheelTarget;
-      wheelRaf = null;
-      syncArrows();
-      return;
-    }
-    rail.scrollTop = current + dist * 0.12;
-    syncArrows();
-    wheelRaf = requestAnimationFrame(wheelTick);
+  /* Forward wheel scroll from rail-wrap edges to rail */
+  var railWrap = rail.parentElement;
+  if (railWrap) {
+    railWrap.addEventListener('wheel', function (e) {
+      if (isHorizontal()) return;
+      if (e.target !== rail && !rail.contains(e.target)) {
+        rail.scrollTop += e.deltaY;
+        e.preventDefault();
+      }
+    }, { passive: false });
   }
-
-  rail.addEventListener('wheel', function (e) {
-    if (isHorizontal()) return;
-    e.preventDefault();
-    if (wheelTarget === null) wheelTarget = rail.scrollTop;
-    wheelTarget = Math.max(0, Math.min(rail.scrollHeight - rail.clientHeight, wheelTarget + e.deltaY * 0.8));
-    if (!wheelRaf) wheelRaf = requestAnimationFrame(wheelTick);
-  }, { passive: false });
 
   /* Keep arrows and active scroll position dynamic across screen resize / orientation changes */
   window.addEventListener('resize', function () {

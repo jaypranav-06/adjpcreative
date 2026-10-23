@@ -63,7 +63,7 @@
   <link rel="stylesheet" href="css/base.css?v=3">
   <link rel="stylesheet" href="css/layout.css?v=3">
   <link rel="stylesheet" href="css/components.css?v=3">
-  <link rel="stylesheet" href="css/pages/about.css?v=4">
+  <link rel="stylesheet" href="css/pages/about.css?v=6">
 
   <!-- Structured Data (Schema.org) for About Page, Organization & Person -->
   <script type="application/ld+json">
@@ -602,7 +602,7 @@
   <script src="js/nav.js?v=3"></script>
   <script src="js/lazy-load.js?v=3"></script>
   <script src="js/animations.js?v=3"></script>
-  <script src="js/about-gallery.js?v=4"></script>
+  <script src="js/about-gallery.js?v=6"></script>
   <script>
     (function () {
       var frames = document.querySelectorAll('.reel-item__frame');
@@ -626,25 +626,68 @@
           '<span class="embed-loader__text">Loading video…</span>';
         frame.appendChild(loader);
 
-        // Facebook blocks all third-party iframe embedding (X-Frame-Options: deny).
-        // Skip the iframe attempt entirely and show the fallback card immediately.
-        loader.classList.add('loaded');
-        iframe.style.display = 'none';
+        var loaded = false;
+        var loadTimer = null;
 
-        var isWide = frame.classList.contains('reel-item__frame--wide');
-        var card = document.createElement('div');
-        card.className = 'embed-fb-fallback';
-        card.innerHTML =
-          '<div class="embed-fb-fallback__icon">' +
-            '<svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-hidden="true">' +
-              '<path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.884v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>' +
-            '</svg>' +
-          '</div>' +
-          '<span class="embed-fb-fallback__badge">' + (isWide ? 'Facebook Video' : 'Facebook Reel') + '</span>' +
-          '<p class="embed-fb-fallback__title">' + videoTitle + '</p>' +
-          '<p class="embed-fb-fallback__note">Watch this exclusive clip on Facebook</p>' +
-          '<a href="' + fbUrl + '" target="_blank" rel="noopener" class="embed-fb-fallback__btn">Watch on Facebook ↗</a>';
-        frame.appendChild(card);
+        function showFallback() {
+          if (loaded) return;
+          if (loadTimer) { clearTimeout(loadTimer); loadTimer = null; }
+          loader.classList.add('loaded');
+          iframe.style.display = 'none';
+          if (labelEl) labelEl.style.display = 'none';
+
+          if (frame.querySelector('.embed-fb-fallback')) return;
+
+          var isWide = frame.classList.contains('reel-item__frame--wide');
+          var card = document.createElement('div');
+          card.className = 'embed-fb-fallback';
+          card.innerHTML =
+            '<div class="embed-fb-fallback__icon">' +
+              '<svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24" aria-hidden="true">' +
+                '<path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.884v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>' +
+              '</svg>' +
+            '</div>' +
+            '<span class="embed-fb-fallback__badge">' + (isWide ? 'Facebook Video' : 'Facebook Reel') + '</span>' +
+            '<p class="embed-fb-fallback__title">' + videoTitle + '</p>' +
+            '<p class="embed-fb-fallback__note">Watch this exclusive clip on Facebook</p>' +
+            '<a href="' + fbUrl + '" target="_blank" rel="noopener" class="embed-fb-fallback__btn">Watch on Facebook ↗</a>';
+          frame.appendChild(card);
+        }
+
+        function loadIframe() {
+          if (iframe.src) return;
+
+          iframe.addEventListener('load', function () {
+            loaded = true;
+            if (loadTimer) { clearTimeout(loadTimer); loadTimer = null; }
+            loader.classList.add('loaded');
+          });
+
+          iframe.addEventListener('error', function () {
+            showFallback();
+          });
+
+          // Timeout in case Facebook is blocked by browser/adblock
+          loadTimer = setTimeout(function () {
+            if (!loaded) showFallback();
+          }, 10000);
+
+          iframe.src = targetSrc;
+        }
+
+        if ('IntersectionObserver' in window) {
+          var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                loadIframe();
+                observer.unobserve(entry.target);
+              }
+            });
+          }, { rootMargin: '350px 0px' });
+          observer.observe(frame);
+        } else {
+          loadIframe();
+        }
       }
 
       frames.forEach(setupFrame);
