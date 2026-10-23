@@ -58,11 +58,24 @@
     img.addEventListener('error', function () {
       if (img.dataset.fallbackApplied) return;
       img.dataset.fallbackApplied = '1';
-      img.src = '';
-      img.style.cssText =
-        'background:linear-gradient(135deg,#06100C 0%,#0d1a14 100%);' +
-        'display:block;width:100%;height:100%;';
-      img.alt = '';
+
+      /* Replace the img with a message placeholder inside its parent */
+      var parent = img.parentNode;
+      if (!parent) return;
+
+      img.style.display = 'none';
+
+      if (parent.querySelector('.img-load-error')) return;
+
+      var box = document.createElement('div');
+      box.className = 'img-load-error';
+      box.innerHTML =
+        '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+          '<path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>' +
+          '<line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>' +
+        '</svg>' +
+        '<span>Poor connection —<br>image unavailable</span>';
+      parent.appendChild(box);
     });
   }
 
