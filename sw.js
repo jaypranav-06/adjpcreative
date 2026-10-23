@@ -1,4 +1,4 @@
-var CACHE = 'adjp-v10';
+var CACHE = 'adjp-v11';
 
 var PRECACHE = [
   '/',
