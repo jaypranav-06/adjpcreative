@@ -63,7 +63,7 @@
   <link rel="stylesheet" href="css/base.css?v=3">
   <link rel="stylesheet" href="css/layout.css?v=3">
   <link rel="stylesheet" href="css/components.css?v=3">
-  <link rel="stylesheet" href="css/pages/about.css?v=3">
+  <link rel="stylesheet" href="css/pages/about.css?v=4">
 
   <!-- Structured Data (Schema.org) for About Page, Organization & Person -->
   <script type="application/ld+json">
@@ -405,15 +405,15 @@
             </div>
             <p class="reel-item__label">Abhitha Movie BTS 6</p>
           </div>
-          <div class="reel-item">
-            <div class="reel-item__frame">
-              <iframe data-src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Fshruthi.prabha%2Fvideos%2F962518841207411%2F&show_text=false&width=267&t=0" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy"></iframe>
+          <div class="reel-item reel-item--wide">
+            <div class="reel-item__frame reel-item__frame--wide">
+              <iframe data-src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fshruthi.prabha%2Fvideos%2F962518841207411%2F&show_text=false&width=560&t=0" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy"></iframe>
             </div>
             <p class="reel-item__label">Live Instrument Recording</p>
           </div>
-          <div class="reel-item">
-            <div class="reel-item__frame">
-              <iframe data-src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1799233541521625%2F&show_text=false&width=267&t=0" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy"></iframe>
+          <div class="reel-item reel-item--wide">
+            <div class="reel-item__frame reel-item__frame--wide">
+              <iframe data-src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1799233541521625%2F&show_text=false&width=560&t=0" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy"></iframe>
             </div>
             <p class="reel-item__label">Lankadeepa Interview</p>
           </div>
@@ -626,67 +626,25 @@
           '<span class="embed-loader__text">Loading video…</span>';
         frame.appendChild(loader);
 
-        var loaded = false;
-        var loadTimer = null;
+        // Facebook blocks all third-party iframe embedding (X-Frame-Options: deny).
+        // Skip the iframe attempt entirely and show the fallback card immediately.
+        loader.classList.add('loaded');
+        iframe.style.display = 'none';
 
-        function showFallback() {
-          if (loaded) return;
-          if (loadTimer) { clearTimeout(loadTimer); loadTimer = null; }
-          loader.classList.add('loaded');
-          iframe.style.display = 'none';
-
-          if (frame.querySelector('.embed-fb-fallback')) return;
-
-          var card = document.createElement('div');
-          card.className = 'embed-fb-fallback';
-          card.innerHTML =
-            '<div class="embed-fb-fallback__icon">' +
-              '<svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-hidden="true">' +
-                '<path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.884v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>' +
-              '</svg>' +
-            '</div>' +
-            '<span class="embed-fb-fallback__badge">Facebook Reel</span>' +
-            '<p class="embed-fb-fallback__title">' + videoTitle + '</p>' +
-            '<p class="embed-fb-fallback__note">Watch this exclusive clip on Facebook</p>' +
-            '<a href="' + fbUrl + '" target="_blank" rel="noopener" class="embed-fb-fallback__btn">Watch on Facebook ↗</a>';
-          frame.appendChild(card);
-        }
-
-        function loadIframe() {
-          if (iframe.src) return; // already loading/loaded
-
-          iframe.addEventListener('load', function () {
-            loaded = true;
-            if (loadTimer) { clearTimeout(loadTimer); loadTimer = null; }
-            loader.classList.add('loaded');
-          });
-
-          iframe.addEventListener('error', function () {
-            showFallback();
-          });
-
-          // 15-second generous timeout for slower/mobile connections
-          loadTimer = setTimeout(function () {
-            if (!loaded) showFallback();
-          }, 15000);
-
-          iframe.src = targetSrc;
-        }
-
-        // Viewport-based lazy loading
-        if ('IntersectionObserver' in window) {
-          var observer = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-              if (entry.isIntersecting) {
-                loadIframe();
-                observer.unobserve(entry.target);
-              }
-            });
-          }, { rootMargin: '250px 0px' });
-          observer.observe(frame);
-        } else {
-          loadIframe();
-        }
+        var isWide = frame.classList.contains('reel-item__frame--wide');
+        var card = document.createElement('div');
+        card.className = 'embed-fb-fallback';
+        card.innerHTML =
+          '<div class="embed-fb-fallback__icon">' +
+            '<svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-hidden="true">' +
+              '<path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.884v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>' +
+            '</svg>' +
+          '</div>' +
+          '<span class="embed-fb-fallback__badge">' + (isWide ? 'Facebook Video' : 'Facebook Reel') + '</span>' +
+          '<p class="embed-fb-fallback__title">' + videoTitle + '</p>' +
+          '<p class="embed-fb-fallback__note">Watch this exclusive clip on Facebook</p>' +
+          '<a href="' + fbUrl + '" target="_blank" rel="noopener" class="embed-fb-fallback__btn">Watch on Facebook ↗</a>';
+        frame.appendChild(card);
       }
 
       frames.forEach(setupFrame);
